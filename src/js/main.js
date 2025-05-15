@@ -8,4 +8,5 @@ async function loadComponent(id, path) {
 
 loadComponent('header', '/templates/partials/header.html');
 loadComponent('hero', '/templates/partials/hero.html');
+loadComponent('news', '/templates/partials/news.html');
 loadComponent('footer', '/templates/partials/footer.html');
