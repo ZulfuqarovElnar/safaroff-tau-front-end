@@ -1,32 +1,22 @@
-<header class="site-header">
-  <div class="container">
+<header class="bg-black text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
     <div class="logo">
-      <img src="logo.svg" alt="TAU Logo" />
+      <img src="logo.svg" alt="TAU Logo" class="h-10" />
     </div>
-
     <nav class="navigation">
-      <ul>
-        <li><a href="#">Universitet haqqında</a></li>
-        <li><a href="#">Tədris</a></li>
-        <li><a href="#">Qəbul</a></li>
-        <li><a href="#">Tədqiqat</a></li>
-        <li><a href="#">Əlaqə</a></li>
+      <ul class="flex gap-6">
+        <li><a href="#" class="hover:underline">Universitet haqqında</a></li>
+        <li><a href="#" class="hover:underline">Tədris</a></li>
+        <li><a href="#" class="hover:underline">Qəbul</a></li>
+        <li><a href="#" class="hover:underline">Tədqiqat</a></li>
+        <li><a href="#" class="hover:underline">Əlaqə</a></li>
       </ul>
     </nav>
-
-    <div class="actions">
-      <div class="lang-select">
-        <span class="icon">🌐</span>
-        <span>TR</span>
-      </div>
-
-      <div class="search-icon">
-        🔍
-      </div>
-
-      <button class="login-button">
-        <span class="icon">👤</span>
-        Kabinetə keçid
+    <div class="actions flex items-center gap-4">
+      <span>TR</span>
+      <div class="search-icon">🔍</div>
+      <button class="login-button bg-blue-500 px-3 py-1 rounded text-white hover:bg-blue-600">
+        <span class="icon">👤</span> Kabinetə keçid
       </button>
     </div>
   </div>
