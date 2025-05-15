@@ -1,15 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  /* Custom color variables */
-  --primary-color: #F6F6F6;
-  --secondary-color: #EC1F26;
-  --text-color: #606060;
-  --light-bg: #F3F4F6;
-}
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -594,9 +582,9 @@ video {
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1440px) {
   .container {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 }
 
