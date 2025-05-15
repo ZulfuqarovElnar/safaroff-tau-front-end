@@ -12,8 +12,12 @@ module.exports = {
         textColor: 'var(--text-color)',
         lightBg: 'var(--light-bg)',
       },
+      backgroundImage: {
+        'circle': "url('/images/circle.svg')",
+      },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        archivo: ['Archivo', 'sans-serif'],
       },
     },
   },

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
     /* Custom color variables */
     --primary-color: #F6F6F6;
