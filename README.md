@@ -8,7 +8,7 @@
 $ yarn install  
   
 # serve with hot reload at localhost:3000  
-$ yarn watch  
+$ yarn dev  
   
 # build for production 
 $ yarn build   
@@ -17,4 +17,3 @@ $ yarn build
 $ yarn sprites    
 ```  
   
-For detailed explanation on how things work, check out [Nagiyev.pro](https://nagiyev.pro).

@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
     /* Custom color variables */
     --primary-color: #F6F6F6;
-    --secondary-color: ##EC1F26;
+    --secondary-color: #EC1F26;
     --text-color: #606060;
-    --light-bg: #fff;
+    --light-bg: #F3F4F6;
 }

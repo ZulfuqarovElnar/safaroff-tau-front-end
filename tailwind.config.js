@@ -11,7 +11,10 @@ module.exports = {
         secondary: 'var(--secondary-color)',
         textColor: 'var(--text-color)',
         lightBg: 'var(--light-bg)',
-      }
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],
