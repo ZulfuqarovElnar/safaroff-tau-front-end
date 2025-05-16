@@ -10,4 +10,6 @@ loadComponent('header', '/templates/partials/header.html');
 loadComponent('hero', '/templates/partials/hero.html');
 loadComponent('news', '/templates/partials/news.html');
 loadComponent('specialties', '/templates/partials/specialties.html');
+loadComponent('application', '/templates/partials/application.html');
 loadComponent('footer', '/templates/partials/footer.html');
+
