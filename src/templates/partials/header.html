@@ -1,10 +1,13 @@
-<header class="bg-primary text-[#606060] px-[60px] font-inter">
-  <div class="container mx-auto h-28 flex justify-between items-center">
-    <div class="bg-secondary px-3 pb-3 pt-10 mb-auto">
-      <img src="/images/logo.svg" alt="TAU Logo" class="h-10" />
+<header class="bg-primary text-[#606060] px-4 md:px-[60px] font-inter">
+  <div class="container mx-auto h-20 md:h-28 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="bg-secondary px-3 pb-2 pt-6 md:pt-10 mb-auto">
+      <img src="/images/logo.svg" alt="TAU Logo" class="h-8 md:h-10" />
     </div>
-    <nav class="">
-      <ul class="flex gap-8 ">
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:block">
+      <ul class="flex gap-4 md:gap-8 text-sm md:text-base">
         <li><a href="#">Universitet haqqında</a></li>
         <li><a href="#">Tədris</a></li>
         <li><a href="#">Qəbul</a></li>
@@ -12,17 +15,24 @@
         <li><a href="#">Əlaqə</a></li>
       </ul>
     </nav>
-    <div class="flex items-center gap-6">
-      <div class="flex justify-center items-center gap-1.5">
-        <img src="/images/globus.svg" alt="" class="text-xl" />
-        <span class="text-[#5B5B5B] text-sm">TR</span>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-4 md:gap-6">
+      <!-- Language -->
+      <div class="flex items-center gap-1.5">
+        <img src="/images/globus.svg" alt="Language" class="h-5 w-5" />
+        <span class="text-[#5B5B5B] text-xs md:text-sm">TR</span>
       </div>
-      
-      <button type="button" class="">
-        <img src="/images/search.svg" alt="" class="text-xl" />
+
+      <!-- Search Button -->
+      <button type="button">
+        <img src="/images/search.svg" alt="Search" class="h-5 w-5" />
       </button>
-      <button type="button" class="px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm flex justify-center items-center gap-1.5">
-        <img src="/images/profile.svg" alt="" class="text-xl" /> Kabinetə keçid
+
+      <!-- Profile Button -->
+      <button type="button" class="hidden md:flex px-4 py-2 rounded-full border border-[#A2A2A2] text-[#585858] text-xs md:text-sm items-center gap-1.5">
+        <img src="/images/profile.svg" alt="Profile" class="h-5 w-5" />
+        Kabinetə keçid
       </button>
     </div>
   </div>
