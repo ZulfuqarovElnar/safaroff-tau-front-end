@@ -13,5 +13,6 @@ loadComponent('specialties', '/templates/partials/specialties.html');
 loadComponent('application', '/templates/partials/application.html');
 loadComponent('apply', '/templates/partials/apply.html');
 loadComponent('students-opinions', '/templates/partials/students-opinions.html');
+loadComponent('partners', '/templates/partials/partners.html');
 loadComponent('footer', '/templates/partials/footer.html');
 
