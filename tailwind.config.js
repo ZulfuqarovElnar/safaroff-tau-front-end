@@ -10,7 +10,7 @@ module.exports = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         textColor: 'var(--text-color)',
-        lightBg: 'var(--light-bg)',
+        white: 'var(--white-color)',
       },
       backgroundImage: {
         'circle': "url('/images/circle.svg')",
@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         archivo: ['Archivo', 'sans-serif'],
+        expletus: ['Expletus Sans', 'sans-serif'],
       },
     },
   },
