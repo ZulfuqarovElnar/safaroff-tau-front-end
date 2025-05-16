@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         archivo: ['Archivo', 'sans-serif'],
+        expletus: ['Expletus Sans', 'sans-serif'],
       },
     },
   },
