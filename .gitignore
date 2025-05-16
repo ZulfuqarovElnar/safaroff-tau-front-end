@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency locks (əgər yalnız biri istifadə olunursa, o biri ignore edilə bilər)
+package-lock.json
+# və ya
+yarn.lock
+
+# Vite cache
+.vite/
+
+# macOS metadata faylları
+.DS_Store
+
+# dotenv faylları (əgər varsa)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
