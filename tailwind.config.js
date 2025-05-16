@@ -10,7 +10,7 @@ module.exports = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         textColor: 'var(--text-color)',
-        lightBg: 'var(--light-bg)',
+        white: 'var(--white-color)',
       },
       backgroundImage: {
         'circle': "url('/images/circle.svg')",

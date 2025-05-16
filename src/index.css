@@ -6,8 +6,8 @@
     /* Custom color variables */
     --primary-color: #F6F6F6;
     --secondary-color: #EC1F26;
-    --text-color: #606060;
-    --light-bg: #F3F4F6;
+    --text-color: #333;
+    --white-color: #fff;
 }
 
 .btn-left,
