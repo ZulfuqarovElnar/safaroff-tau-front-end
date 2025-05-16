@@ -9,3 +9,31 @@
     --text-color: #606060;
     --light-bg: #F3F4F6;
 }
+
+.btn-left,
+.btn-right {
+  border: none;
+  outline: none;
+}
+
+.btn-left {
+  background-color: #F0383E;
+  color: #fff;
+  clip-path: polygon(
+    0   0,
+    calc(100% - 20px) 0,
+    100% 100%,
+    0    100% 
+  );
+}
+
+.btn-right {
+  background-color: transparent;
+  color: #A6A3A3;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0    100% 
+  );
+}
