@@ -20,6 +20,9 @@ module.exports = {
         archivo: ['Archivo', 'sans-serif'],
         expletus: ['Expletus Sans', 'sans-serif'],
       },
+      gridTemplateColumns: {
+        'footer-col': '1fr repeat(5, max-content)',
+      }      
     },
   },
   plugins: [],
