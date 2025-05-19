@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
      <link rel="stylesheet" href="../index.css" />
      <link rel="stylesheet" href="../output.css" />
   </head>
@@ -16,7 +18,7 @@
     <main class="">
       <div id="hero"></div>
       <div id="news"></div>
-      <div id="specialties"></div>
+      <div id="specialties" data-aos="fade-up"></div>
       <div id="application"></div>
       <div id="apply"></div>
       <div id="students-opinions"></div>
@@ -26,6 +28,13 @@
     <div id="footer"></div>
 
     <script type="module" src="/js/main.js"></script>
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    </script>
   </body>
 </html>
 

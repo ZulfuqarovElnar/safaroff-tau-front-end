@@ -5,6 +5,9 @@ async function loadComponent(id, path) {
   const html = await res.text();
   el.innerHTML = html;
 
+  AOS.refresh();
+
+  // Header menu toggle
   if (id === 'header') {
     const toggleButton = el.querySelector('#menu-toggle'); 
     const mobileMenu = el.querySelector('#mobile-menu');
@@ -14,7 +17,7 @@ async function loadComponent(id, path) {
       });
     }
     window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) { // lg breakpoint: 1024px
+      if (window.innerWidth >= 1024) {
         if (!mobileMenu.classList.contains('hidden')) {
           mobileMenu.classList.add('hidden');
         }
