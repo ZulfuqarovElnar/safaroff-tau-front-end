@@ -1,9 +1,9 @@
-<header class="bg-primary text-[#606060] px-[60px] font-inter">
-  <div class="container mx-auto h-28 flex justify-between items-center">
+<header class="bg-primary text-[#606060] px-6 sm:px-[60px] font-inter">
+  <div class="container mx-auto h-28 flex justify-between items-center relative">
     <div class="bg-secondary px-3 pb-3 pt-10 mb-auto">
       <img src="/images/logo.svg" alt="TAU Logo" class="h-10" />
     </div>
-    <nav class="">
+    <nav class="hidden lg:flex">
       <ul class="flex gap-8 ">
         <li><a href="#">Universitet haqqında</a></li>
         <li><a href="#">Tədris</a></li>
@@ -13,17 +13,50 @@
       </ul>
     </nav>
     <div class="flex items-center gap-6">
-      <div class="flex justify-center items-center gap-1.5">
+      <div class="hidden lg:flex justify-center items-center gap-1.5">
         <img src="/images/globus.svg" alt="" class="text-xl" />
         <span class="text-[#5B5B5B] text-sm">TR</span>
       </div>
       
-      <button type="button" class="">
+      <button type="button" class="hidden lg:flex">
         <img src="/images/search.svg" alt="" class="text-xl" />
       </button>
-      <button type="button" class="px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm flex justify-center items-center gap-1.5">
+      <button type="button" class="hidden lg:flex px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
         <img src="/images/profile.svg" alt="" class="text-xl" /> Kabinetə keçid
       </button>
+      <div id="menu-toggle" class="block lg:hidden ">
+        <button class="flex justify-center items-center w-10 h-10 bg-white rounded-lg border border-[#a2a2a2]">
+          <img src="/images/menu.svg" alt="Menu" class="w-6 h-6" />
+        </button>
+      </div>
     </div>
   </div>
+    
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="hidden">
+    <div class="absolute top-28 left-0 w-full bg-white shadow-md z-50 p-6">
+      <ul class="flex flex-col gap-4 py-6 text-[#606060] font-medium">
+        <li><a href="#">Universitet haqqında</a></li>
+        <li><a href="#">Tədris</a></li>
+        <li><a href="#">Qəbul</a></li>
+        <li><a href="#">Tədqiqat</a></li>
+        <li><a href="#">Əlaqə</a></li>
+      </ul>
+      <div class="flex items-center py-6 gap-4">
+        <div class="flex md:hidden justify-center items-center gap-1.5">
+          <img src="/images/globus.svg" alt="" class="text-xl" />
+          <span class="text-[#5B5B5B] text-sm">TR</span>
+        </div>
+        
+        <button type="button" class="flex md:hidden">
+          <img src="/images/search.svg" alt="" class="text-xl" />
+        </button>
+       
+      </div>
+       <button type="button" class="flex sm:hidden px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+          <img src="/images/profile.svg" alt="" class="text-xl" /> Kabinetə keçid
+        </button>
+    </div>
+  </nav>
 </header>
+
