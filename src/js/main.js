@@ -24,6 +24,27 @@ async function loadComponent(id, path) {
       }
     });
   }
+
+  if (id === 'hero') {
+    const swiper = new Swiper(".heroSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      navigation: {
+        nextEl: '.next-slide',
+        prevEl: '.prev-slide',
+      }
+    });
+  }
+  
 }
 
 
