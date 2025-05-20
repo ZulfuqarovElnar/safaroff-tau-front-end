@@ -25,6 +25,7 @@ async function loadComponent(id, path) {
     });
   }
 
+  // Hero slider
   if (id === 'hero') {
     const swiper = new Swiper(".heroSwiper", {
       slidesPerView: 1,
@@ -43,6 +44,36 @@ async function loadComponent(id, path) {
         prevEl: '.prev-slide',
       }
     });
+  }
+  
+  if(id === 'specialties') {
+    AOS.init();
+      
+      // Tab switching functionality
+      const btnPrograms = document.getElementById('btn-programs');
+      const btnEnglish = document.getElementById('btn-english');
+      const contentPrograms = document.getElementById('content-programs');
+      const contentEnglish = document.getElementById('content-english');
+      
+      btnPrograms.addEventListener('click', function() {
+        // Update active tab
+        btnPrograms.classList.add('active-tab');
+        btnEnglish.classList.remove('active-tab');
+        
+        // Show/hide content
+        contentPrograms.style.display = 'flex';
+        contentEnglish.style.display = 'none';
+      });
+      
+      btnEnglish.addEventListener('click', function() {
+        // Update active tab
+        btnEnglish.classList.add('active-tab');
+        btnPrograms.classList.remove('active-tab');
+        
+        // Show/hide content
+        contentPrograms.style.display = 'none';
+        contentEnglish.style.display = 'flex';
+      });
   }
   
 }

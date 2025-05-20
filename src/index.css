@@ -10,55 +10,38 @@
     --white-color: #fff;
 }
 
-.btn-left,
-.btn-right {
-  border: none;
-  outline: none;
-}
-
 .btn-left {
-  position: relative;
-  background: transparent;
-  color: #fff;
-  border: none;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  overflow: hidden;
+  background-color: #F6F6F6;
+  color: #A6A3A3;
+  clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+  padding-right: 45px;
 }
-
-.btn-left::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #F0383E;
-  clip-path: polygon(
-    0   0,
-    calc(100% - 20px) 0,
-    100% 100%,
-    0    100%
-  );
-  pointer-events: none;
-  z-index: -1;
-}
-
 
 .btn-right {
-  background-color: transparent;
+  background-color: #F6F6F6;
   color: #A6A3A3;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    0    100% 
-  );
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%);
+  margin-left: -15px;
+  padding-left: 25px;
+}
+
+.active-tab {
+  background-color: #F0383E;
+  color: white;
+  opacity: 1;
+}
+
+.btn-left:not(.active-tab),
+.btn-right:not(.active-tab) {
+  opacity: 1;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .footer-grid-cols {
