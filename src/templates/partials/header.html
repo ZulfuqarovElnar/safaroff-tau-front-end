@@ -1,4 +1,4 @@
-<header class="bg-primary text-[#606060] px-6 sm:px-[60px] font-inter">
+<header class="bg-primary text-[#606060] px-4 sm:px-[60px] font-inter">
   <div class="container mx-auto h-28 flex justify-between items-center relative">
     <div class="bg-secondary px-3 pb-3 pt-10 mb-auto">
       <img src="/images/logo.svg" alt="TAU Logo" class="h-10" />
@@ -12,7 +12,7 @@
         <li><a href="#">Əlaqə</a></li>
       </ul>
     </nav>
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-3 md:gap-6">
       <div class="hidden lg:flex justify-center items-center gap-1.5">
         <img src="/images/globus.svg" alt="" class="text-xl" />
         <span class="text-[#5B5B5B] text-sm">TR</span>
@@ -21,12 +21,13 @@
       <button type="button" class="hidden lg:flex">
         <img src="/images/search.svg" alt="" class="text-xl" />
       </button>
-      <button type="button" class="hidden lg:flex px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
-        <img src="/images/profile.svg" alt="" class="text-xl" /> Kabinetə keçid
+      <button type="button" class="flex px-4 py-2.5 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+        <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
+        <span class="hidden md:block">Kabinetə keçid</span>
       </button>
       <div id="menu-toggle" class="block lg:hidden ">
-        <button class="flex justify-center items-center w-10 h-10 bg-white rounded-lg border border-[#a2a2a2]">
-          <img src="/images/menu.svg" alt="Menu" class="w-6 h-6" />
+        <button class="flex justify-center items-center px-4 py-2.5 rounded-full bg-white border border-[#a2a2a2]">
+          <img src="/images/hamburger.svg" alt="Menu" class="w-4 h-4" />
         </button>
       </div>
     </div>
@@ -53,9 +54,6 @@
         </button>
        
       </div>
-       <button type="button" class="flex sm:hidden px-4 py-3 rounded-[50px] border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
-          <img src="/images/profile.svg" alt="" class="text-xl" /> Kabinetə keçid
-        </button>
     </div>
   </nav>
 </header>
