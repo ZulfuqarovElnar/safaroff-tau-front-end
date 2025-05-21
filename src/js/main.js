@@ -50,10 +50,10 @@ async function loadComponent(id, path) {
     AOS.init();
       
       // Tab switching functionality
-      const btnPrograms = document.getElementById('btn-programs');
-      const btnEnglish = document.getElementById('btn-english');
-      const contentPrograms = document.getElementById('content-programs');
-      const contentEnglish = document.getElementById('content-english');
+      const btnPrograms = el.querySelector('#btn-programs');
+      const btnEnglish = el.querySelector('#btn-english');
+      const contentPrograms = el.querySelector('#content-programs');
+      const contentEnglish = el.querySelector('#content-english');
       
       btnPrograms.addEventListener('click', function() {
         // Update active tab
