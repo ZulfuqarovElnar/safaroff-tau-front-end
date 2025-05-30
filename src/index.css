@@ -50,3 +50,25 @@
 .footer-grid-cols {
   grid-template-columns: 1fr repeat(5, max-content);
 }
+.progress-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -24px;
+}
+
+.progress-bar-wrapper {
+  width: 60px;
+  height: 4px;
+  background-color: #FFFFFF80;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ffffff; 
+  width: 0%;
+}
