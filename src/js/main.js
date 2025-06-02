@@ -76,7 +76,7 @@ async function loadComponent(id, path) {
       });
   }
 
-  if(id === 'history') {
+  if(id === 'history' || id === 'specialties-slider') {
     const SLIDE_DURATION_MS = 2000;
     const slidesCount = document.querySelectorAll('.swiper-slide').length;
       const progressContainer = document.getElementById('progressContainer');
@@ -150,4 +150,11 @@ loadComponent('structure', '/templates/partials/structure.html')
 
 // Academic page
 loadComponent('academic-card', '/templates/partials/academic-card.html');
+
+// Specialties page
+loadComponent('specialties-slider', '/templates/partials/specialties-slider.html');
+loadComponent('specialties-card', '/templates/partials/specialties-card.html'); 
+loadComponent('specialties-program', '/templates/partials/specialties-program.html');
+loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
+
 loadComponent('footer', '/templates/partials/footer.html');
