@@ -148,4 +148,6 @@ loadComponent('az-turkiye-terefi', '/templates/partials/az-turkiye-terefi.html')
 loadComponent('diplom', '/templates/partials/diplom.html')
 loadComponent('structure', '/templates/partials/structure.html')
 
+// Academic page
+loadComponent('academic-card', '/templates/partials/academic-card.html');
 loadComponent('footer', '/templates/partials/footer.html');
