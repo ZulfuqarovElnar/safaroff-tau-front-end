@@ -124,7 +124,24 @@ async function loadComponent(id, path) {
         document.getElementById("progress-0").style.width = "100%";
       });
   }
+  if(id === 'shura-slider') {
+    const slides = document.querySelectorAll('.slide');
+    const slideContents = document.querySelectorAll('.slide-content');
   
+    function setActiveSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('inactive', i !== index);
+        slide.classList.toggle('active', i === index);
+      });
+      slideContents.forEach((content, i) => {
+        content.style.display = i === index ? 'flex' : 'none';
+      });
+    }
+  
+    // İndi orta slide-ı seçək (indeks 1, yəni ikinci slide)
+    setActiveSlide(1);
+  
+  }
 }
 
 
@@ -156,5 +173,10 @@ loadComponent('specialties-slider', '/templates/partials/specialties-slider.html
 loadComponent('specialties-card', '/templates/partials/specialties-card.html'); 
 loadComponent('specialties-program', '/templates/partials/specialties-program.html');
 loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
+
+// Shura-uzvleri
+loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
+loadComponent('shura-slider', '/templates/partials/shura-slider.html');
+
 
 loadComponent('footer', '/templates/partials/footer.html');
