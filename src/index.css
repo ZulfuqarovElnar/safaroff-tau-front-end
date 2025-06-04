@@ -82,3 +82,86 @@
   border: 1px solid;
   border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, #E01010 100%);
 }
+
+.slide {
+  transition: all 0.4s ease;
+  opacity: 0.3;
+  transform: scale(0.85);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 0;
+}
+
+.slide-content.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+
+  visibility: visible;
+  z-index: 10;
+}
+
+.carousel-container {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  padding-top: 37.5vh;
+  padding-bottom: 37.5vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.carousel-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.slide-wrapper {
+  padding-left: 42px;
+  height: 25vh;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-container {
+  position: relative;
+  height: 753px;
+  overflow: hidden;
+}

@@ -124,23 +124,143 @@ async function loadComponent(id, path) {
         document.getElementById("progress-0").style.width = "100%";
       });
   }
-  if(id === 'shura-slider') {
+  
+  if (id === 'shura-slider') {
+    const container = document.querySelector('.carousel-container');
     const slides = document.querySelectorAll('.slide');
     const slideContents = document.querySelectorAll('.slide-content');
-  
-    function setActiveSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('inactive', i !== index);
-        slide.classList.toggle('active', i === index);
-      });
-      slideContents.forEach((content, i) => {
-        content.style.display = i === index ? 'flex' : 'none';
-      });
+    const slideWrappers = document.querySelectorAll('.slide-wrapper');
+
+
+    const indicatorContainer = document.getElementById('slide-indicators');
+
+    const indicatorSpans = indicatorContainer.querySelectorAll('span');
+
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    const slideNumberEl = document.getElementById('slide-number');
+
+    let count = 1;
+    const targetNumber = 14;
+    const duration = 1500;
+    const stepTime = Math.floor(duration / targetNumber);
+
+    function animateSlideNumber() {
+        const interval = setInterval(() => {
+            slideNumberEl.textContent = String(count).padStart(2, '0');
+            count++;
+
+            if (count > targetNumber) {
+                clearInterval(interval);
+            }
+        }, stepTime);
     }
-  
-    // İndi orta slide-ı seçək (indeks 1, yəni ikinci slide)
-    setActiveSlide(1);
-  
+
+    animateSlideNumber();
+
+        let currentActiveIndex = -1;
+        let scrollTimeout;
+
+        function setActiveSlide(index) {
+            if (index === currentActiveIndex) return;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            slideContents.forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+
+
+            indicatorSpans.forEach((sp, i) => {
+                if (i === index) {
+                    sp.classList.add('text-secondary');
+                } else {
+                    sp.classList.remove('text-secondary');
+                }
+            });
+
+            currentActiveIndex = index;
+        }
+
+    function findCenteredSlide() {
+        const containerRect = container.getBoundingClientRect();
+        const centerY = containerRect.top + containerRect.height / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        slideWrappers.forEach((wrapper, idx) => {
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperCenterY = rect.top + rect.height / 2;
+            const distance = Math.abs(wrapperCenterY - centerY);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = idx;
+            }
+        });
+
+        return closestIndex;
+    }
+
+    setTimeout(() => {
+        setActiveSlide(0);
+    }, 100);
+
+    container.addEventListener('scroll', () => {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const idx = findCenteredSlide();
+            setActiveSlide(idx);
+        }, 50);
+    });
+
+    slides.forEach((slide, idx) => {
+        slide.addEventListener('click', () => {
+            setActiveSlide(idx);
+            slideWrappers[idx].scrollIntoView({
+                behavior: 'smooth',
+                block: 'top'
+            });
+        });
+    });
+
+    let isAutoScrolling = false;
+    container.addEventListener('scroll', () => {
+        if (!isAutoScrolling) {
+            isAutoScrolling = true;
+            setTimeout(() => {
+                const idx = findCenteredSlide();
+                slideWrappers[idx].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'top'
+                });
+                isAutoScrolling = false;
+            }, 150);
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        let newIndex = currentActiveIndex - 1;
+        if (newIndex < 0) newIndex = 0;
+        setActiveSlide(newIndex);
+        slideWrappers[newIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'top'
+        });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        let newIndex = currentActiveIndex + 1;
+        if (newIndex > slides.length - 1) newIndex = slides.length - 1;
+        setActiveSlide(newIndex);
+        slideWrappers[newIndex].scrollIntoView({
+            behavior: 'smooth',
+            block: 'top'
+        });
+    });
   }
 }
 
