@@ -127,140 +127,133 @@ async function loadComponent(id, path) {
   
   if (id === 'shura-slider') {
     const container = document.querySelector('.carousel-container');
-    const slides = document.querySelectorAll('.slide');
-    const slideContents = document.querySelectorAll('.slide-content');
-    const slideWrappers = document.querySelectorAll('.slide-wrapper');
-
-
-    const indicatorContainer = document.getElementById('slide-indicators');
-
-    const indicatorSpans = indicatorContainer.querySelectorAll('span');
-
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    const slideNumberEl = document.getElementById('slide-number');
-
-    let count = 1;
-    const targetNumber = 14;
-    const duration = 1500;
-    const stepTime = Math.floor(duration / targetNumber);
-
-    function animateSlideNumber() {
-        const interval = setInterval(() => {
-            slideNumberEl.textContent = String(count).padStart(2, '0');
-            count++;
-
-            if (count > targetNumber) {
-                clearInterval(interval);
-            }
-        }, stepTime);
-    }
-
-    animateSlideNumber();
-
+        const slides = document.querySelectorAll('.slide');
+        const slideContents = document.querySelectorAll('.slide-content');
+        const slideWrappers = document.querySelectorAll('.slide-wrapper');
+        
+        const indicatorSpans = document.querySelectorAll('.indicator-span');
+        const indicatorsWrapper = document.getElementById('indicators-wrapper');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const slideNumberEl = document.getElementById('slide-number');
+        
+        let count = 1;
+        const targetNumber = 14;
+        const duration = 1500;
+        const stepTime = Math.floor(duration / targetNumber);
+        
+        function animateSlideNumber() {
+            const interval = setInterval(() => {
+                slideNumberEl.textContent = String(count).padStart(2, '0');
+                count++;
+                if (count > targetNumber) {
+                    clearInterval(interval);
+                }
+            }, stepTime);
+        }
+        animateSlideNumber();
+        
         let currentActiveIndex = -1;
         let scrollTimeout;
+        
+        function updateIndicatorPosition(activeIndex) {
+            const middlePosition = 2;
+            const totalIndicators = indicatorSpans.length;
 
+            let offset = activeIndex - middlePosition;
+
+            offset = Math.max(0, Math.min(offset, totalIndicators - 5));
+
+            const translateY = -offset * 36;
+            indicatorsWrapper.style.transform = `translateY(${translateY}px)`;
+        }
+        
         function setActiveSlide(index) {
-            if (index === currentActiveIndex) return;
-
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            slideContents.forEach((content, i) => {
-                content.classList.toggle('active', i === index);
-            });
-
-
-            indicatorSpans.forEach((sp, i) => {
-                if (i === index) {
-                    sp.classList.add('text-secondary');
-                } else {
-                    sp.classList.remove('text-secondary');
+          if (index === currentActiveIndex) return;
+      
+          slides.forEach((slide, i) => {
+              slide.classList.toggle('active', i === index);
+          });
+          slideContents.forEach((content, i) => {
+              content.classList.toggle('active', i === index);
+          });
+          indicatorSpans.forEach((span, i) => {
+              span.classList.toggle('active', i === index);
+          });
+      
+          slideWrappers.forEach((wrapper, i) => {
+              wrapper.classList.toggle('active', i === index);
+          });
+      
+          updateIndicatorPosition(index);
+          currentActiveIndex = index;
+      }
+      
+        
+        function findCenteredSlide() {
+            const containerRect = container.getBoundingClientRect();
+            const centerY = containerRect.top + containerRect.height / 2;
+            
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+            
+            slideWrappers.forEach((wrapper, idx) => {
+                const rect = wrapper.getBoundingClientRect();
+                const wrapperCenterY = rect.top + rect.height / 2;
+                const distance = Math.abs(wrapperCenterY - centerY);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = idx;
                 }
             });
-
-            currentActiveIndex = index;
+            return closestIndex;
         }
+        
+        function scrollToSlide(index) {
+            const wrapper = slideWrappers[index];
+            const offset = wrapper.offsetTop - (container.clientHeight / 2) + (wrapper.clientHeight / 2);
+            container.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+        
+        const middleIndex = 2;
+        setTimeout(() => {
+            setActiveSlide(middleIndex);
+            scrollToSlide(middleIndex);
+        }, 100);
 
-    function findCenteredSlide() {
-        const containerRect = container.getBoundingClientRect();
-        const centerY = containerRect.top + containerRect.height / 2;
-
-        let closestIndex = 0;
-        let closestDistance = Infinity;
-
-        slideWrappers.forEach((wrapper, idx) => {
-            const rect = wrapper.getBoundingClientRect();
-            const wrapperCenterY = rect.top + rect.height / 2;
-            const distance = Math.abs(wrapperCenterY - centerY);
-
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestIndex = idx;
-            }
+        container.addEventListener('scroll', () => {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const idx = findCenteredSlide();
+                setActiveSlide(idx);
+            }, 50);
         });
-
-        return closestIndex;
-    }
-
-    setTimeout(() => {
-        setActiveSlide(0);
-    }, 100);
-
-    container.addEventListener('scroll', () => {
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const idx = findCenteredSlide();
-            setActiveSlide(idx);
-        }, 50);
-    });
-
-    slides.forEach((slide, idx) => {
-        slide.addEventListener('click', () => {
-            setActiveSlide(idx);
-            slideWrappers[idx].scrollIntoView({
-                behavior: 'smooth',
-                block: 'top'
+        
+        slides.forEach((slide, idx) => {
+            slide.addEventListener('click', () => {
+                scrollToSlide(idx);
             });
         });
-    });
 
-    let isAutoScrolling = false;
-    container.addEventListener('scroll', () => {
-        if (!isAutoScrolling) {
-            isAutoScrolling = true;
-            setTimeout(() => {
-                const idx = findCenteredSlide();
-                slideWrappers[idx].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'top'
-                });
-                isAutoScrolling = false;
-            }, 150);
-        }
-    });
-
-    prevBtn.addEventListener('click', () => {
-        let newIndex = currentActiveIndex - 1;
-        if (newIndex < 0) newIndex = 0;
-        setActiveSlide(newIndex);
-        slideWrappers[newIndex].scrollIntoView({
-            behavior: 'smooth',
-            block: 'top'
+        indicatorSpans.forEach((span, idx) => {
+            span.addEventListener('click', () => {
+                scrollToSlide(idx);
+            });
         });
-    });
-
-    nextBtn.addEventListener('click', () => {
-        let newIndex = currentActiveIndex + 1;
-        if (newIndex > slides.length - 1) newIndex = slides.length - 1;
-        setActiveSlide(newIndex);
-        slideWrappers[newIndex].scrollIntoView({
-            behavior: 'smooth',
-            block: 'top'
+        
+        prevBtn.addEventListener('click', () => {
+            let newIndex = currentActiveIndex - 1;
+            if (newIndex < 0) newIndex = 0;
+            scrollToSlide(newIndex);
         });
-    });
+        
+        nextBtn.addEventListener('click', () => {
+            let newIndex = currentActiveIndex + 1;
+            if (newIndex > slides.length - 1) newIndex = slides.length - 1;
+            scrollToSlide(newIndex);
+        });
+
   }
 }
 
