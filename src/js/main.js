@@ -76,7 +76,7 @@ async function loadComponent(id, path) {
       });
   }
 
-  if(id === 'history' || id === 'specialties-slider') {
+  if(id === 'history' || id === 'specialties-slider' || id ==='himayechiler-shurasi') {
     const SLIDE_DURATION_MS = 2000;
     const slidesCount = document.querySelectorAll('.swiper-slide').length;
       const progressContainer = document.getElementById('progressContainer');
@@ -125,6 +125,177 @@ async function loadComponent(id, path) {
       });
   }
   
+  function initializeSlider(sliderId) {
+    const container = document.querySelector(`#${sliderId} .carousel-container`) || 
+                      document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll(`#${sliderId} .slide`) || 
+                   document.querySelectorAll('.slide');
+    const slideContents = document.querySelectorAll(`#${sliderId} ~ .slide-content`) || 
+                          document.querySelectorAll('.slide-content');
+    const slideWrappers = document.querySelectorAll(`#${sliderId} .slide-wrapper`) || 
+                          document.querySelectorAll('.slide-wrapper');
+
+    let indicatorSpans, indicatorsWrapper, prevBtn, nextBtn, slideNumberEl;
+    
+    if (sliderId === 'shura-slider') {
+        indicatorSpans = document.querySelectorAll('#indicators-wrapper .indicator-span');
+        indicatorsWrapper = document.getElementById('indicators-wrapper');
+        prevBtn = document.getElementById('prev-btn');
+        nextBtn = document.getElementById('next-btn');
+        slideNumberEl = document.getElementById('slide-number');
+    } else if (sliderId === 'elmi-shura-slider') {
+        indicatorSpans = document.querySelectorAll('#indicators-wrapper-two .indicator-span');
+        indicatorsWrapper = document.getElementById('indicators-wrapper-two');
+        prevBtn = document.getElementById('prev-btn-two');
+        nextBtn = document.getElementById('next-btn-two');
+        slideNumberEl = document.getElementById('slide-number-two');
+    }
+    
+    let count = 1;
+    const targetNumber = sliderId === 'shura-slider' ? 14 : 5;
+    const duration = 1500;
+    const stepTime = Math.floor(duration / targetNumber);
+    
+    function animateSlideNumber() {
+        const interval = setInterval(() => {
+            if (slideNumberEl) {
+                slideNumberEl.textContent = String(count).padStart(2, '0');
+            }
+            count++;
+            if (count > targetNumber) {
+                clearInterval(interval);
+            }
+        }, stepTime);
+    }
+
+    animateSlideNumber();
+    
+    let currentActiveIndex = -1;
+    let scrollTimeout;
+    
+    function updateIndicatorPosition(activeIndex) {
+        if (!indicatorsWrapper || !indicatorSpans.length) return;
+        
+        const middlePosition = 2;
+        const totalIndicators = indicatorSpans.length;
+        let offset = activeIndex - middlePosition;
+        offset = Math.max(0, Math.min(offset, totalIndicators - 5));
+        const translateY = -offset * 36;
+        indicatorsWrapper.style.transform = `translateY(${translateY}px)`;
+    }
+    
+    function setActiveSlide(index) {
+        if (index === currentActiveIndex) return;
+    
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        slideContents.forEach((content, i) => {
+            content.classList.toggle('active', i === index);
+        });
+        indicatorSpans.forEach((span, i) => {
+            span.classList.toggle('active', i === index);
+        });
+        slideWrappers.forEach((wrapper, i) => {
+            wrapper.classList.toggle('active', i === index);
+        });
+    
+        updateIndicatorPosition(index);
+        currentActiveIndex = index;
+    }
+    
+    function findCenteredSlide() {
+        if (!container || !slideWrappers.length) return 0;
+        
+        const containerRect = container.getBoundingClientRect();
+        const centerY = containerRect.top + containerRect.height / 2;
+        
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        slideWrappers.forEach((wrapper, idx) => {
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperCenterY = rect.top + rect.height / 2;
+            const distance = Math.abs(wrapperCenterY - centerY);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = idx;
+            }
+        });
+        return closestIndex;
+    }
+    
+    function scrollToSlide(index) {
+        if (!container || !slideWrappers[index]) return;
+        
+        const wrapper = slideWrappers[index];
+        const offset = wrapper.offsetTop - (container.clientHeight / 2) + (wrapper.clientHeight / 2);
+        container.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+    
+    const middleIndex = 2;
+    setTimeout(() => {
+        setActiveSlide(middleIndex);
+        scrollToSlide(middleIndex);
+    }, 100);
+
+    if (container) {
+        container.addEventListener('scroll', () => {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const idx = findCenteredSlide();
+                setActiveSlide(idx);
+            }, 50);
+        });
+    }
+    
+    slides.forEach((slide, idx) => {
+        slide.addEventListener('click', () => {
+            scrollToSlide(idx);
+        });
+    });
+
+    indicatorSpans.forEach((span, idx) => {
+        span.addEventListener('click', () => {
+            scrollToSlide(idx);
+        });
+    });
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            let newIndex = currentActiveIndex - 1;
+            if (newIndex < 0) newIndex = 0;
+            scrollToSlide(newIndex);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            let newIndex = currentActiveIndex + 1;
+            if (newIndex > slides.length - 1) newIndex = slides.length - 1;
+            scrollToSlide(newIndex);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('shura-slider')) {
+        initializeSlider('shura-slider');
+    }
+    
+    if (document.getElementById('elmi-shura-slider')) {
+        initializeSlider('elmi-shura-slider');
+    }
+});
+
+function handleSliderById(id) {
+    if (id === 'shura-slider' || id === 'elmi-shura-slider') {
+        initializeSlider(id);
+    }
+}
+
+handleSliderById('shura-slider');
+handleSliderById('elmi-shura-slider');
 }
 
 
@@ -156,5 +327,11 @@ loadComponent('specialties-slider', '/templates/partials/specialties-slider.html
 loadComponent('specialties-card', '/templates/partials/specialties-card.html'); 
 loadComponent('specialties-program', '/templates/partials/specialties-program.html');
 loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
+
+// Shura-uzvleri
+loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
+loadComponent('shura-slider', '/templates/partials/shura-slider.html');
+loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html');
+
 
 loadComponent('footer', '/templates/partials/footer.html');
