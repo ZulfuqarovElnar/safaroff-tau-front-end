@@ -79,8 +79,26 @@
 }
 
 .gradient-border {
-  border: 1px solid;
-  border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, #E01010 100%);
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    #E01010 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  border-radius: inherit;
 }
 
 .slide {
