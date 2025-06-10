@@ -303,7 +303,7 @@ loadComponent('header', '/templates/partials/header.html');
 
 // Main page
 loadComponent('hero', '/templates/partials/hero.html');
-loadComponent('news', '/templates/partials/news.html');
+loadComponent('xəbərlər-elanlar', '/templates/partials/xəbərlər-elanlar.html');
 loadComponent('specialties', '/templates/partials/specialties.html');
 loadComponent('application', '/templates/partials/application.html');
 loadComponent('apply', '/templates/partials/apply.html');
@@ -332,6 +332,9 @@ loadComponent('specialties-professor', '/templates/partials/specialties-professo
 loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
 loadComponent('shura-slider', '/templates/partials/shura-slider.html');
 loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html');
+
+// Xəbərlər
+loadComponent('xəbərlər', '/templates/partials/xəbərlər.html');
 
 
 loadComponent('footer', '/templates/partials/footer.html');
