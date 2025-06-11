@@ -337,5 +337,8 @@ loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html')
 loadComponent('xəbərlər', '/templates/partials/xəbərlər.html');
 loadComponent('xəbərlər-daxili', '/templates/partials/xəbərlər-daxili.html');
 
+// Elanlar
+loadComponent('elanlar', '/templates/partials/elanlar.html');
+loadComponent('elanlar-daxili', '/templates/partials/elanlar-daxili.html');
 
 loadComponent('footer', '/templates/partials/footer.html');
