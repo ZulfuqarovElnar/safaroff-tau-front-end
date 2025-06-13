@@ -23,6 +23,30 @@ async function loadComponent(id, path) {
         }
       }
     });
+
+    const searchIcon = document.getElementById("search-icon");
+    const searchBox = document.getElementById("search-box");
+    const searchClose = document.getElementById("search-close");
+
+    function toggleSearch() {
+      const isOpen = searchBox.classList.contains("scale-y-100");
+
+      if (isOpen) {
+        searchBox.classList.remove("scale-y-100", "opacity-100");
+        searchBox.classList.add("scale-y-0", "opacity-0");
+      } else {
+        searchBox.classList.add("scale-y-100", "opacity-100");
+        searchBox.classList.remove("scale-y-0", "opacity-0");
+      }
+    }
+
+    function closeSearch() {
+      searchBox.classList.remove("scale-y-100", "opacity-100");
+      searchBox.classList.add("scale-y-0", "opacity-0");
+    }
+
+    searchIcon.addEventListener("click", toggleSearch);
+    searchClose.addEventListener("click", closeSearch);
   }
 
   // Hero slider
@@ -296,6 +320,44 @@ function handleSliderById(id) {
 
 handleSliderById('shura-slider');
 handleSliderById('elmi-shura-slider');
+
+// Contact
+if ( id === 'contact' ) {
+ const form = document.getElementById('myForm');
+  const fields = form.querySelectorAll('input, textarea');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let hasError = false;
+
+    fields.forEach(field => {
+      field.classList.remove(
+        'border-red-500',
+        'focus:border-red-500',
+        'border-[#DBDBDB]',
+        'focus:border-[#ADADAD]'
+      );
+
+      const isInvalid = field.value.trim() === '' || !field.checkValidity();
+
+      if (isInvalid) {
+        field.classList.add('border-red-500', 'focus:border-red-500');
+        hasError = true;
+      } else {
+        field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
+      }
+    });
+  });
+
+  fields.forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.value.trim() !== '' && field.checkValidity()) {
+        field.classList.remove('border-red-500', 'focus:border-red-500');
+        field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
+      }
+    });
+  });
+}
 }
 
 
@@ -340,5 +402,19 @@ loadComponent('xəbərlər-daxili', '/templates/partials/xəbərlər-daxili.html
 // Elanlar
 loadComponent('elanlar', '/templates/partials/elanlar.html');
 loadComponent('elanlar-daxili', '/templates/partials/elanlar-daxili.html');
+
+// Contact
+loadComponent('contact', '/templates/partials/contact.html');
+loadComponent('success-modal', '/templates/partials/success-modal.html');
+loadComponent('error-modal', '/templates/partials/error-modal.html');
+
+// 404
+loadComponent('404', '/templates/partials/404.html');
+
+// Search
+loadComponent('search-result', '/templates/partials/search-result.html');
+
+// Hazırlıq
+loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
 
 loadComponent('footer', '/templates/partials/footer.html');
