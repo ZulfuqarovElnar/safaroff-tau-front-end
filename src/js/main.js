@@ -390,6 +390,12 @@ loadComponent('specialties-card', '/templates/partials/specialties-card.html');
 loadComponent('specialties-program', '/templates/partials/specialties-program.html');
 loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
 
+// Sənaye mühəndisliyi
+loadComponent('sənaye-mühəndisliyi', '/templates/partials/sənaye-mühəndisliyi.html');
+
+// Qida mühəndisliyi
+loadComponent('qida-mühəndisliyi', '/templates/partials/qida-mühəndisliyi.html');
+
 // Shura-uzvleri
 loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
 loadComponent('shura-slider', '/templates/partials/shura-slider.html');
