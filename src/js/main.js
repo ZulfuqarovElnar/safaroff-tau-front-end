@@ -1,6 +1,3 @@
-import '../index.css'
-import '../output.css'
-
 async function loadComponent(id, path) {
   const el = document.getElementById(id);
   if (!el) return;
