@@ -1,3 +1,6 @@
+import '../index.css'
+import '../output.css'
+
 async function loadComponent(id, path) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -23,32 +26,34 @@ async function loadComponent(id, path) {
         }
       }
     });
-
-    const searchIcon = document.getElementById("search-icon");
-    const searchBox = document.getElementById("search-box");
-    const searchClose = document.getElementById("search-close");
-
-    function toggleSearch() {
-      const isOpen = searchBox.classList.contains("scale-y-100");
-
-      if (isOpen) {
+  
+    const searchIcon = el.querySelector("#search-icon");
+    const searchBox = el.querySelector("#search-box");
+    const searchClose = el.querySelector("#search-close");
+  
+    if (searchIcon && searchBox && searchClose) {
+      function toggleSearch() {
+        const isOpen = searchBox.classList.contains("scale-y-100");
+  
+        if (isOpen) {
+          searchBox.classList.remove("scale-y-100", "opacity-100");
+          searchBox.classList.add("scale-y-0", "opacity-0");
+        } else {
+          searchBox.classList.add("scale-y-100", "opacity-100");
+          searchBox.classList.remove("scale-y-0", "opacity-0");
+        }
+      }
+  
+      function closeSearch() {
         searchBox.classList.remove("scale-y-100", "opacity-100");
         searchBox.classList.add("scale-y-0", "opacity-0");
-      } else {
-        searchBox.classList.add("scale-y-100", "opacity-100");
-        searchBox.classList.remove("scale-y-0", "opacity-0");
       }
+  
+      searchIcon.addEventListener("click", toggleSearch);
+      searchClose.addEventListener("click", closeSearch);
     }
-
-    function closeSearch() {
-      searchBox.classList.remove("scale-y-100", "opacity-100");
-      searchBox.classList.add("scale-y-0", "opacity-0");
-    }
-
-    searchIcon.addEventListener("click", toggleSearch);
-    searchClose.addEventListener("click", closeSearch);
   }
-
+  
   // Hero slider
   if (id === 'hero') {
     const swiper = new Swiper(".heroSwiper", {
@@ -72,33 +77,31 @@ async function loadComponent(id, path) {
   
   if(id === 'specialties') {
     AOS.init();
-      
-      // Tab switching functionality
-      const btnPrograms = el.querySelector('#btn-programs');
-      const btnEnglish = el.querySelector('#btn-english');
-      const contentPrograms = el.querySelector('#content-programs');
-      const contentEnglish = el.querySelector('#content-english');
-      
+  
+    const btnPrograms = el.querySelector('#btn-programs');
+    const btnEnglish = el.querySelector('#btn-english');
+    const contentPrograms = el.querySelector('#content-programs');
+    const contentEnglish = el.querySelector('#content-english');
+  
+    if (btnPrograms && btnEnglish && contentPrograms && contentEnglish) {
       btnPrograms.addEventListener('click', function() {
-        // Update active tab
         btnPrograms.classList.add('active-tab');
         btnEnglish.classList.remove('active-tab');
-        
-        // Show/hide content
+  
         contentPrograms.style.display = 'flex';
         contentEnglish.style.display = 'none';
       });
-      
+  
       btnEnglish.addEventListener('click', function() {
-        // Update active tab
         btnEnglish.classList.add('active-tab');
         btnPrograms.classList.remove('active-tab');
-        
-        // Show/hide content
+  
         contentPrograms.style.display = 'none';
         contentEnglish.style.display = 'flex';
       });
+    }
   }
+  
 
   if(id === 'history' || id === 'specialties-slider' || id ==='himayechiler-shurasi') {
     const SLIDE_DURATION_MS = 2000;
