@@ -7,7 +7,7 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: {
+      input: { 
         main: resolve(__dirname, '/index.html'),
         about: resolve(__dirname, '/pages/about.html'),
         kompüter: resolve(__dirname, '/pages/kompüter-mühəndisliyi.html'),
