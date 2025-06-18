@@ -100,7 +100,7 @@ async function loadComponent(id, path) {
   }
   
 
-  if(id === 'history' || id === 'specialties-slider' || id ==='himayechiler-shurasi') {
+  if(id === 'history' || id === 'specialties-slider' || id ==='himayechiler-shurasi' || id === 'hazırlıq' || id === 'hazırlıq-daxili' || id === 'sənaye-mühəndisliyi' || id === 'qida-mühəndisliyi') {
     const SLIDE_DURATION_MS = 2000;
     const slidesCount = document.querySelectorAll('.swiper-slide').length;
       const progressContainer = document.getElementById('progressContainer');
@@ -422,5 +422,6 @@ loadComponent('search-result', '/templates/partials/search-result.html');
 
 // Hazırlıq
 loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
+loadComponent('hazırlıq-daxili', '/templates/partials/hazırlıq-daxili.html');
 
 loadComponent('footer', '/templates/partials/footer.html');
