@@ -35,20 +35,52 @@ async function loadComponent(id, path) {
         if (isOpen) {
           searchBox.classList.remove("scale-y-100", "opacity-100");
           searchBox.classList.add("scale-y-0", "opacity-0");
+          searchInput.value = ""; 
+          searchLoading.classList.add("hidden");
         } else {
           searchBox.classList.add("scale-y-100", "opacity-100");
           searchBox.classList.remove("scale-y-0", "opacity-0");
+          searchInput.value = ""; 
+          searchLoading.classList.add("hidden");
         }
       }
   
       function closeSearch() {
         searchBox.classList.remove("scale-y-100", "opacity-100");
         searchBox.classList.add("scale-y-0", "opacity-0");
+        searchInput.value = ""; 
+        searchLoading.classList.add("hidden");
       }
   
       searchIcon.addEventListener("click", toggleSearch);
       searchClose.addEventListener("click", closeSearch);
     }
+    const searchInput = el.querySelector("#search-input");
+const searchLoading = el.querySelector("#search-loading-results");
+
+if (searchInput && searchLoading) {
+  let timeoutId;
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim();
+
+    if (query.length > 0) {
+      searchLoading.classList.remove("hidden");
+
+      clearTimeout(timeoutId);
+      // timeoutId = setTimeout(() => {
+      //   fetch(`/api/search?q=${encodeURIComponent(query)}`)
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       searchLoading.classList.add("hidden");
+      //     });
+      // }, 1000); 
+    } else {
+      searchLoading.classList.add("hidden");
+    }
+  });
+}
+
   }
   
   // Hero slider
