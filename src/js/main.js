@@ -358,6 +358,31 @@ if ( id === 'contact' ) {
     });
   });
 }
+if (id === 'kurikulum') {
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs[0].classList.add("text-[#101828]", "border-b", "border-[#E81F26]");
+  tabs[0].classList.remove("text-[#A1A1A1]");
+  contents.forEach(c => c.classList.add("hidden"));
+  document.getElementById(tabs[0].dataset.tab).classList.remove("hidden");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => {
+        t.classList.remove("text-[#101828]", "border-b", "border-[#E81F26]");
+        t.classList.add("text-[#A1A1A1]");
+      });
+
+      tab.classList.add("text-[#101828]", "border-b", "border-[#E81F26]");
+      tab.classList.remove("text-[#A1A1A1]");
+
+      contents.forEach(c => c.classList.add("hidden"));
+      document.getElementById(tab.dataset.tab).classList.remove("hidden");
+    });
+  });
+}
+
 }
 
 
@@ -423,5 +448,8 @@ loadComponent('search-result', '/templates/partials/search-result.html');
 // Hazırlıq
 loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
 loadComponent('hazırlıq-daxili', '/templates/partials/hazırlıq-daxili.html');
+
+// Kurikulum
+loadComponent('kurikulum', '/templates/partials/kurikulum.html');
 
 loadComponent('footer', '/templates/partials/footer.html');
