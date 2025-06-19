@@ -1,62 +1,53 @@
-async function loadComponent(id, path) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const res = await fetch(path);
-  const html = await res.text();
-  el.innerHTML = html;
-
-  AOS.refresh();
-
   // Header menu toggle
-  if (id === 'header') {
-    const toggleButton = el.querySelector('#menu-toggle'); 
-    const mobileMenu = el.querySelector('#mobile-menu');
-    if (toggleButton && mobileMenu) {
+  document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton =document.querySelector('#menu-toggle'); 
+  const mobileMenu =document.querySelector('#mobile-menu');
+  if (toggleButton && mobileMenu) {
       toggleButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) {
-        if (!mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-        }
-      }
+      mobileMenu.classList.toggle('hidden');
     });
-  
-    const searchIcon = el.querySelector("#search-icon");
-    const searchBox = el.querySelector("#search-box");
-    const searchClose = el.querySelector("#search-close");
-  
-    if (searchIcon && searchBox && searchClose) {
-      function toggleSearch() {
-        const isOpen = searchBox.classList.contains("scale-y-100");
-  
-        if (isOpen) {
-          searchBox.classList.remove("scale-y-100", "opacity-100");
-          searchBox.classList.add("scale-y-0", "opacity-0");
-          searchInput.value = ""; 
-          searchLoading.classList.add("hidden");
-        } else {
-          searchBox.classList.add("scale-y-100", "opacity-100");
-          searchBox.classList.remove("scale-y-0", "opacity-0");
-          searchInput.value = ""; 
-          searchLoading.classList.add("hidden");
-        }
+  }
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
       }
-  
-      function closeSearch() {
+    }
+  });
+
+  const searchIcon =document.querySelector("#search-icon");
+  const searchBox =document.querySelector("#search-box");
+  const searchClose =document.querySelector("#search-close");
+
+  if (searchIcon && searchBox && searchClose) {
+    function toggleSearch() {
+      const isOpen = searchBox.classList.contains("scale-y-100");
+
+      if (isOpen) {
         searchBox.classList.remove("scale-y-100", "opacity-100");
         searchBox.classList.add("scale-y-0", "opacity-0");
         searchInput.value = ""; 
         searchLoading.classList.add("hidden");
+      } else {
+        searchBox.classList.add("scale-y-100", "opacity-100");
+        searchBox.classList.remove("scale-y-0", "opacity-0");
+        searchInput.value = ""; 
+        searchLoading.classList.add("hidden");
       }
-  
-      searchIcon.addEventListener("click", toggleSearch);
-      searchClose.addEventListener("click", closeSearch);
     }
-    const searchInput = el.querySelector("#search-input");
-const searchLoading = el.querySelector("#search-loading-results");
+
+    function closeSearch() {
+      searchBox.classList.remove("scale-y-100", "opacity-100");
+      searchBox.classList.add("scale-y-0", "opacity-0");
+      searchInput.value = ""; 
+      searchLoading.classList.add("hidden");
+    }
+
+    searchIcon.addEventListener("click", toggleSearch);
+    searchClose.addEventListener("click", closeSearch);
+  }
+  const searchInput = document.querySelector("#search-input");
+  const searchLoading = document.querySelector("#search-loading-results");
 
 if (searchInput && searchLoading) {
   let timeoutId;
@@ -78,39 +69,35 @@ if (searchInput && searchLoading) {
     } else {
       searchLoading.classList.add("hidden");
     }
-  });
+  }); 
 }
+  });
 
-  }
-  
-  // Hero slider
-  if (id === 'hero') {
-    const swiper = new Swiper(".heroSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      navigation: {
-        nextEl: '.next-slide',
-        prevEl: '.prev-slide',
-      }
-    });
-  }
-  
-  if(id === 'specialties') {
+// Hero slider
+  const swiper = new Swiper(".heroSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    navigation: {
+      nextEl: '.next-slide',
+      prevEl: '.prev-slide',
+    }
+  });
+  if(true) {
     AOS.init();
   
-    const btnPrograms = el.querySelector('#btn-programs');
-    const btnEnglish = el.querySelector('#btn-english');
-    const contentPrograms = el.querySelector('#content-programs');
-    const contentEnglish = el.querySelector('#content-english');
+    const btnPrograms = document.querySelector('#btn-programs');
+    const btnEnglish = document.querySelector('#btn-english');
+    const contentPrograms = document.querySelector('#content-programs');
+    const contentEnglish = document.querySelector('#content-english');
   
     if (btnPrograms && btnEnglish && contentPrograms && contentEnglish) {
       btnPrograms.addEventListener('click', function() {
@@ -130,25 +117,27 @@ if (searchInput && searchLoading) {
       });
     }
   }
-  
 
-  if(id === 'history' || id === 'specialties-slider' || id ==='himayechiler-shurasi' || id === 'hazırlıq' || id === 'hazırlıq-daxili' || id === 'sənaye-mühəndisliyi' || id === 'qida-mühəndisliyi') {
-    const SLIDE_DURATION_MS = 2000;
-    const slidesCount = document.querySelectorAll('.swiper-slide').length;
+  if(true) {
+    document.addEventListener("DOMContentLoaded", () => {
+      const SLIDE_DURATION_MS = 2000;
+      const slidesCount = document.querySelectorAll('.swiper-slide').length;
       const progressContainer = document.getElementById('progressContainer');
-
+    
+      if (!progressContainer) return;
+    
       for (let i = 0; i < slidesCount; i++) {
         const wrapper = document.createElement('div');
         wrapper.className = 'progress-bar-wrapper';
-
+    
         const bar = document.createElement('div');
         bar.className = 'progress-bar';
         bar.id = `progress-${i}`;
-
+    
         wrapper.appendChild(bar);
         progressContainer.appendChild(wrapper);
       }
-
+    
       const swiper = new Swiper(".mySwiper", {
         loop: true,
         autoplay: {
@@ -157,30 +146,36 @@ if (searchInput && searchLoading) {
         },
         on: {
           slideChangeTransitionStart: function () {
-
             for (let i = 0; i < slidesCount; i++) {
               const bar = document.getElementById(`progress-${i}`);
-              bar.style.transition = "none";
-              bar.style.width = "0%";
-
-              void bar.offsetWidth;
-              bar.style.transition = "none";
+              if (bar) {
+                bar.style.transition = "none";
+                bar.style.width = "0%";
+    
+                void bar.offsetWidth; 
+                bar.style.transition = "none";
+              }
             }
-
+    
             const realIndex = swiper.realIndex;
             const activeBar = document.getElementById(`progress-${realIndex}`);
-            activeBar.style.transition = "width 1s linear";
-            activeBar.style.width = "100%";
+            if (activeBar) {
+              activeBar.style.transition = `width ${SLIDE_DURATION_MS}ms linear`;
+              activeBar.style.width = "100%";
+            }
           },
         },
       });
-
-      window.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("progress-0").style.transition = `width ${SLIDE_DURATION_MS}ms linear`;
-        document.getElementById("progress-0").style.width = "100%";
-      });
+    
+      const firstBar = document.getElementById("progress-0");
+      if (firstBar) {
+        firstBar.style.transition = `width ${SLIDE_DURATION_MS}ms linear`;
+        firstBar.style.width = "100%";
+      }
+    });    
   }
-  
+
+  // Shura slider 
   function initializeSlider(sliderId) {
     const container = document.querySelector(`#${sliderId} .carousel-container`) || 
                       document.querySelector('.carousel-container');
@@ -353,47 +348,11 @@ function handleSliderById(id) {
 handleSliderById('shura-slider');
 handleSliderById('elmi-shura-slider');
 
-// Contact
-if ( id === 'contact' ) {
- const form = document.getElementById('myForm');
-  const fields = form.querySelectorAll('input, textarea');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    let hasError = false;
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
 
-    fields.forEach(field => {
-      field.classList.remove(
-        'border-red-500',
-        'focus:border-red-500',
-        'border-[#DBDBDB]',
-        'focus:border-[#ADADAD]'
-      );
-
-      const isInvalid = field.value.trim() === '' || !field.checkValidity();
-
-      if (isInvalid) {
-        field.classList.add('border-red-500', 'focus:border-red-500');
-        hasError = true;
-      } else {
-        field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
-      }
-    });
-  });
-
-  fields.forEach(field => {
-    field.addEventListener('input', () => {
-      if (field.value.trim() !== '' && field.checkValidity()) {
-        field.classList.remove('border-red-500', 'focus:border-red-500');
-        field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
-      }
-    });
-  });
-}
-if (id === 'kurikulum') {
-  const tabs = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
-
+if (tabs.length > 0) {
   tabs[0].classList.add("text-[#101828]", "border-b", "border-[#E81F26]");
   tabs[0].classList.remove("text-[#A1A1A1]");
   contents.forEach(c => c.classList.add("hidden"));
@@ -414,6 +373,63 @@ if (id === 'kurikulum') {
     });
   });
 }
+
+// Contact
+if (true) {
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById('myForm');
+  
+    if (form) {
+      const fields = form.querySelectorAll('input, textarea');
+  
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let hasError = false;
+  
+        fields.forEach(field => {
+          field.classList.remove(
+            'border-red-500',
+            'focus:border-red-500',
+            'border-[#DBDBDB]',
+            'focus:border-[#ADADAD]'
+          );
+  
+          const isInvalid = field.value.trim() === '' || !field.checkValidity();
+  
+          if (isInvalid) {
+            field.classList.add('border-red-500', 'focus:border-red-500');
+            hasError = true;
+          } else {
+            field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
+          }
+        });
+  
+      });
+  
+      fields.forEach(field => {
+        field.addEventListener('input', () => {
+          if (field.value.trim() !== '' && field.checkValidity()) {
+            field.classList.remove('border-red-500', 'focus:border-red-500');
+            field.classList.add('border-[#DBDBDB]', 'focus:border-[#ADADAD]');
+          }
+        });
+      });
+    }
+  });
+  
+ }
+
+
+async function loadComponent(id, path) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const res = await fetch(path);
+  const html = await res.text();
+  el.innerHTML = html;
+
+  AOS.refresh();
+
+
 
 }
 
@@ -455,8 +471,8 @@ loadComponent('qida-mühəndisliyi', '/templates/partials/qida-mühəndisliyi.ht
 
 // Shura-uzvleri
 loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
-loadComponent('shura-slider', '/templates/partials/shura-slider.html');
-loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html');
+// loadComponent('shura-slider', '/templates/partials/shura-slider.html');
+// loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html');
 
 // Xəbərlər
 loadComponent('xəbərlər', '/templates/partials/xəbərlər.html');
@@ -482,6 +498,6 @@ loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
 loadComponent('hazırlıq-daxili', '/templates/partials/hazırlıq-daxili.html');
 
 // Kurikulum
-loadComponent('kurikulum', '/templates/partials/kurikulum.html');
+
 
 loadComponent('footer', '/templates/partials/footer.html');

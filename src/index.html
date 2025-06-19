@@ -38,19 +38,625 @@
      <link rel="stylesheet" href="output.css" />
   </head>
   <body>
-    <div id="header" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <main class="sticky top-0 z-50">
+      <header class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
+        <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
+          <div class="bg-secondary ">
+            <a href="/">
+            <img src="/images/logo.svg" alt="TAU Logo" class="h-6 md:h-10" />
+            </a>
+          </div>
+          <nav class="hidden lg:flex">
+            <ul class="flex gap-8 ">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li> -->
+            </ul>
+          </nav>
+          <div class="flex items-center gap-3 md:gap-6">
+            <div class="hidden lg:flex justify-center items-center gap-1.5">
+              <img src="/images/globus.svg" alt="" class="text-xl" />
+              <span class="text-sm">TR</span>
+            </div>
+            
+            <button id="search-icon" type="button" class="flex justify-center items-center px-3 py-2 lg:px-0 lg:py-0 rounded-full bg-white lg:bg-transparent lg:border-transparent border border-[#a2a2a2]">
+              <img src="/images/search.svg" alt="" class="text-xl hidden lg:block" />
+              <img src="/images/search-mobile.svg" alt="" class="text-base lg:hidden block" />
+            </button>
+            <!--<button type="button" class="flex px-4 py-2.5 rounded-xl bg-white border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+              <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
+              <span class="hidden md:block">Kabinetə keçid</span>
+            </button>-->
+            <div id="menu-toggle" class="block lg:hidden ">
+              <button class="flex justify-center items-center px-4 py-2.5 rounded-full bg-white border border-[#a2a2a2]">
+                <img src="/images/hamburger.svg" alt="Menu" class="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden">
+        <div class="absolute top-18 left-0 w-full bg-white shadow-md z-50 p-6">
+            <ul class="flex flex-col gap-4 pb-6 text-[#606060] font-medium">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li>-->
+            </ul>
+            <div class="flex items-center py-6 gap-4">
+              <div class="flex md:hidden justify-center items-center gap-1.5">
+                <img src="/images/globus-mobile.svg" alt="" class="text-xl" />
+                <span class="text-[#5B5B5B] text-sm">TR</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+          <!-- Search Input Section -->
+        <div
+          id="search-box"
+          class="
+            absolute top-full left-0 w-full
+            bg-white z-50
+            transform origin-top scale-y-0 opacity-0
+            transition-[transform,opacity] duration-300 ease-out
+          "
+        >
+          <div class="flex items-center justify-between border-b border-[#C6C6C6]">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Axtarış..."
+              class="font-inter w-full text-[#555555] text-base md:text-2xl focus:outline-none placeholder:text-[#6A6A6A] px-6 py-6 md:py-[38px]"
+            />
+            <button id="search-close" class="ml-4 text-base md:text-2xl text-black px-6 py-6 md:py-[38px]">✕</button>
+          </div>
+
+          <!-- Skeleton loader -->
+          <div id="search-loading-results" class="p-6 space-y-10 hidden container mx-auto">
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </main>
     
     <main class="bg-[#F7F9FD] md:bg-white">
-      <div id="hero"></div>
-      <div id="xəbərlər-elanlar"></div>
-      <div id="specialties"></div>
-      <div id="application"></div>
-      <div id="apply"></div>
-      <div id="students-opinions"></div>
-      <div id="partners"></div>
+      <!-- Hero Section -->
+      <section class="pb-4 md:pb-[60px]">
+        <div class="bg-circle h-auto sm:h-[360px] md:h-[540px] lg:h-[560px] xl:h-[684px] bg-cover px-0 lg:px-[60px]">
+            <div class="container mx-auto relative h-[270px] sm:h-[684px] ">
+                <!-- Swiper -->
+                <div class="swiper heroSwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide h-[250px] sm:h-[360px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
+                            <div class="flex justify-center lg:justify-start items-center relative">
+                                <div class="pl-0 lg:pl-[35px] relative">
+                                    <img src="/images/map.svg" alt="map" class="object-cover object-center"/>
+                                    <div class="lg:w-full">
+                                        <span class="absolute top-7 right-0 sm:top-14 sm:right-3 max-w-xs sm:max-w-md sm:w-auto md:max-w-xl md:right-2 md:top-14 lg:max-w-2xl lg:top-[84px] lg:right-14 xl:max-w-3xl xl:top-20">
+                                            <img src="/images/dash.svg" alt="dash" />
+                                        </span>
+                                        <span class="flex absolute top-20 left-[26%] sm:top-[36%] sm:left-[30%] md:top-[36%] md:left-[24%] lg:top-[37%] lg:left-[34%] xl:top-44 xl:left-[24%]">
+                                            <img src="/images/uni.svg" alt="uni" class="object-cover object-left"/>
+                                        </span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 px-[14px] xl:px-0 pb-0 sm:pb-4 md:pb-10">
+                                <h1 class="text-lg sm:text-xl md:text-3xl lg:text-5xl text-[#383838] font-archivo pb-2 md:pb-4 lg:pb-6">Türkiyə-Azərbaycan Universiteti</h1>
+                                <p class="text-sm md:text-lg lg:text-xl text-[#6A6A6A] font-inter">Gələcəyin mütəxəsisləri burada təhsil alır!</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                         <div class="swiper-slide h-[250px] sm:h-[360px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
+                            <div class="flex justify-center lg:justify-start items-center relative">
+                                <div class="pl-0 lg:pl-[35px] relative">
+                                    <img src="/images/map.svg" alt="map" class="object-cover object-center"/>
+                                    <div class="lg:w-full">
+                                        <span class="absolute top-7 right-0 sm:top-14 sm:right-3 max-w-xs sm:max-w-md sm:w-auto md:max-w-xl md:right-2 md:top-14 lg:max-w-2xl lg:top-[84px] lg:right-14 xl:max-w-3xl xl:top-20">
+                                            <img src="/images/dash.svg" alt="dash" />
+                                        </span>
+                                        <span class="flex absolute top-20 left-[26%] sm:top-[36%] sm:left-[30%] md:top-[36%] md:left-[24%] lg:top-[37%] lg:left-[34%] xl:top-44 xl:left-[24%]">
+                                            <img src="/images/uni.svg" alt="uni" class="object-cover object-left"/>
+                                        </span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 px-[14px] xl:px-0 pb-0 sm:pb-4 md:pb-10">
+                                <h1 class="text-lg sm:text-xl md:text-3xl lg:text-5xl text-[#383838] font-archivo pb-2 md:pb-4 lg:pb-6">Türkiyə-Azərbaycan Universiteti</h1>
+                                <p class="text-sm md:text-lg lg:text-xl text-[#6A6A6A] font-inter">Gələcəyin mütəxəsisləri burada təhsil alır!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social icons -->
+                <div class="absolute top-36 right-0 hidden xl:flex flex-col gap-2 z-10">
+                    <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326] cursor-pointer">
+                        <img src="/images/instagram.svg" alt="instagram" />
+                    </a>
+                    <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326] cursor-pointer">
+                        <img src="/images/youtube.svg" alt="youtube" />
+                    </a>
+                    <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326] cursor-pointer">
+                        <img src="/images/facebook.svg" alt="facebook" />
+                    </a>
+                    <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326] cursor-pointer">
+                        <img src="/images/twitter.svg" alt="twitter" />
+                    </a>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <div class="absolute right-[60px] bottom-10 hidden xl:flex gap-2 z-10">
+                    <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer prev-slide">
+                        <img src="/images/prev.svg" alt="prev" />
+                    </span>
+                    <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer next-slide">
+                        <img src="/images/next.svg" alt="next" />
+                    </span>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- Xəbərlər və Elanlar Section -->
+      <section class="py-4 pb-5 md:py-[60px] text-textColor font-archivo px-[14px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Xəbərlər -->
+          <div>
+            <div class="flex justify-between items-center gap-2 mb-4">
+              <h1 class="text-xl md:text-3xl">Xəbərlər</h1>
+              <!-- <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
+                Bütün xəbərləri oxu 
+                <img src="/images/arrow-right.svg" alt="arrow" class="inline-block ml-2"/>
+              </a>-->
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
+                <h1 class="font-medium h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetinin hazırlıq proqramında təhsil alan tələbələrin dərsindən fotolar</h1>
+                <img src="/images/xəbərlər-one.jpg" alt="xəbərlər" class="w-full h-full min-h-60 max-h-60 sm:min-h-[400px] object-cover object-center"/>
+                <span class="text-sm md:text-base">16 Aprel 2024</span>
+              </div>
+              <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
+                <h1 class="font-medium h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetinin təşkilatçısı olduğu beynəlxalq tədbir keçirilib</h1>
+                <img src="/images/xəbərlər-3.jpg" alt="xəbərlər" class="w-full h-full min-h-60 max-h-60 sm:min-h-[400px] object-cover object-center"/>
+                <span class="text-sm md:text-base">16 Aprel 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Elanlar -->
+          <div class="mt-[60px] lg:mt-0">
+            <div class="flex justify-between items-center gap-2 mb-4">
+              <h1 class="text-xl md:text-3xl">Elanlar</h1>
+              <!-- <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
+                Bütün elanları oxu 
+                <img src="/images/arrow-right.svg" alt="arrow" class="inline-block ml-2"/>
+              </a> -->
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
+                <h1 class="font-medium h-14 md:h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetində Maliyyə və təsərrüfat şöbəsinin müdiri vəzifəsinə vakansiya elan edilir</h1>
+                <img src="/images/elanlar-one.jpg" alt="news" class="w-full h-auto min-h-60 max-h-60 sm:min-h-[400px] object-cover object-center"/>
+                <span class="text-sm md:text-base">16 Aprel 2024</span>
+              </div>
+              <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
+                <h1 class="font-medium h-14 md:h-10 text-sm md:text-base">TAU-da Qida mühəndisliyi proqramı üzrə Fizika laboratoriyasına laborant vəzifəsinə vakansiya elan edilir</h1>
+                <img src="/images/elanlar-two.jpg" alt="news" class="w-full h-auto min-h-60 max-h-60 sm:min-h-[400px] object-cover object-center"/>
+                <span class="text-sm md:text-base">16 Aprel 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Specialties Section -->
+      <section data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="py-5 md:py-[60px] flex flex-col xl:flex-row justify-between items-start px-[14px]">
+          <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start gap-6 pb-10">
+              <div class="text-textColor">
+                <h1 class="font-medium text-base sm:text-xl md:text-[32px] font-archivo pb-3 uppercase">
+                  Sənİn üçün uyğun İxtİsası kəşf et
+                </h1>
+                <p class="text-sm sm:text-base md:text-lg font-inter">
+                  Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at.
+                </p>
+              </div>
+              <div class="flex items-center overflow-hidden">
+                <button id="btn-programs" class="btn-left py-1.5 px-2 sm:px-4 font-medium text-base md:text-lg uppercase active-tab transition-all">
+                  PROQRAMLAR
+                </button>
+                <button id="btn-english" class="flex btn-right py-1.5 pr-2 sm:pr-4 font-medium text-base md:text-lg uppercase truncate transition-all">
+                  TƏMƏL İNGİLİSCƏ
+                </button>
+              </div> 
+            </div>
+
+            <div id="content-programs" class="flex flex-col gap-3 md:gap-10">
+              <!-- Card 1 -->
+              <a href="/pages/kompüter-mühəndisliyi.html">
+                <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
+                  <div class="md:col-span-2">
+                    <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                      KOMPÜTER <span>MÜHƏNDİSLİYİ</span>
+                    </h2>
+                  </div>
+                  <div class="md:col-span-1">
+                    <p class="text-sm md:text-base font-inter">
+                      Texnologiyanı yalnız istifadə etmə, onu yarat. Kompüter mühəndisliyi ilə kodun gücünü kəşf et.
+                    </p>
+                  </div>
+                </div>
+              </a>
+              
+
+              <!-- Card 2 -->
+              <a href="/pages/sənaye-mühəndisliyi.html">
+              <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
+                <div class="md:col-span-2">
+                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                    SƏNAYE <span>MÜHƏNDİSLİYİ</span>
+                  </h2>
+                </div>
+                <div class="md:col-span-1">
+                  <p class="text-sm md:text-base font-inter">
+                    İstehsalatı, prosesləri və sistemləri optimallaşdır. Sənaye mühəndisliyi ilə real problemləri həll et.
+                  </p>
+                </div>
+              </div>
+              </a>
+
+              <!-- Card 3 -->
+              <a href="/pages/qida-mühəndisliyi.html">
+              <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
+                <div class="md:col-span-2">
+                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                    QİDA <span>MÜHƏNDİSLİYİ</span>
+                  </h2>
+                </div>
+                <div class="md:col-span-1">
+                  <p class="text-sm md:text-base font-inter">
+                    Gələcəyin sağlam və dayanıqlı qidalarının arxasındakı elmə qoşul. Qida mühəndisliyi ilə fərq yarat.
+                  </p>
+                </div>
+              </div>
+            </div>
+            </a>
+
+            <div id="content-english" class="hidden flex-col gap-3 md:gap-10">
+              <!-- Card 1 -->
+              <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
+                <div class="md:col-span-2">
+                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                    KOMPÜTER <span>MÜHƏNDİSLİYİ</span>
+                  </h2>
+                </div>
+                <div class="md:col-span-1">
+                  <p class="text-sm md:text-base font-inter">
+                    Texnologiyanı yalnız istifadə etmə, onu yarat. Kompüter mühəndisliyi ilə kodun gücünü kəşf et.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
+                <div class="md:col-span-2">
+                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                    SƏNAYE <span>MÜHƏNDİSLİYİ</span>
+                  </h2>
+                </div>
+                <div class="md:col-span-1">
+                  <p class="text-sm md:text-base font-inter">
+                    İstehsalatı, prosesləri və sistemləri optimallaşdır. Sənaye mühəndisliyi ilə real problemləri həll et.
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Application Section -->
+      <section class="container mx-auto text-textColor py-5 md:py-[60px] px-[14px]"  data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="">
+          <div class="pb-10">
+            <div class="flex flex-col gap-4 pb-3 font-archivo">
+                <h2 class="font-medium text-base sm:text-xl md:text-2xl lg:text-[32px]">XƏYALINIZI REALLAŞDIRMAĞA HAZIRSINIZ?</h2>
+                <h3 class="font-medium text-base sm:text-xl md:text-2xl lg:text-[32px]">BUNUN ÜÇÜN İLK ADDIMINIZI ATIN!</h3> 
+            </div>
+            <p class="text-sm sm:text-lg ">Bir neçə dəqiqənizi ayırın, sadə formumuzu doldurun və öz təhsil yolunuzu açın.</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+
+            <div class="bg-white border-l border-[#D8D8D8] p-4">
+              <div class="h-[83px] py-3.5">
+                <img src="/images/01.svg" alt="" class="object-cover object-center"/>
+              </div>
+              <div class="pt-[52px] pr-0  xl:pr-[54px]">
+                <h4 class="text-lg md:text-xl font-medium font-archivo pb-3">ONLAYN ƏRİZƏNİ DOLDURUN</h4>
+                <p class="font-inter text-sm md:text-base">Bir neçə saniyədə adını, əlaqə məlumatlarını və təhsil məlumatlarını daxil et.</p>
+              </div>
+            </div>
+
+            <div class="bg-white border-l border-[#D8D8D8] p-4">
+              <div class="h-[83px] py-3.5">
+                <img src="/images/02.svg" alt="" class="object-cover object-center"/>
+              </div>
+              <div class="pt-[52px] pr-0  xl:pr-[54px]">
+                <h4 class="text-lg md:text-xl font-medium font-archivo pb-3">SƏNƏDLƏRİNİZİ YÜKLƏYİN</h4>
+                <p class="font-inter text-sm md:text-base">Bir neçə saniyədə adını, əlaqə məlumatlarını və təhsil məlumatlarını daxil et.</p>
+              </div>
+            </div>
+
+            <div class="bg-white border-l border-[#D8D8D8] p-4">
+              <div class="h-[83px] py-3.5">
+                <img src="/images/03.svg" alt="" class="object-cover object-center"/>
+              </div>
+              <div class="pt-[52px] pr-0  xl:pr-[54px]">
+                <h4 class="text-lg md:text-xl font-medium font-archivo pb-3">İMTAHAN TARİXİNİ SEÇİN</h4>
+                <p class="font-inter text-sm md:text-base">Bir neçə saniyədə adını, əlaqə məlumatlarını və təhsil məlumatlarını daxil et.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rector Section -->
+      <section class="" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="bg-[#F7F7F7] py-5 md:py-[60px] ">
+          <div class="md:bg-white">
+            <div class="container mx-auto h-auto  lg:h-[368px] md:px-[14px]">
+              <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_789px]">
+                
+                <!-- Sol Tərəf -->
+                <div class="flex flex-col pt-10 md:pt-[66px] xl:pl-10 ">
+                  <h2 class="font-medium text-2xl md:text-[32px] pb-[25px] font-archivo text-textColor uppercase px-[14px] md:px-0">
+                    rektora yazın
+                  </h2>
+                  
+                  <div class="md:hidden flex md:h-auto sm:max-h-[320px] justify-center bg-white md:bg-transparent px-[14px] md:px-0 my-10 md:my-0">
+                    <img src="/images/apply-mobile.svg" alt="apply" class="w-full h-auto sm:max-h-[400px] md:hidden object-cover object-center -mb-[23px] -mt-[38px]" />
+                  </div>
+                  
+                  <p class="font-inter text-base md:text-lg text-[#878787] w-full pt-5 md:pt-0 pb-5 px-[14px] md:px-0">
+                    Türkiyə-Azərbaycan Universitetinin inkişafı, tədris prosesi və tələbə həyatı ilə bağlı təklif, təşəkkür və suallarınızı birbaşa universitet rəhbərliyinə çatdırmaq üçün "Rektora Yazın" bölməsindən istifadə edə bilərsiniz.
+                  </p>
+                  <div class="px-[14px] md:px-0">
+                    <button class="w-full md:w-fit bg-secondary gradient-border text-white border border-white rounded-xl px-6 md:px-[87.5px] py-2.5 md:py-[14.5px] uppercase font-inter font-medium mb-5">
+                      müraciət edin
+                    </button>
+                  </div>
+                  
+                </div>
+                
+                <!-- Sağ Tərəf -->
+                <div class="hidden md:flex justify-center md:justify-end mt-4 lg:-mt-10 xl:-mt-36">
+                  <img src="/images/apply.svg" alt="apply" class="w-full max-w-3xl sm:max-w-full  object-center" />
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Students' Opinions Section -->
+      <section class="py-5 md:py-20 px-[14px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="container mx-auto">
+          <h2 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-archivo text-textColor uppercase pb-10">
+            Tələbələrin Fikirləri
+          </h2>
+
+          <div class="flex overflow-x-auto lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-4 gap-x-4 flex-nowrap">
+            <!-- Card 1 -->
+            <div class="relative min-w-[250px] md:min-w-0">
+              <img src="/images/student-one.png" alt="student" class="object-cover object-center w-full" />
+              <!--<img src="/images/aze.png" alt="aze" class="absolute top-7 left-6 rounded-full w-8 h-8 object-cover" />-->
+              <img src="/images/play.svg" alt="play" class="absolute top-7 right-6 rounded-full w-10 h-10 object-cover" />
+              <h3 class="absolute left-6 bottom-6 font-medium text-sm font-inter text-textColor bg-white px-3 py-2 rounded-[20px]">
+                Arzu Xanlarova
+              </h3>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="relative min-w-[250px] md:min-w-0">
+              <img src="/images/student-two.png" alt="student" class="object-cover object-center w-full" />
+              <!--<img src="/images/uk.png" alt="aze" class="absolute top-7 left-6 rounded-full w-8 h-8 object-cover" />-->
+              <img src="/images/play.svg" alt="play" class="absolute top-7 right-6 rounded-full w-10 h-10 object-cover" />
+              <h3 class="absolute left-6 bottom-6 font-medium text-sm font-inter text-textColor bg-white px-3 py-2 rounded-[20px]">
+                Məhəmməd Əliməmmədov
+              </h3>
+            </div>  
+
+            <!-- Card 3 -->
+            <div class="relative min-w-[250px] md:min-w-0">
+              <img src="/images/student-three.png" alt="student" class="object-cover object-center w-full" />
+              <!--<img src="/images/ispan.png" alt="aze" class="absolute top-7 left-6 rounded-full w-8 h-8 object-cover" />-->
+              <img src="/images/play.svg" alt="play" class="absolute top-7 right-6 rounded-full w-10 h-10 object-cover" />
+              <h3 class="absolute left-6 bottom-6 font-medium text-sm font-inter text-textColor bg-white px-3 py-2 rounded-[20px]">
+                Anar Abdullayev
+              </h3>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="relative min-w-[250px] md:min-w-0">
+              <img src="/images/student-four.png" alt="student" class="object-cover object-center w-full" />
+              <!--<img src="/images/iran.png" alt="aze" class="absolute top-7 left-6 rounded-full w-8 h-8 object-cover" />-->
+              <img src="/images/play.svg" alt="play" class="absolute top-7 right-6 rounded-full w-10 h-10 object-cover" />
+              <h3 class="absolute left-6 bottom-6 font-medium text-sm font-inter text-textColor bg-white px-3 py-2 rounded-[20px]">
+                Fatimə Həsənova
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partners Section -->
+      <section class="py-5 md:py-[72px] px-[14px] overflow-hidden" >
+        <div class="container mx-auto">
+          <div>
+            <h2 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-archivo text-textColor uppercase">TƏRƏFDAŞLAR</h2>
+          </div>
+
+          <div class="py-10">
+            <div
+              class="flex justify-between items-center gap-4 overflow-x-auto scrollbar-hide"
+            >
+              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-[38px] md:h-24">
+                <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-[38px] md:max-h-24 object-contain" />
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-[38px] md:h-24">
+                <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-[38px] md:max-h-24 object-contain" />
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-[38px] md:h-24">
+                <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-60 h-[38px] md:max-h-24 object-contain" />
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-[38px] md:h-24">
+                <img src="/images/partner-four.png" alt="partner" class="max-w-40 md:max-w-60 h-[38px] md:max-h-24 object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    <div id="footer"></div>
+    <!-- Footer Section -->
+    <footer class="">
+      <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px]">
+        <div class="container mx-auto">
+          <div class="grid place-content-between grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3 md:gap-10 lg:gap-[54px] pb-[74px] border-b border-white">
+            <div class="col-span-2 md:col-auto pb-10 md:pb-0">
+              <h1 class="text-4xl md:text-[48px] lg:text-[64px] font-bold font-expletus">TAU</h1>
+            </div>
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                
+                <li><a href="/pages/about.html">Universitetin tarixi</a></li>
+                <li><a href="/pages/shura-uzvleri.html">Himayəçilər şurası</a></li>
+                <!--<li><a href="#">Haqqımızda</a></li>
+                <li><a href="#">Elmi şura</a></li>
+                <li><a href="#">Akademik heyyət</a></li>
+                <li><a href="#">Əlaqə</a></li>-->
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">STRUKTUR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Rektor</a></li>
+                <li><a href="#">Prorektor</a></li>
+              </ul>
+            </div>-->
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">PROQRAMLAR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="/pages/kompüter-mühəndisliyi">Kompüter mühəndisliyi</a></li>
+                <li><a href="/pages/sənaye-mühəndisliyi">Sənayə mühəndisliyi</a></li>
+                <li><a href="/pages/qida-mühəndisliyi">Qida mühəndisliyi</a></li>
+                <!--<li><a href="#">Hazırlıq</a></li>-->
+              </ul>
+            </div>
+            <div class=" z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">ÇƏTİR UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="https://www.metu.edu.tr/tr">ODTU</a></li>
+                <li><a href="http://itu.edu.tr/">İTÜ</a></li>
+                <li><a href="https://hacettepe.edu.tr/">Hacettepe</a></li>
+                <li><a href="https://aztu.edu.az/az">AzTU</a></li>
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">MEDİA</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Xəbərlər</a></li>
+                <li><a href="#">Elanlar</a></li>
+                <li><a href="#">Qalereya</a></li>
+              </ul>
+            </div>-->
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-center md:justify-between items-center pt-10 gap-4 text-sm md:text-base">
+            <p>© 2025 | Türkiyə Azərbaycan Universiteti</p>
+            <ul class="font-inter flex gap-2">
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-one.svg" alt="instagram" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-two.svg" alt="youtube" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-three.svg" alt="facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-four.svg" alt="twitter" />
+                </a>
+              </li>
+            </ul>
+            <p>SAFAROFF Agency tərəfindən hazırlanıb</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
