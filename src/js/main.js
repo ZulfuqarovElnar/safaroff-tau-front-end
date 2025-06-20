@@ -420,84 +420,84 @@ if (true) {
  }
 
 
-async function loadComponent(id, path) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const res = await fetch(path);
-  const html = await res.text();
-  el.innerHTML = html;
+// async function loadComponent(id, path) {
+//   const el = document.getElementById(id);
+//   if (!el) return;
+//   const res = await fetch(path);
+//   const html = await res.text();
+//   el.innerHTML = html;
 
-  AOS.refresh();
-
-
-
-}
+//   AOS.refresh();
 
 
-loadComponent('header', '/templates/partials/header.html');
+
+// }
+
+
+// loadComponent('header', '/templates/partials/header.html');
 
 // Main page
-loadComponent('hero', '/templates/partials/hero.html');
-loadComponent('xəbərlər-elanlar', '/templates/partials/xəbərlər-elanlar.html');
-loadComponent('specialties', '/templates/partials/specialties.html');
-loadComponent('application', '/templates/partials/application.html');
-loadComponent('apply', '/templates/partials/apply.html');
-loadComponent('students-opinions', '/templates/partials/students-opinions.html');
-loadComponent('partners', '/templates/partials/partners.html');
+// loadComponent('hero', '/templates/partials/hero.html');
+// loadComponent('xəbərlər-elanlar', '/templates/partials/xəbərlər-elanlar.html');
+// loadComponent('specialties', '/templates/partials/specialties.html');
+// loadComponent('application', '/templates/partials/application.html');
+// loadComponent('apply', '/templates/partials/apply.html');
+// loadComponent('students-opinions', '/templates/partials/students-opinions.html');
+// loadComponent('partners', '/templates/partials/partners.html');
 
 // About page
-loadComponent('breadcrumbs', '/templates/partials/breadcrumbs.html');
-loadComponent('history', '/templates/partials/history.html');
-loadComponent('education', '/templates/partials/education.html')
-loadComponent('accept', '/templates/partials/accept.html')
-loadComponent('az-turkiye-terefi', '/templates/partials/az-turkiye-terefi.html')
-loadComponent('diplom', '/templates/partials/diplom.html')
-loadComponent('structure', '/templates/partials/structure.html')
+// loadComponent('breadcrumbs', '/templates/partials/breadcrumbs.html');
+// loadComponent('history', '/templates/partials/history.html');
+// loadComponent('education', '/templates/partials/education.html')
+// loadComponent('accept', '/templates/partials/accept.html')
+// loadComponent('az-turkiye-terefi', '/templates/partials/az-turkiye-terefi.html')
+// loadComponent('diplom', '/templates/partials/diplom.html')
+// loadComponent('structure', '/templates/partials/structure.html')
 
 // Academic page
-loadComponent('academic-card', '/templates/partials/academic-card.html');
+// loadComponent('academic-card', '/templates/partials/academic-card.html');
 
 // Specialties page
-loadComponent('specialties-slider', '/templates/partials/specialties-slider.html');
-loadComponent('specialties-card', '/templates/partials/specialties-card.html'); 
-loadComponent('specialties-program', '/templates/partials/specialties-program.html');
-loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
+// loadComponent('specialties-slider', '/templates/partials/specialties-slider.html');
+// loadComponent('specialties-card', '/templates/partials/specialties-card.html'); 
+// loadComponent('specialties-program', '/templates/partials/specialties-program.html');
+// loadComponent('specialties-professor', '/templates/partials/specialties-professor.html');
 
 // Sənaye mühəndisliyi
-loadComponent('sənaye-mühəndisliyi', '/templates/partials/sənaye-mühəndisliyi.html');
+// loadComponent('sənaye-mühəndisliyi', '/templates/partials/sənaye-mühəndisliyi.html');
 
 // Qida mühəndisliyi
-loadComponent('qida-mühəndisliyi', '/templates/partials/qida-mühəndisliyi.html');
+// loadComponent('qida-mühəndisliyi', '/templates/partials/qida-mühəndisliyi.html');
 
 // Shura-uzvleri
-loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
+// loadComponent('himayechiler-shurasi', '/templates/partials/himayechiler-shurasi.html');
 // loadComponent('shura-slider', '/templates/partials/shura-slider.html');
 // loadComponent('elmi-shura-slider', '/templates/partials/elmi-shura-slider.html');
 
 // Xəbərlər
-loadComponent('xəbərlər', '/templates/partials/xəbərlər.html');
-loadComponent('xəbərlər-daxili', '/templates/partials/xəbərlər-daxili.html');
+// loadComponent('xəbərlər', '/templates/partials/xəbərlər.html');
+// loadComponent('xəbərlər-daxili', '/templates/partials/xəbərlər-daxili.html');
 
 // Elanlar
-loadComponent('elanlar', '/templates/partials/elanlar.html');
-loadComponent('elanlar-daxili', '/templates/partials/elanlar-daxili.html');
+// loadComponent('elanlar', '/templates/partials/elanlar.html');
+// loadComponent('elanlar-daxili', '/templates/partials/elanlar-daxili.html');
 
 // Contact
-loadComponent('contact', '/templates/partials/contact.html');
-loadComponent('success-modal', '/templates/partials/success-modal.html');
-loadComponent('error-modal', '/templates/partials/error-modal.html');
+// loadComponent('contact', '/templates/partials/contact.html');
+// loadComponent('success-modal', '/templates/partials/success-modal.html');
+// loadComponent('error-modal', '/templates/partials/error-modal.html');
 
 // 404
-loadComponent('404', '/templates/partials/404.html');
+// loadComponent('404', '/templates/partials/404.html');
 
 // Search
-loadComponent('search-result', '/templates/partials/search-result.html');
+// loadComponent('search-result', '/templates/partials/search-result.html');
 
 // Hazırlıq
-loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
-loadComponent('hazırlıq-daxili', '/templates/partials/hazırlıq-daxili.html');
+// loadComponent('hazırlıq', '/templates/partials/hazırlıq.html');
+// loadComponent('hazırlıq-daxili', '/templates/partials/hazırlıq-daxili.html');
 
 // Kurikulum
 
 
-loadComponent('footer', '/templates/partials/footer.html');
+// loadComponent('footer', '/templates/partials/footer.html');

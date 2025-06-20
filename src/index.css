@@ -207,6 +207,14 @@
   color: #EC1F26; 
 }
 
+.swiper-slide {
+  width: 100% !important;
+}
+
+.swiper-slide[style*="width"] {
+  width: 100% !important;
+}
+
 @media screen and (max-width: 768px) {
   .slide-wrapper.active {
     margin: 80px 0 105px;

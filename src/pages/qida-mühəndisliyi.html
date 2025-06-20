@@ -21,15 +21,386 @@
      <link rel="stylesheet" href="../output.css" />
   </head>
   <body>
-    <div id="header" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <header class="sticky top-0 z-50">
+      <div class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
+        <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
+          <div class="bg-secondary ">
+            <a href="/">
+            <img src="/images/logo.svg" alt="TAU Logo" class="h-6 md:h-10" />
+            </a>
+          </div>
+          <nav class="hidden lg:flex">
+            <ul class="flex gap-8 ">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li> -->
+            </ul>
+          </nav>
+          <div class="flex items-center gap-3 md:gap-6">
+            <div class="hidden lg:flex justify-center items-center gap-1.5">
+              <img src="/images/globus.svg" alt="" class="text-xl" />
+              <span class="text-sm">TR</span>
+            </div>
+            
+            <button id="search-icon" type="button" class="flex justify-center items-center px-3 py-2 lg:px-0 lg:py-0 rounded-full bg-white lg:bg-transparent lg:border-transparent border border-[#a2a2a2]">
+              <img src="/images/search.svg" alt="" class="text-xl hidden lg:block" />
+              <img src="/images/search-mobile.svg" alt="" class="text-base lg:hidden block" />
+            </button>
+            <!--<button type="button" class="flex px-4 py-2.5 rounded-xl bg-white border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+              <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
+              <span class="hidden md:block">Kabinetə keçid</span>
+            </button>-->
+            <div id="menu-toggle" class="block lg:hidden ">
+              <button class="flex justify-center items-center px-4 py-2.5 rounded-full bg-white border border-[#a2a2a2]">
+                <img src="/images/hamburger.svg" alt="Menu" class="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden">
+        <div class="absolute top-18 left-0 w-full bg-white shadow-md z-50 p-6">
+            <ul class="flex flex-col gap-4 pb-6 text-[#606060] font-medium">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li>-->
+            </ul>
+            <div class="flex items-center py-6 gap-4">
+              <div class="flex md:hidden justify-center items-center gap-1.5">
+                <img src="/images/globus-mobile.svg" alt="" class="text-xl" />
+                <span class="text-[#5B5B5B] text-sm">TR</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+          <!-- Search Input Section -->
+        <div
+          id="search-box"
+          class="
+            absolute top-full left-0 w-full
+            bg-white z-50
+            transform origin-top scale-y-0 opacity-0
+            transition-[transform,opacity] duration-300 ease-out
+          "
+        >
+          <div class="flex items-center justify-between border-b border-[#C6C6C6]">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Axtarış..."
+              class="font-inter w-full text-[#555555] text-base md:text-2xl focus:outline-none placeholder:text-[#6A6A6A] px-6 py-6 md:py-[38px]"
+            />
+            <button id="search-close" class="ml-4 text-base md:text-2xl text-black px-6 py-6 md:py-[38px]">✕</button>
+          </div>
+
+          <!-- Skeleton loader -->
+          <div id="search-loading-results" class="p-6 space-y-10 hidden container mx-auto">
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     
     <main class="bg-[#F7F9FD] md:bg-white px-0 md:px-[60px]">
-      <div id="breadcrumbs"></div>
-      <div id="qida-mühəndisliyi"></div>
-    </main>
-    <div id="apply"></div>
+      <!-- Breadcrumbs -->
+      <section class="mt-10">
+        <div class="container mx-auto px-[15px] md:px-0">
+            <div class="flex items-center py-3 gap-4 border-b border-[#BBBBBB]">
+                <a href="#" class="font-inter text-[#2C415C] opacity-50 text-sm md:text-base">Əsas səhifə</a>   
+                <img src="/images/arrow-right-two.svg" alt="" class="w-3 h-3 md:w-4 md:h-4" />
+                <span class="font-inter text-[#2C415C] text-sm md:text-base">Universitet haqqında</span>
+            </div>
+        </div>
+      </section>
 
-    <div id="footer"></div>
+      <!-- Qida mühəndisliyi -->
+      
+      <!-- Slider -->
+      <section class="container mx-auto">
+          <div class="flex flex-col gap-6 md:gap-10 pt-6 md:pt-10 px-[15px] md:px-0">
+              <div>
+                  <h1 class="font-medium text-xl md:text-2xl lg:text-[32px] font-archivo text-textColor uppercase pb-3 w-full">QİDA mühəndİSLİYİ NƏDİR?</h1>
+                  <div class="hidden md:block h-[2px] bg-secondary w-[100px]"></div>
+                  <div class="flex justify-between items-center">
+                      <p class="pl-0 md:pl-[78px] pt-0 md:pt-6 pb-0 md:pb-[14px] text-base md:text-xl text-[#989898] font-inter w-full md:w-1/2">Qida mühəndisliyi — təbii məhsulların təhlükəsiz, keyfiyyətli və davamlı şəkildə emalını təmin edən, qida texnologiyası, biokimya və mühəndislik elmlərini birləşdirərək insanların sağlam qidalanmasını və ərzaq təhlükəsizliyini ön planda tutan strateji ixtisas sahəsidir.</p>
+                      <img class="hidden md:block pr-0 md:pr-10 lg:pr-[147px]" src="/images/specialties-arrow.svg"/>
+                  </div>
+              </div>
+              <div class="md:pt-10">
+                  <div class="w-full min-h-[345px] md:h-[600px] relative">
+                      <div class="swiper mySwiper  shadow-lg overflow-hidden">
+                          <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                              <img src="/images/qida-one.jpg" alt="" class="w-full min-h-[345px] md:h-[600px] object-cover" />
+                          </div>
+                          <div class="swiper-slide">
+                              <img src="/images/qida-one.jpg" alt="" class="w-full min-h-[345px] md:h-[600px] object-cover" />
+                          </div>
+                          </div>
+                      </div>
+                      <div class="progress-container" id="progressContainer"></div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Card -->
+      <section class="container mx-auto" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+          <div class="flex flex-col gap-6 md:gap-10 pt-6 md:pt-20 px-[15px] md:px-0">
+              <div>
+                  <h1 class="font-medium text-xl md:text-2xl lg:text-[32px] font-archivo text-textColor uppercase pb-3 w-full">TAU-DA QİDA mühəndİSLİYİ</h1>
+                  <div class="hidden md:block h-[2px] bg-secondary w-[100px]"></div>
+                  <div class="flex justify-between items-center">
+                      <p class="pl-0 md:pl-[78px] pt-0 md:pt-6 pb-0 md:pb-[14px] text-base md:text-lg text-[#989898] font-inter w-full md:w-1/2">Hacettepe Universiteti Qida mühəndisliyi fakültəsi ümumbəşəri dəyərlər işığında verdiyi təhsillə etik prinsiplərə sadiq, yenilikçi, təşəbbüskar, özünü təkmilləşdirən, qazandıqları bilik və bacarıqlarla qida sənayesinin inkişafına imkan verəcək yüksək ixtisaslı qida mühəndisləri yetişdirir.</p>
+                      <img class="hidden md:block" src="/images/specialties-arrow.svg"/>
+                  </div>
+              </div>
+              <div class="pt-0 md:pt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                  <div>
+                      <img src="/images/qida-two.svg" alt="" class="w-full max-h-[345px] md:min-h-[530px] object-cover" />
+                  </div>
+                <div class="flex flex-col justify-center">
+                      <div class="hidden md:block h-[2px] bg-secondary w-[100px]"></div>
+                      <div class="pl-0 md:pl-10 ">
+                        <p class="py-0 pb-6 md:py-6 text-base md:text-lg text-[#989898] font-inter w-full ">Kafedranın məqsədi qida məhsullarının emalı, yeni məhsulların hazırlanması, keyfiyyətə nəzarət, saxlama və marketinq üzrə bilik və bacarıqlara malik müasir mühəndis kadrlar hazırlamaqdır. 1980-ci ildə ilk məzunlarını yola salan Qida mühəndisliyi kafedrası 1982-ci ildən etibarən Qida elmləri bölməsi və Qida texnologiyası departameni olmaqla təhsil və tədqiqat fəaliyyətlərini davam etdirir.</p>
+                        <a href="https://hacettepe.edu.tr/">
+                              <button class="bg-[#FF3838] gradient-border text-base md:text-xl font-inter text-[#fff] px-8 py-[14px] md:py-4 rounded-xl w-full md:w-auto">
+                                  HACETEPE
+                                  <img src="/images/arrow-right-white.svg" alt="" class="inline-block ml-[10px] h-auto" />
+                          </button>
+                        </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Proqram -->
+      <section class="container mx-auto" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+          <div class="flex flex-col gap-6 md:gap-10 pt-6 md:pt-20 px-[15px] md:px-0">
+              <div class="pt-0 md:pt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                <div class="order-2 md:order-1 flex flex-col relative">
+                      <h1 class="font-medium text-xl md:text-2xl lg:text-[32px] font-archivo text-textColor uppercase pt-0 md:pt-6 pb-0 md:pb-3 w-3/5 md:w-full">TƏHSİL PROQRAMI</h1>
+                      <div class="hidden md:block h-[2px] bg-secondary w-[100px]"></div>
+                      <div class="pl-0 xl:pl-[78px] pb-0 md:pb-10">
+                        <p class="py-6 text-base md:text-lg text-[#989898] font-inter w-full ">Qida mühəndisliyi proqramı qida və ərzaq təhlükəsizliyini əsas götürərək qida sənayesinin inkişafına dəstək vermək, elmi-tədqiqat layihələri və elmi nəşrlərlə qida mühəndisliyi ədəbiyyatına töhfə vermək missiyasına malikdir.</p>
+                        
+                        <a href="/images/HACETEPE-tədris-proqramı.docx" download>
+                              <button class="bg-[#FF3838] gradient-border text-base md:text-lg lg:text-xl font-inter text-[#fff] px-4 lg:px-8 py-[14px] md:py-4 rounded-xl w-full md:w-auto">
+                                      <span class="underline underline-offset-2">TƏHSİL PROQRAMI İLƏ TANIŞ OL</span> 
+                                      <img src="/images/arrow-right-white.svg" alt="" class="inline-block ml-[10px]  h-auto" />
+                              </button>
+                        </a>
+                        
+                      </div>
+                      <img class="hidden lg:block absolute bottom-0 w-[131px] h-[131px] rotate-180" src="/images/specialties-arrow.svg"/>
+                  </div>
+                  <div class="order-1 md:order-2">
+                      <img src="/images/qida-three.svg" alt="" class="w-full max-h-[345px] md:min-h-[530px] object-cover" />
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Professor -->
+      <section class="container mx-auto" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+          <div class="inline-block w-full px-[15px] md:px-0 py-6 md:py-20">
+              <div class="grid grid-cols-1 sm:grid-cols-[361px_1fr] lg:grid-cols-[361px_1fr_1fr] xl:grid-cols-[361px_1fr_1fr_1fr] gap-6">
+                  <div class="col-span-1 relative max-w-[345px] w-full h-[361px]">
+                      <div class="absolute bottom-0 right-0 max-w-[345px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                      <img
+                          src="/images/qida-four.svg"
+                          alt=""
+                          class="absolute top-0 left-0 pr-4 h-[345px] w-[345px] object-cover z-10"
+                      /> 
+                  </div>
+                  <div class="col-span-1 self-end">
+                      <div class="w-full border-b border-[#D8D8D8] pt-0 md:pt-6">
+                          <h2 class="font-medium text-base md:text-2xl font-archivo text-textColor uppercase pb-3">Prof. Dr. Umran Uyqun</h2>
+                          <p class="pb-5 text-base text-[#989898] font-inter">Türkiyə-Azərbaycan Universitetinin (TAU) Qida Mühəndisliyi Proqramının Rəhbəri</p>
+                      </div>
+                      <div class="pt-3 flex items-center gap-2">
+                          <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                          <a href="#" class="text-[#727272] text-base font-inter underline">umran.uygun@tau.edu.az</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+    </main>
+
+    <!-- Apply Section -->
+    <section class="" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+      <div class="bg-[#F7F7F7] py-5 md:py-[60px] ">
+        <div class="md:bg-white">
+          <div class="container mx-auto h-auto  lg:h-[368px] md:px-[14px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1fr_789px]">
+              
+              <!-- Sol Tərəf -->
+              <div class="flex flex-col pt-10 md:pt-[66px] xl:pl-10 ">
+                <h2 class="font-medium text-2xl md:text-[32px] pb-[25px] font-archivo text-textColor uppercase px-[14px] md:px-0">
+                  rektora yazın
+                </h2>
+                
+                <div class="md:hidden flex md:h-auto sm:max-h-[320px] justify-center bg-white md:bg-transparent px-[14px] md:px-0 my-10 md:my-0">
+                  <img src="/images/apply-mobile.svg" alt="apply" class="w-full h-auto sm:max-h-[400px] md:hidden object-cover object-center -mb-[23px] -mt-[38px]" />
+                </div>
+                
+                <p class="font-inter text-base md:text-lg text-[#878787] w-full pt-5 md:pt-0 pb-5 px-[14px] md:px-0">
+                  Türkiyə-Azərbaycan Universitetinin inkişafı, tədris prosesi və tələbə həyatı ilə bağlı təklif, təşəkkür və suallarınızı birbaşa universitet rəhbərliyinə çatdırmaq üçün "Rektora Yazın" bölməsindən istifadə edə bilərsiniz.
+                </p>
+                <div class="px-[14px] md:px-0">
+                  <button class="w-full md:w-fit bg-secondary gradient-border text-white border border-white rounded-xl px-6 md:px-[87.5px] py-2.5 md:py-[14.5px] uppercase font-inter font-medium mb-5">
+                    müraciət edin
+                  </button>
+                </div>
+                
+              </div>
+              
+              <!-- Sağ Tərəf -->
+              <div class="hidden md:flex justify-center md:justify-end mt-4 lg:-mt-10 xl:-mt-36">
+                <img src="/images/apply.svg" alt="apply" class="w-full max-w-3xl sm:max-w-full  object-center" />
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="">
+      <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px]">
+        <div class="container mx-auto">
+          <div class="grid place-content-between grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3 md:gap-10 lg:gap-[54px] pb-[74px] border-b border-white">
+            <div class="col-span-2 md:col-auto pb-10 md:pb-0">
+              <h1 class="text-4xl md:text-[48px] lg:text-[64px] font-bold font-expletus">TAU</h1>
+            </div>
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                
+                <li><a href="/pages/about.html">Universitetin tarixi</a></li>
+                <li><a href="/pages/shura-uzvleri.html">Himayəçilər şurası</a></li>
+                <!--<li><a href="#">Haqqımızda</a></li>
+                <li><a href="#">Elmi şura</a></li>
+                <li><a href="#">Akademik heyyət</a></li>
+                <li><a href="#">Əlaqə</a></li>-->
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">STRUKTUR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Rektor</a></li>
+                <li><a href="#">Prorektor</a></li>
+              </ul>
+            </div>-->
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">PROQRAMLAR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="/pages/kompüter-mühəndisliyi">Kompüter mühəndisliyi</a></li>
+                <li><a href="/pages/sənaye-mühəndisliyi">Sənayə mühəndisliyi</a></li>
+                <li><a href="/pages/qida-mühəndisliyi">Qida mühəndisliyi</a></li>
+                <!--<li><a href="#">Hazırlıq</a></li>-->
+              </ul>
+            </div>
+            <div class=" z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">ÇƏTİR UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="https://www.metu.edu.tr/tr">ODTU</a></li>
+                <li><a href="http://itu.edu.tr/">İTÜ</a></li>
+                <li><a href="https://hacettepe.edu.tr/">Hacettepe</a></li>
+                <li><a href="https://aztu.edu.az/az">AzTU</a></li>
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">MEDİA</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Xəbərlər</a></li>
+                <li><a href="#">Elanlar</a></li>
+                <li><a href="#">Qalereya</a></li>
+              </ul>
+            </div>-->
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-center md:justify-between items-center pt-10 gap-4 text-sm md:text-base">
+            <p>© 2025 | Türkiyə Azərbaycan Universiteti</p>
+            <ul class="font-inter flex gap-2">
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-one.svg" alt="instagram" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-two.svg" alt="youtube" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-three.svg" alt="facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-four.svg" alt="twitter" />
+                </a>
+              </li>
+            </ul>
+            <p>SAFAROFF Agency tərəfindən hazırlanıb</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
