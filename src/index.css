@@ -78,12 +78,15 @@
   color: transparent;
 }
 
+.close-gradient-border{
+  overflow: hidden;
+}
 .gradient-border {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
 }
-.gradient-border::before {
+.gradient-border::before, .close-gradient-border::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;

@@ -245,6 +245,95 @@
             </div>
         </div>
       </section>
+
+  <!-- Profile Modal -->
+<div id="profileModal" class="fixed inset-0 z-50 flex justify-end bg-black/50 hidden">
+  <div
+    class="fixed inset-x-0 top-16 md:top-28 h-full max-h-[calc(100vh-112px)] max-w-xl bg-white p-8 relative rounded-[20px] rounded-bl-[20px] overflow-hidden"
+  >
+    <button
+      onclick="closeModal()"
+      class="absolute top-4 right-4 text-xl w-10 h-10 rounded-full bg-white flex items-center justify-center close-gradient-border"
+    >
+      <img src="/images/close-btn.svg" alt="Close" class="w-4 h-4" />
+    </button>
+
+    <img
+      id="modalImage"
+      src="/images/academic-three.svg"
+      class="w-full h-[380px] object-cover object-top mb-4"
+    />
+
+    <div class="pt-3 border-b border-[#DFDADA] mb-6">
+      <h3
+        id="modalName"
+        class="text-lg font-medium font-archivo text-textColor uppercase"
+      >
+        DERYA ALTINTAN
+      </h3>
+      <p id="modalPosition" class="text-[#989898] font-inter py-2">
+        Riyaziyyat Mühazirəçisi
+      </p>
+    </div>
+
+    <div class="">
+      <div class="space-y-6 overflow-auto h-auto max-h-[500px] ">
+        <div>
+          <h4 class="font-medium font-archivo text-textColor uppercase">
+            Haqqında
+          </h4>
+          <p id="modalAbout" class="text-[#989898] font-inter pt-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+            vehicula ex eu gravida convallis.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-medium font-archivo text-textColor uppercase">
+            Təhsil
+          </h4>
+          <ul
+            id="modalEducation"
+            class="text-[#989898] font-inter pt-2 flex flex-col gap-2 list-disc list-inside"
+          >
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li>Phasellus volutpat urna at enim fermentum, ut elementum.</li>
+            <li>Donec sit amet dui sit amet mi volutpat egestas.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-medium font-archivo text-textColor uppercase">
+            İxtisas Artırma
+          </h4>
+          <ul
+            id="modalSkill"
+            class="text-[#989898] font-inter pt-2 flex flex-col gap-2 list-disc list-inside"
+          >
+            <li>Advanced Teaching Methods, XYZ University.</li>
+            <li>Data Analysis Workshop, ABC Institute.</li>
+            <li>Pedagogical Skills Training, DEF Center.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-medium font-archivo text-textColor uppercase">
+            Təcrübə
+          </h4>
+          <ul
+            id="modalExperience"
+            class="text-[#989898] font-inter pt-2 flex flex-col gap-2 list-disc list-inside"
+          >
+            <li>Riyaziyyat müəllimi, Məktəb №123 (2018—2021).</li>
+            <li>Universitet köməkçi, ABC Universiteti (2021—2023).</li>
+            <li>Müəllim məsləhətçisi, DEF Təhsil Mərkəzi (2023—indiyədək).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
     </main>
 
     <!-- Footer Section -->
