@@ -218,6 +218,43 @@
   width: 100% !important;
 }
 
+.profile-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+.modal-overlay {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  animation: slideInRight 0.3s ease-out;
+}
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+.modal-exit {
+  animation: slideOutRight 0.3s ease-in;
+}
+@keyframes slideOutRight {
+  from {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+}
 @media screen and (max-width: 768px) {
   .slide-wrapper.active {
     margin: 80px 0 105px;

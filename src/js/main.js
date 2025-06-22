@@ -419,6 +419,53 @@ if (true) {
   
  }
 
+ // Academic modal
+ window.openModal = function(name, position, imageUrl) {
+  const modal = document.getElementById('profileModal');
+  const modalContent = modal.querySelector('.modal-content');
+  
+  document.getElementById('modalName').textContent = name;
+  document.getElementById('modalPosition').textContent = position;
+  document.getElementById('modalImage').src = imageUrl;
+  
+  modal.classList.remove('hidden');
+  modalContent.classList.remove('modal-exit');
+  
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeModal = function() {
+  const modal = document.getElementById('profileModal');
+  const modalContent = modal.querySelector('.modal-content');
+  
+  modalContent.classList.add('modal-exit');
+  
+  setTimeout(() => {
+      modal.classList.add('hidden');
+      modalContent.classList.remove('modal-exit');
+      document.body.style.overflow = 'auto';
+  }, 300);
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+          closeModal();
+      }
+  });
+
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent) {
+      modalContent.addEventListener('click', function(e) {
+          e.stopPropagation();
+      });
+  }
+});
+function resizeContainerToImage(img) {
+  const container = document.getElementById('imageContainer');
+  const aspectRatio = img.naturalHeight / img.naturalWidth;
+  container.style.height = `${container.offsetWidth * aspectRatio}px`;
+}
 
 // async function loadComponent(id, path) {
 //   const el = document.getElementById(id);
