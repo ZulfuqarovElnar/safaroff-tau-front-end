@@ -168,18 +168,24 @@
     
     <main class="bg-[#F7F9FD] md:bg-white">
       <!-- Hero Section -->
-      <section class="relative pb-4 md:pb-[60px] h-[250px] sm:h-[360px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
-        <div class="h-[250px] sm:h-[360px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
+      <section class="relative pb-4 md:pb-[60px] h-[400px] sm:h-[480px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
+        <div class="h-[400px] sm:h-[480px] md:h-[540px] lg:h-[560px] xl:h-[684px]">
           <div class="swiper heroSwiper h-full">
             <div class="swiper-wrapper h-full">
               <!-- Slide 1 -->
-              <div class="swiper-slide h-full">
-                <img
-                  src="/images/hero-slider-map.svg"
-                  alt="map"
-                  class="w-full h-full object-cover absolute top-0 left-0"
-                />
+              <div class="swiper-slide w-full h-full relative ">
+                <!-- Web Slide -->
+                <div 
+                  class="lottie-container hidden md:block w-full h-full absolute inset-0 object-cover object-center" 
+                  data-animation-path="/json/hero-web-slide.json">
+                </div>
+                <!-- Mobile Slide -->
+                <div 
+                  class="lottie-container md:hidden block w-full h-full absolute inset-0" 
+                  data-animation-path="/json/hero-mobile-slide.json">
+                </div>
               </div>
+
               <!-- Slide 2 -->
               
             </div>
@@ -645,6 +651,7 @@
         once: true
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   </body>
 </html>
 

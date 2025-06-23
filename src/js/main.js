@@ -91,6 +91,26 @@ if (searchInput && searchLoading) {
       prevEl: '.prev-slide',
     }
   });
+
+  document.querySelectorAll('.lottie-container').forEach(container => {
+    const isMobile = window.innerWidth < 375; // Tailwind sm: <768px
+    const preserveRatio = isMobile ? 'xMidYMid meet' : 'xMidYMid slice';
+  
+    const animation = lottie.loadAnimation({
+      container,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: container.dataset.animationPath,
+      rendererSettings: {
+        preserveAspectRatio: preserveRatio
+      }
+    });
+  
+    container._lottie = animation;
+  });
+  
+
   if(true) {
     AOS.init();
   
