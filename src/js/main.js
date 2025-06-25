@@ -89,8 +89,29 @@ if (searchInput && searchLoading) {
     navigation: {
       nextEl: '.next-slide',
       prevEl: '.prev-slide',
+    },
+     on: {
+      slideChange() {
+        const active = swiper.slides[swiper.activeIndex];
+        const h1 = active.querySelector('h1');
+        const p  = active.querySelector('p');
+
+        document.querySelectorAll('h1, p').forEach(el => {
+          el.classList.remove('text-[#383838]','text-gray-700','text-[#f5f5f5]','text-gray-200');
+        });
+
+        if (swiper.realIndex === 0) {
+          h1.classList.add('text-[#383838]');
+          p .classList.add('text-gray-700');
+        } else {
+          h1.classList.add('text-[#f5f5f5]');
+          p .classList.add('text-gray-200');
+        }
+      }
     }
+
   });
+  
 
   document.querySelectorAll('.lottie-container').forEach(container => {
     const isMobile = window.innerWidth < 375; // Tailwind sm: <768px

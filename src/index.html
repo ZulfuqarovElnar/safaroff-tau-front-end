@@ -173,61 +173,128 @@
           <div class="swiper heroSwiper h-full">
             <div class="swiper-wrapper h-full">
               <!-- Slide 1 -->
-              <div class="swiper-slide w-full h-full relative ">
+              <div class="swiper-slide w-full h-full relative">
                 <!-- Web Slide -->
-                <div 
+                <div id="bg-image"
                   class="lottie-container hidden md:block w-full h-full absolute inset-0 object-cover object-center" 
-                  data-animation-path="/json/hero-web-slide.json">
+                   data-animation-path="/json/hero-web-slide.json"
+                 >
                 </div>
                 <!-- Mobile Slide -->
-                <div 
+                <div id="bg-image" 
                   class="lottie-container md:hidden block w-full h-full absolute inset-0" 
-                  data-animation-path="/json/hero-mobile-slide.json">
+                  data-animation-path="/json/hero-mobil-slide.json"
+                  >
+                </div>
+
+                <!-- Overlay Content (Text, Icons, Buttons) -->
+                <div class="absolute inset-0 z-10">
+                  <div class="container mx-auto h-full flex flex-col justify-between relative px-[14px] md:px-[60px]">
+                    <!-- Top icons -->
+                    <div class="hidden xl:flex flex-col items-end gap-2 pt-36">
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/instagram.svg" alt="instagram" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/youtube.svg" alt="youtube" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/facebook.svg" alt="facebook" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/twitter.svg" alt="twitter" />
+                      </a>
+                    </div>
+                    <div></div>
+                    <div class="bg-[#FFFFFF03] rounded mb-4 lg:mb-10 py-5" style="backdrop-filter: blur(80px)">
+                      <!-- Bottom content -->
+                      <div id="text-container" class="px-[14px] lg:pr-4 lg:pl-9">
+                        <h1 class="text-lg sm:text-xl md:text-3xl lg:text-5xl font-archivo pb-2 md:pb-3"
+                        >
+                          Türkiyə-Azərbaycan Universiteti
+                        </h1>
+                        <p class="text-sm md:text-lg lg:text-2xl font-inter"
+                        >
+                          Gələcəyin mütəxəsisləri burada təhsil alır!
+                        </p>
+                      </div>
+
+                      <!-- Navigation Buttons -->
+                      <div class="absolute right-5 bottom-5 hidden xl:flex gap-2">
+                        <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer prev-slide">
+                          <img src="/images/prev.svg" alt="prev" />
+                        </span>
+                        <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer next-slide">
+                          <img src="/images/next.svg" alt="next" />
+                        </span>
+                      </div>
+                    </div>
+                    
+                  </div>
                 </div>
               </div>
 
               <!-- Slide 2 -->
-              
-            </div>
-          </div>
-        </div>
-        <!-- Overlay Content (Text, Icons, Buttons) -->
-        <div class="absolute inset-0 z-10">
-          <div class="container mx-auto h-full flex flex-col justify-between relative">
-            <!-- Top icons -->
-            <div class="hidden xl:flex flex-col items-end gap-2 pt-36 px-[60px]">
-              <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
-                <img src="/images/instagram.svg" alt="instagram" />
-              </a>
-              <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
-                <img src="/images/youtube.svg" alt="youtube" />
-              </a>
-              <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
-                <img src="/images/facebook.svg" alt="facebook" />
-              </a>
-              <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
-                <img src="/images/twitter.svg" alt="twitter" />
-              </a>
-            </div>
-            <div></div>
-            <!-- Bottom content -->
-            <div class="pb-4 md:pb-10 px-[14px] lg:px-[60px]">
-              <h1 class="text-lg sm:text-xl md:text-3xl lg:text-5xl text-[#383838] font-archivo pb-2 md:pb-4 lg:pb-6">
-                Türkiyə-Azərbaycan Universiteti
-              </h1>
-              <p class="text-sm md:text-lg lg:text-xl text-[#6A6A6A] font-inter">
-                Gələcəyin mütəxəsisləri burada təhsil alır!
-              </p>
-            </div>
+               <div class="swiper-slide w-full h-full relative">
+                <!-- Web Slide -->
+                <div 
+                  class="lottie-container hidden md:block w-full h-full absolute inset-0 object-cover object-center" 
+                 >
+                 <img id="bg-image" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" src="images/hero-blur.jpg" alt="">
+                </div>
+                <!-- Mobile Slide -->
+                <div 
+                  class="lottie-container md:hidden block w-full h-full absolute inset-0" 
+                  >
+                  <img id="bg-image" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" src="images/hero-blur.jpg" alt="">
+                </div>
 
-            <!-- Navigation Buttons -->
-            <div class="absolute right-[60px] bottom-10 hidden xl:flex gap-2">
-              <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer prev-slide">
-                <img src="/images/prev.svg" alt="prev" />
-              </span>
-              <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer next-slide">
-                <img src="/images/next.svg" alt="next" />
-              </span>
+                <!-- Overlay Content (Text, Icons, Buttons) -->
+                <div class="absolute inset-0 z-10">
+                  <div class="container mx-auto h-full flex flex-col justify-between relative px-[14px] md:px-[60px]">
+                    <!-- Top icons -->
+                    <div class="hidden xl:flex flex-col items-end gap-2 pt-36">
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/instagram.svg" alt="instagram" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/youtube.svg" alt="youtube" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/facebook.svg" alt="facebook" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/twitter.svg" alt="twitter" />
+                      </a>
+                    </div>
+                    <div></div>
+                    <div class="bg-[#FFFFFF03] rounded mb-4 lg:mb-10 py-5" style="backdrop-filter: blur(80px)">
+                      <!-- Bottom content -->
+                      <div id="text-container" class="px-[14px] lg:pr-4 lg:pl-9">
+                        <h1 class="text-lg sm:text-xl md:text-3xl lg:text-5xl font-archivo pb-2 md:pb-3"
+                          style="text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);">
+                          Türkiyə-Azərbaycan Universiteti
+                        </h1>
+                        <p class="text-sm md:text-lg lg:text-2xl font-inter"
+                          style="text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);">
+                          Gələcəyin mütəxəsisləri burada təhsil alır!
+                        </p>
+                      </div>
+
+                      <!-- Navigation Buttons -->
+                      <div class="absolute right-5 bottom-5 hidden xl:flex gap-2">
+                        <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer prev-slide">
+                          <img src="/images/prev.svg" alt="prev" />
+                        </span>
+                        <span class="flex justify-center items-center w-12 h-12 bg-white rounded-full shadow-sm cursor-pointer next-slide">
+                          <img src="/images/next.svg" alt="next" />
+                        </span>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -295,7 +362,7 @@
                 <h1 class="font-medium text-base sm:text-xl md:text-[32px] font-archivo pb-3 uppercase">
                   Sənİn üçün uyğun İxtİsası kəşf et
                 </h1>
-                <p class="text-sm sm:text-base md:text-lg font-inter">
+                <p id="hero-subtitle" class="text-sm sm:text-base md:text-lg font-inter">
                   Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at.
                 </p>
               </div>
@@ -641,6 +708,9 @@
         </div>
       </div>
     </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/fast-average-color/dist/index.browser.min.js"></script>
 
     <script type="module" src="/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
