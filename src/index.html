@@ -48,12 +48,12 @@
             </a>
           </div>
           <nav class="hidden lg:flex">
-            <ul class="flex gap-8 ">
-              <li><a href="/pages/about.html">Universitet haqqında</a></li>
-              <li><a href="#specialties">Tədris</a></li>
-              <!--<li><a href="#">Qəbul</a></li>
-              <li><a href="#">Tədqiqat</a></li>
-              <li><a href="#">Əlaqə</a></li> -->
+            <ul class="flex gap-8">
+             <li class="menu-item transition-all" data-dropdown="university-dropdown"><a href="#" class="pb-12">Universitet</a></li>
+             <li class="menu-item transition-all" data-dropdown="program-dropdown"><a href="#" class="pb-12">Proqramlar</a></li>
+             <li class="menu-item transition-all" data-dropdown="media-dropdown"><a href="#" class="pb-12">Media</a></li>
+             <li class="menu-item transition-all" data-dropdown="umbrella-dropdown"><a href="#" class="pb-12">Çətir Universitet</a></li>
+             <li class="menu-item transition-all"><a href="#" lass="pb-12">Əlaqə</a></li>
             </ul>
           </nav>
           <div class="flex items-center gap-3 md:gap-6">
@@ -82,11 +82,12 @@
         <nav id="mobile-menu" class="hidden">
         <div class="absolute top-18 left-0 w-full bg-white shadow-md z-50 p-6">
             <ul class="flex flex-col gap-4 pb-6 text-[#606060] font-medium">
-              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#">Universitet</a></li>
+
               <li><a href="#specialties">Tədris</a></li>
-              <!--<li><a href="#">Qəbul</a></li>
-              <li><a href="#">Tədqiqat</a></li>
-              <li><a href="#">Əlaqə</a></li>-->
+              <li><a href="#">Media</a></li>
+              <li><a href="#">Çətir Universitet</a></li>
+              <li><a href="#">Əlaqə</a></li>
             </ul>
             <div class="flex items-center py-6 gap-4">
               <div class="flex md:hidden justify-center items-center gap-1.5">
@@ -164,6 +165,159 @@
           </div>
         </div>
       </header>
+      <!-- Header dropdown --> 
+
+       <!-- Universitet haqqında-->
+       <div id="university-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">HAQQIMIZDA</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">ELMİ ŞURA</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">AKADEMİK HEYƏT</h1>
+            </a>
+          </div>
+        </div>
+       </div>
+
+      <!-- Proqramlar -->
+       <div id="program-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Kompüter mühəndİslİyİ</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">SƏNAYE mühəndİslİyİ</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">QİDA mühəndİslİyİ</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">TƏMƏL HAZIRLIQ</h1>
+            </a>
+          </div>
+        </div>
+       </div>
+
+      <!-- Media -->
+       <div id="media-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">elanlar</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">xəbərlər</h1>
+            </a>
+          </div>
+        </div>
+       </div>
+
+      <!-- Çetir uni -->
+      <div id="umbrella-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Orta Doğu Teknik Üniversitesi</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Hacettepe Üniversitesi</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">İstanbul Teknik Üniversitesi</h1>
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
+              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Azərbaycan Texniki Universiteti</h1>
+            </a>
+          </div>
+        </div>
+       </div>
+
+       <!-- Universitet haqqında-->
+       <!-- <div class="pl-0 md:pl-16 hidden">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 flex flex-col xl:flex-row justify-between gap-5 max-w-[1244px] w-full bg-white py-4 px-[12.5px] rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">HAQQIMIZDA</h1>
+              <img src="/images/about-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">ELMİ ŞURA</h1>
+              <img src="/images/elmi-shura-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">AKADEMİK HEYƏT</h1>
+              <img src="/images/academic-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+          </div>
+        </div>
+       </div> -->
+
+       <!-- Proqramlar -->
+       <!-- <div class="pl-0 md:pl-16">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 flex flex-col xl:flex-row justify-between gap-5 max-w-[1244px] w-full bg-white py-4 px-[12.5px] rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">Kompüter mühəndİslİyİ</h1>
+              <img src="/images/kamputer-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">SƏNAYE mühəndİslİyİ</h1>
+              <img src="/images/senaye-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">QİDA mühəndİslİyİ</h1>
+              <img src="/images/qida-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">TƏMƏL HAZIRLIQ</h1>
+              <img src="/images/temel-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+          </div>
+        </div>
+       </div> -->
+
+       <!-- Media -->
+       <!-- <div class="pl-0 md:pl-16">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 flex flex-col xl:flex-row justify-between gap-5 max-w-[1244px] w-full bg-white py-4 px-[12.5px] rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">elanlar</h1>
+              <img src="/images/elanlar-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <h1 class="pt-2 font-archivo font-medium text-[#5B5B5B] uppercase">xəbərlər</h1>
+              <img src="/images/xəbərlər-icon.svg" class="h-24 md:h-auto w-[140px]" alt="">
+            </a>
+          </div>
+        </div>
+       </div> -->
+
+       <!-- Çetir uni -->
+       <!-- <div class="pl-0 md:pl-16">
+        <div class="container mx-auto z-50 relative">
+          <div class="absolute left-0 right-0 flex flex-col xl:flex-row justify-between gap-5 max-w-[1244px] w-full bg-white py-4 px-[12.5px] rounded-[6px]">
+            <a href="#" class="header-gradient px-5 py-4 flex justify-center gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <img src="/images/partner1.svg" class="h-24 md:h-auto" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-center gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <img src="/images/partner-two.png" class="h-24 md:h-auto" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-center gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <img src="/images/partner-one.png" class="h-24 md:h-auto" alt="">
+            </a>
+            <a href="#" class="header-gradient px-5 py-4 flex justify-center gap-3 md:gap-1 w-full h-32 md:h-40 bg-white border border-[#999999] rounded-[13.5px]">
+              <img src="/images/partner-three.png" class="h-24 md:h-auto" alt="">
+            </a>
+          </div>
+        </div>
+       </div> -->
+      
     </main>
     
     <main class="bg-[#F7F9FD] md:bg-white">
@@ -755,6 +909,46 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      const menuItems = document.querySelectorAll(".menu-item");
+      let hideTimeout;
+
+      menuItems.forEach(item => {
+        const dropdownId = item.getAttribute("data-dropdown");
+        const dropdown = document.getElementById(dropdownId);
+
+        if (!dropdown) return;
+
+        item.addEventListener("mouseenter", () => {
+          clearTimeout(hideTimeout);
+          hideAllDropdowns();
+          dropdown.classList.remove("hidden");
+        });
+
+        item.addEventListener("mouseleave", () => {
+          hideTimeout = setTimeout(() => {
+            dropdown.classList.add("hidden");
+          }, 50);
+        });
+
+        dropdown.addEventListener("mouseenter", () => {
+          clearTimeout(hideTimeout);
+        });
+
+        dropdown.addEventListener("mouseleave", () => {
+          hideTimeout = setTimeout(() => {
+            dropdown.classList.add("hidden");
+          }, 50);
+        });
+      });
+
+      function hideAllDropdowns() {
+        document.querySelectorAll(".dropdown-content").forEach(d => d.classList.add("hidden"));
+      }
+    });
+    </script>
 
 <script>
   const videoCard = document.getElementById('videoCard');

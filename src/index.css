@@ -104,6 +104,30 @@
   border-radius: inherit;
 }
 
+.header-gradient {
+  background: linear-gradient(
+    69.28deg,
+    #F1F3F5 1%,
+    #F5F5F5 40.89%,
+    #FFFFFF 55.01%,
+    #F5F5F5 69.19%,
+    #F1F3F5 110.03%
+  );
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.header-gradient:hover {
+  background: linear-gradient(
+    69.28deg,
+    #E9EBED 1%,
+    #F2F2F2 40.89%,
+    #FFFFFF 55.01%,
+    #F2F2F2 69.19%,
+    #E9EBED 110.03%
+  );
+}
+
+
+
 .slide {
   transition: all 0.4s ease;
   opacity: 0.3;
