@@ -44,7 +44,7 @@
         <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
           <div class="bg-secondary ">
             <a href="/">
-            <img src="/images/logo.svg" alt="TAU Logo" class="h-6 md:h-10" />
+            <img src="/images/tau-logo.svg" alt="TAU Logo" class="h-9 md:h-16" />
             </a>
           </div>
           <nav class="hidden lg:flex">
@@ -57,10 +57,25 @@
             </ul>
           </nav>
           <div class="flex items-center gap-3 md:gap-6">
-            <div class="hidden lg:flex justify-center items-center gap-1.5">
-              <img src="/images/globus.svg" alt="" class="text-xl" />
-              <span class="text-sm">TR</span>
+          <div id="language-toggle" class="relative flex justify-center items-center gap-1.5 cursor-pointer">
+            <span id="selected-language" class="text-sm">TR</span>
+
+            <svg id="dropdown-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+
+            <!-- Dropdown menyu -->
+            <div id="language-dropdown" class="absolute top-full right-0 mt-2 bg-white shadow-lg z-50 hidden rounded-md">
+              <ul class="text-sm text-gray-700">
+                <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="AZ">AZ</li>
+                <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="EN">EN</li>
+                <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="TR">TR</li>
+              </ul>
             </div>
+          </div>
+
+
+
             
             <button id="search-icon" type="button" class="flex justify-center items-center px-3 py-2 lg:px-0 lg:py-0 rounded-full bg-white lg:bg-transparent lg:border-transparent border border-[#a2a2a2]">
               <img src="/images/search.svg" alt="" class="text-xl hidden lg:block" />
@@ -89,13 +104,8 @@
               <li><a href="#">Çətir Universitet</a></li>
               <li><a href="#">Əlaqə</a></li>
             </ul>
-            <div class="flex items-center py-6 gap-4">
-              <div class="flex md:hidden justify-center items-center gap-1.5">
-                <img src="/images/globus-mobile.svg" alt="" class="text-xl" />
-                <span class="text-[#5B5B5B] text-sm">TR</span>
-              </div>
-            </div>
           </div>
+        </div>
         </nav>
 
           <!-- Search Input Section -->
@@ -336,8 +346,8 @@
                 </div>
                 <!-- Mobile Slide -->
                 <div id="bg-image" 
-                  class="lottie-container md:hidden block w-full h-full absolute inset-0" 
-                  data-animation-path="/json/hero-mobil-slide.json"
+                  class="lottie-container block md:hidden w-full h-full absolute inset-0" 
+                  data-animation-path="/json/hero-mobile-slide.json"
                   >
                 </div>
 
@@ -383,7 +393,6 @@
                         </span>
                       </div>
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -456,27 +465,27 @@
 
       <!-- Xəbərlər və Elanlar Section -->
       <section class="py-4 pb-5 md:py-[60px] text-textColor font-archivo px-[14px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
-        <div class="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-3">
           
           <!-- Xəbərlər -->
           <div>
             <div class="flex justify-between items-center gap-2 mb-4">
               <h1 class="text-xl md:text-3xl">Xəbərlər</h1>
-              <!-- <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
+              <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
                 Bütün xəbərləri oxu 
                 <img src="/images/arrow-right.svg" alt="arrow" class="inline-block ml-2"/>
-              </a>-->
+              </a>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
               <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
                 <h1 class="font-medium h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetinin hazırlıq proqramında təhsil alan tələbələrin dərsindən fotolar</h1>
-                <img src="/images/xəbərlər-one.jpg" alt="xəbərlər" class="w-full h-[428px] object-cover object-center"/>
+                <img src="/images/xəbərlər-one.jpg" alt="xəbərlər" class="w-full h-60 md:h-[428px] object-cover object-center"/>
                 <span class="text-sm md:text-base">16 Aprel 2024</span>
               </div>
               <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
                 <h1 class="font-medium h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetinin təşkilatçısı olduğu beynəlxalq tədbir keçirilib</h1>
-                <img src="/images/xəbərlər-3.jpg" alt="xəbərlər" class="w-full h-[428px] object-cover object-center"/>
+                <img src="/images/xəbərlər-3.jpg" alt="xəbərlər" class="w-full h-60 md:h-[428px] object-cover object-center"/>
                 <span class="text-sm md:text-base">16 Aprel 2024</span>
               </div>
             </div>
@@ -486,20 +495,20 @@
           <div class="mt-[60px] lg:mt-0">
             <div class="flex justify-between items-center gap-2 mb-4">
               <h1 class="text-xl md:text-3xl">Elanlar</h1>
-              <!-- <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
+              <a href="#" class="text-secondary text-sm md:text-lg font-medium font-archivo underline underline-offset-4">
                 Bütün elanları oxu 
                 <img src="/images/arrow-right.svg" alt="arrow" class="inline-block ml-2"/>
-              </a> -->
+              </a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
               <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
                 <h1 class="font-medium h-14 md:h-10 text-sm md:text-base">Türkiyə-Azərbaycan Universitetində Maliyyə və təsərrüfat şöbəsinin müdiri vəzifəsinə vakansiya elan edilir</h1>
-                <img src="/images/elanlar-one.jpg" alt="news" class="w-full h-[428px] object-cover object-center"/>
+                <img src="/images/elanlar-one.jpg" alt="news" class="w-full h-60 md:h-[428px] object-cover object-center"/>
                 <span class="text-sm md:text-base">16 Aprel 2024</span>
               </div>
               <div class="border-t pt-9 border-[#676767] flex flex-col gap-3">
                 <h1 class="font-medium h-14 md:h-10 text-sm md:text-base">TAU-da Qida mühəndisliyi proqramı üzrə Fizika laboratoriyasına laborant vəzifəsinə vakansiya elan edilir</h1>
-                <img src="/images/elanlar-two.jpg" alt="news" class="w-full h-[428px] object-cover object-center"/>
+                <img src="/images/elanlar-two.jpg" alt="news" class="w-full h-60 md:h-[428px] object-cover object-center"/>
                 <span class="text-sm md:text-base">16 Aprel 2024</span>
               </div>
             </div>
@@ -520,14 +529,14 @@
                   Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at.
                 </p>
               </div>
-              <!--<div class="flex items-center overflow-hidden">
+              <div class="flex items-center overflow-hidden">
                 <button id="btn-programs" class="btn-left py-1.5 px-2 sm:px-4 font-medium text-base md:text-lg uppercase active-tab transition-all">
                   PROQRAMLAR
                 </button>
                 <button id="btn-english" class="flex btn-right py-1.5 pr-2 sm:pr-4 font-medium text-base md:text-lg uppercase truncate transition-all">
                   TƏMƏL İNGİLİSCƏ
                 </button>
-              </div>--> 
+              </div> 
             </div>
 
             <div id="content-programs" class="flex flex-col gap-3 md:gap-10">
@@ -585,26 +594,13 @@
               <!-- Card 1 -->
               <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
                 <div class="md:col-span-2">
-                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
-                    KOMPÜTER <span>MÜHƏNDİSLİYİ</span>
+                  <h2 class="w-60 flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
+                    KOMPÜTER MÜHƏNDİSLİYİ
                   </h2>
                 </div>
                 <div class="md:col-span-1">
                   <p class="text-sm md:text-base font-inter">
                     Texnologiyanı yalnız istifadə etmə, onu yarat. Kompüter mühəndisliyi ilə kodun gücünü kəşf et.
-                  </p>
-                </div>
-              </div>
-              <!-- Card 2 -->
-              <div class="bg-white grid grid-cols-1 md:grid-cols-3 gap-6 p-4 items-center border-b border-gray-200 pb-10 text-textColor">
-                <div class="md:col-span-2">
-                  <h2 class="flex flex-col gap-0 md:gap-2 text-xl md:text-[32px] md:leading-10 font-medium font-archivo">
-                    SƏNAYE <span>MÜHƏNDİSLİYİ</span>
-                  </h2>
-                </div>
-                <div class="md:col-span-1">
-                  <p class="text-sm md:text-base font-inter">
-                    İstehsalatı, prosesləri və sistemləri optimallaşdır. Sənaye mühəndisliyi ilə real problemləri həll et.
                   </p>
                 </div>
               </div>
@@ -679,8 +675,9 @@
                     Türkiyə-Azərbaycan Universitetinin inkişafı, tədris prosesi və tələbə həyatı ilə bağlı təklif, təşəkkür və suallarınızı birbaşa universitet rəhbərliyinə çatdırmaq üçün "Rektora Yazın" bölməsindən istifadə edə bilərsiniz.
                   </p>
                   <div class="px-[14px] md:px-0">
-                    <button class="w-full md:w-fit bg-secondary gradient-border text-white border border-white rounded-xl px-6 md:px-[87.5px] py-2.5 md:py-[14.5px] uppercase font-inter font-medium mb-5">
+                    <button class="flex justify-center w-full md:w-fit bg-[#E81F26] hover:bg-[#ED3636] transition-colors gradient-border text-white border border-white rounded-xl px-6 md:px-8 py-2.5 md:py-3 uppercase font-inter font-medium mb-5">
                       müraciət edin
+                      <img src="/images/arrow-right-white.svg" alt="" class="inline-block ml-[10px] h-auto" />
                     </button>
                   </div>
                   
@@ -797,40 +794,58 @@
     </div>
 
       <!-- Partners Section -->
-      <section class="py-5 md:py-[72px] px-[14px] overflow-hidden" >
+      <section class="partner-swiper py-5 md:py-[72px] px-[14px] overflow-hidden">
         <div class="container mx-auto">
-          <div>
-            <h2 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-archivo text-textColor uppercase">TƏRƏFDAŞLAR</h2>
-          </div>
+          <h2 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-archivo text-textColor uppercase">
+            TƏRƏFDAŞLAR
+          </h2>
 
           <div class="py-10">
-            <div
-              class="flex justify-between items-center gap-4 overflow-x-auto scrollbar-hide"
-            >
-              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-20  ">
-                <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-              </div>
-              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-20  ">
-                <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-              </div>
-              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-80 h-20  ">
-                <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-80 h-14" />
-              </div>
-              <div class="flex-shrink-0 flex justify-center items-center w-40 md:w-60 h-20  ">
-                <img src="/images/partner.svg" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+            <div class="swiper partnersSlider" >
+              <div class="swiper-wrapper">
+                <!-- DATA LENGTH SHOULD BE CHECKD FOR LOOP SWIPER. IF DATA LENGTH MORE THAN 5 YOU SHOULD DUPLICATE THE EACH ARRAY ELEMENT. EXAMPLE: IF DATA [1,2,3,4,5] IT SHOULD BE LIKE THIS: [1,2,3,4,5,1,2,3,4,5] -->
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-60 h-14 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner.svg" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+              
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-60 h-14 object-contain" />
+                </div>
+                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                  <img src="/images/partner.svg" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
+                </div>
+              
+                
               </div>
             </div>
           </div>
         </div>
       </section>
 
+
+
     </main>
 
     <!-- Footer Section -->
     <footer class="">
-      <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px]">
+      <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px] ">
         <div class="container mx-auto">
-          <div class="grid place-content-between grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(6,_max-content)] gap-6 lg:gap-10 xl:gap-[54px] pb-[74px] border-b border-white">
+          <div class="grid place-content-between grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1fr,repeat(5,_max-content)] gap-5 lg:gap-10 xl:gap-[54px] pb-[74px] border-b border-white">
             <div class="col-span-2 lg:col-auto pb-10 md:pb-0">
               <h1 class="text-4xl md:text-[48px] lg:text-[64px] font-bold font-expletus">TAU</h1>
             </div>
@@ -909,6 +924,42 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('language-toggle');
+        const dropdown = document.getElementById('language-dropdown');
+        const selected = document.getElementById('selected-language');
+        const icon = document.getElementById('dropdown-icon');
+        const items = dropdown.querySelectorAll('li');
+
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isHidden = dropdown.classList.contains('hidden');
+          dropdown.classList.toggle('hidden');
+
+          if (isHidden) {
+            icon.classList.add('rotate-180');
+          } else {
+            icon.classList.remove('rotate-180');
+          }
+        });
+
+        items.forEach(item => {
+          item.addEventListener('click', () => {
+            const lang = item.getAttribute('data-lang');
+            selected.textContent = lang;
+            dropdown.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+          });
+        });
+
+        document.addEventListener('click', function () {
+          dropdown.classList.add('hidden');
+          icon.classList.remove('rotate-180');
+        });
+      });
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

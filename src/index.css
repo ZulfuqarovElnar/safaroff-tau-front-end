@@ -126,8 +126,6 @@
   );
 }
 
-
-
 .slide {
   transition: all 0.4s ease;
   opacity: 0.3;
@@ -234,13 +232,10 @@
   color: #EC1F26; 
 }
 
-.swiper-slide {
+.mySwiper .swiper-slide {
   width: 100% !important;
 }
 
-.swiper-slide[style*="width"] {
-  width: 100% !important;
-}
 
 .profile-card {
   cursor: pointer;
@@ -284,4 +279,15 @@
     margin: 80px 0 105px;
     opacity: 0;
   }
+}
+.partner-swiper .swiper-wrapper {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+}
+
+.partner-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

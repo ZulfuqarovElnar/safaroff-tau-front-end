@@ -130,34 +130,73 @@ if (searchInput && searchLoading) {
   
     container._lottie = animation;
   });
-  
-
-  if(true) {
+  document.addEventListener("DOMContentLoaded", () => {
     AOS.init();
-  
+
     const btnPrograms = document.querySelector('#btn-programs');
     const btnEnglish = document.querySelector('#btn-english');
     const contentPrograms = document.querySelector('#content-programs');
     const contentEnglish = document.querySelector('#content-english');
-  
+
     if (btnPrograms && btnEnglish && contentPrograms && contentEnglish) {
-      btnPrograms.addEventListener('click', function() {
+      btnPrograms.addEventListener('click', function () {
         btnPrograms.classList.add('active-tab');
         btnEnglish.classList.remove('active-tab');
-  
+
         contentPrograms.style.display = 'flex';
         contentEnglish.style.display = 'none';
       });
-  
-      btnEnglish.addEventListener('click', function() {
+
+      btnEnglish.addEventListener('click', function () {
         btnEnglish.classList.add('active-tab');
         btnPrograms.classList.remove('active-tab');
-  
+
         contentPrograms.style.display = 'none';
         contentEnglish.style.display = 'flex';
       });
     }
-  }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.querySelector(".partnersSlider .swiper-wrapper");
+    const slides = wrapper.querySelectorAll(".swiper-slide");
+    const totalSlides = slides.length;
+    const count = 10;
+    if (totalSlides > 0) {
+      new Swiper(".partnersSlider", {
+        loop: true,
+        speed: 1000,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        spaceBetween: 40,
+        slidesPerView: 4,
+        breakpoints: {
+          270: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          320: {
+            slidesPerView: 1.4,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 2.3,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
+        centeredSlides: false,
+      });
+    } else {
+      document.querySelector(".partner-swiper").classList.add("normal-view");
+    }
+  });
+
 
   if(true) {
     document.addEventListener("DOMContentLoaded", () => {
