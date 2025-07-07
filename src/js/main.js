@@ -114,14 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
           menu.classList.remove("open");
         });
 
-        document.querySelectorAll(".icon").forEach(i => {
-          i.classList.remove("rotate-45");
-        });
-
         if (!isOpen) {
           submenu.style.maxHeight = submenu.scrollHeight + "px";
           submenu.classList.add("open");
-          icon.classList.add("rotate-45");
         }
       });
     });
@@ -134,8 +129,9 @@ const swiper = new Swiper(".heroSwiper", {
   slidesPerView: 1,
   spaceBetween: 30,
   loop: true,
+  speed: 1000,
   autoplay: {
-    delay: 5000,
+    delay: 6000,
     disableOnInteraction: false,
   },
   effect: "fade",
@@ -638,6 +634,23 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScrollY = currentY;
   });
 });
+
+window.addEventListener('load', () => {
+  const cards = document.querySelectorAll('.news-card');
+  let maxHeight = 0;
+
+  cards.forEach(card => {
+    card.style.height = 'auto';
+    if (card.offsetHeight > maxHeight) {
+      maxHeight = card.offsetHeight;
+    }
+  });
+
+  cards.forEach(card => {
+    card.style.height = maxHeight + 'px';
+  });
+});
+
 
 // async function loadComponent(id, path) {
 //   const el = document.getElementById(id);
