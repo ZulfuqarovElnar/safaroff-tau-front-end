@@ -94,26 +94,77 @@
         </div>
     
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="hidden">
-        <div class="absolute top-18 left-0 w-full bg-white shadow-md z-50 p-6">
-            <ul class="flex flex-col gap-4 pb-6 text-[#606060] font-medium">
-              <li><a href="#">Universitet</a></li>
+       <nav id="mobile-menu" class="hidden">
+          <div class="absolute top-18 left-0 w-full h-screen bg-white shadow-md z-40 p-6">
+            <ul class="flex flex-col gap-4 text-[#606060] font-medium">
+              <!-- UNIVERSITET -->
+              <li class="border-b border-[#99999999]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="university-submenu">
+                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Universitet</span>
+                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                </button>
+                <ul id="university-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Haqqımızda</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Elmi Şura</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Akademik heyət</a></li>
+                </ul>
+              </li>
 
-              <li><a href="#specialties">Tədris</a></li>
-              <li><a href="#">Media</a></li>
-              <li><a href="#">Çətir Universitet</a></li>
-              <li><a href="#">Əlaqə</a></li>
+              <!-- PROQRAMLAR -->
+              <li class="border-b border-[#99999999]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="programs-submenu">
+                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Proqramlar</span>
+                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                </button>
+                <ul id="programs-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Kompüter mühəndisliyi</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Sənaye mühəndisliyi</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Qida mühəndisliyi</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Təməl hazırlıq</a></li>
+                </ul>
+              </li>
+
+              <!-- MEDIA -->
+              <li class="border-b border-[#99999999]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="media-submenu">
+                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Media</span>
+                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                </button>
+                <ul id="media-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Elanlar</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Xəbərlər</a></li>
+                </ul>
+              </li>
+
+              <!-- ÇƏTİR UNİVERSİTET -->
+              <li class="border-b border-[#99999999]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="umbrella-submenu">
+                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Çətir Universitet</span>
+                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                </button>
+                <ul id="umbrella-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">ODTÜ</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Hacettepe</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">İTÜ</a></li>
+                  <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">AzTU</a></li>
+                </ul>
+              </li>
+
+              <!-- ƏLAQƏ -->
+              <li>
+                <a class="block py-3 px-5 font-archivo font-medium uppercase text-[#5B5B5B]" href="#">Əlaqə</a>
+              </li>
             </ul>
           </div>
-        </div>
         </nav>
+
 
           <!-- Search Input Section -->
         <div
           id="search-box"
           class="
             absolute top-full left-0 w-full
-            bg-white z-50
+            bg-white z-40
             transform origin-top scale-y-0 opacity-0
             transition-[transform,opacity] duration-300 ease-out
           "
