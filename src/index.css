@@ -5,7 +5,7 @@
 :root {
     /* Custom color variables */
     --primary-color: #F6F6F6;
-    --secondary-color: #EC1F26;
+    --secondary-color: #E81F26;
     --text-color: #333;
     --white-color: #fff;
 }
@@ -29,7 +29,7 @@
 
 .active-tab {
   border: 1px solid transparent;
-  background-color: #F0383E;
+  background-color: #E81F26;
   color: white;
   opacity: 1;
 }
@@ -103,6 +103,49 @@
           mask-composite: exclude;
   border-radius: inherit;
 }
+.gradient-border-white {
+  position: relative;
+  overflow: hidden;
+}
+.gradient-border-white::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    #ececec 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  border-radius: inherit;
+}
+
+.gradient-border-plus {
+  position: relative;
+  overflow: hidden;
+}
+.gradient-border-plus::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    #ffffff 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  border-radius: inherit;
+}
 
 .header-gradient {
   background: linear-gradient(
@@ -148,6 +191,14 @@
   pointer-events: none;
   visibility: hidden;
   z-index: 0;
+  -webkit-transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -moz-transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -ms-transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -o-transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .slide-content.active {
@@ -194,10 +245,10 @@
 .slide-wrapper {
   scroll-snap-align: center;
   position: relative;
+  margin: 21px 0;
 }
 
 .slide-wrapper.active {
-  margin: 31px 0;
   opacity: 0;
 }
 
@@ -229,7 +280,7 @@
 }
 
 .indicator-span.active {
-  color: #EC1F26; 
+  color: #E81F26; 
 }
 
 .mySwiper .swiper-slide {
@@ -295,13 +346,15 @@
 .header-hide {
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+}
+.translate-up {
+  transform: translateY(-100%);
 }
 
 .rotate-45 {
   transform: rotate(45deg);
-}
-
-.header-hide {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
 }

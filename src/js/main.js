@@ -113,10 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
           menu.style.maxHeight = null;
           menu.classList.remove("open");
         });
+        document.querySelectorAll(".icon").forEach(i => {
+          i.classList.remove("rotate-45");
+        });
 
         if (!isOpen) {
           submenu.style.maxHeight = submenu.scrollHeight + "px";
           submenu.classList.add("open");
+          icon.classList.add("rotate-45");
         }
       });
     });
@@ -359,7 +363,7 @@ function initializeSlider(sliderId) {
   function animateSlideNumber() {
     const interval = setInterval(() => {
       if (slideNumberEl) {
-        slideNumberEl.textContent = String(count).padStart(2, "0");
+        slideNumberEl.textContent = String(count).padStart(2, "");
       }
       count++;
       if (count > targetNumber) {
@@ -447,7 +451,7 @@ function initializeSlider(sliderId) {
       scrollTimeout = setTimeout(() => {
         const idx = findCenteredSlide();
         setActiveSlide(idx);
-      }, 50);
+      }, 10);
     });
   }
 
@@ -614,10 +618,14 @@ function resizeContainerToImage(img) {
   const aspectRatio = img.naturalHeight / img.naturalWidth;
   container.style.height = `${container.offsetWidth * aspectRatio}px`;
 }
-
 document.addEventListener("DOMContentLoaded", () => {
-  let lastScrollY = window.scrollY;
   const header = document.getElementById("site-header");
+  const content = document.getElementById("content-wrapper");
+
+  const headerHeight = header.offsetHeight;
+  content.style.paddingTop = `${headerHeight}px`;
+
+  let lastScrollY = window.scrollY;
 
   window.addEventListener("scroll", () => {
     const currentY = window.scrollY;
@@ -627,13 +635,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isScrollingDown || isAtBottom) {
       header.classList.add("header-hide");
+      content.style.paddingTop = "0px"; 
     } else {
       header.classList.remove("header-hide");
+      content.style.paddingTop = `${headerHeight}px`; 
     }
 
     lastScrollY = currentY;
   });
 });
+
+
 
 window.addEventListener('load', () => {
   const cards = document.querySelectorAll('.news-card');

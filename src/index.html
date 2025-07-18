@@ -39,8 +39,8 @@
   </head>
   <body>
     <!-- Header -->
-    <main id="site-header" class="sticky top-0 z-50">
-      <header  class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
+    <header id="site-header" class="fixed w-full top-0 z-50 transition-transform duration-300 ease-in-out">
+      <div class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
         <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
           <div class="bg-secondary ">
             <a href="/">
@@ -49,15 +49,15 @@
           </div>
           <nav class="hidden lg:flex">
             <ul class="flex gap-8">
-             <li class="menu-item transition-all" data-dropdown="university-dropdown"><a href="#" class="pb-12">Universitet</a></li>
-             <li class="menu-item transition-all" data-dropdown="program-dropdown"><a href="#" class="pb-12">Proqramlar</a></li>
-             <li class="menu-item transition-all" data-dropdown="media-dropdown"><a href="#" class="pb-12">Media</a></li>
-             <li class="menu-item transition-all" data-dropdown="umbrella-dropdown"><a href="#" class="pb-12">Çətir Universitet</a></li>
-             <li class="menu-item transition-all"><a href="#" lass="pb-12">Əlaqə</a></li>
+             <li class="menu-item transition-all duration-500 ease-in-out" data-dropdown="university-dropdown"><a href="#" class="pb-12">Universitet</a></li>
+             <li class="menu-item transition-all duration-500 ease-in-out" data-dropdown="program-dropdown"><a href="#" class="pb-12">Proqramlar</a></li>
+             <li class="menu-item transition-all duration-500 ease-in-out" data-dropdown="media-dropdown"><a href="#" class="pb-12">Media</a></li>
+             <li class="menu-item transition-all duration-500 ease-in-out" data-dropdown="umbrella-dropdown"><a href="#" class="pb-12">Çətir Universitet</a></li>
+             <li class="menu-item transition-all duration-500 ease-in-out"><a href="#" lass="pb-12">Əlaqə</a></li>
             </ul>
           </nav>
-          <div class="flex items-center gap-3 md:gap-6">
-          <div id="language-toggle" class="relative flex justify-center items-center gap-1.5 cursor-pointer">
+          <div class="flex items-center gap-2 md:gap-6">
+          <div id="language-toggle" class="relative hidden md:flex justify-center items-center gap-1.5 cursor-pointer">
             <img src="/images/globus.svg" alt="">
             <span id="selected-language" class="text-sm">TR</span>
 
@@ -71,19 +71,15 @@
             </div>
           </div>
 
-
-
-            
-            <button id="search-icon" type="button" class="flex justify-center items-center px-3 py-2 lg:px-0 lg:py-0 rounded-full bg-white lg:bg-transparent lg:border-transparent border border-[#a2a2a2]">
-              <img src="/images/search.svg" alt="" class="text-xl hidden lg:block" />
-              <img src="/images/search-mobile.svg" alt="" class="text-base lg:hidden block" />
+            <button id="search-icon" type="button" class="hidden md:flex justify-center items-center px-0 py-0 rounded-full bg-transparent">
+              <img src="/images/search.svg" alt="" class="text-xl" />
             </button>
-            <!--<button type="button" class="flex px-4 py-2.5 rounded-xl bg-white border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+            <a href="#" type="button" class="flex px-4 xl:px-8 py-2.5 lg:py-4 rounded-[50px] lg:rounded-xl bg-white hover:bg-gray-100 transition-colors border gradient-border-white text-[#333333] text-sm justify-center items-center gap-1.5">
               <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
-              <span class="hidden md:block">Kabinetə keçid</span>
-            </button>-->
-            <div id="menu-toggle" class="block lg:hidden ">
-              <button class="flex justify-center items-center px-4 py-2.5 rounded-full bg-white border border-[#a2a2a2]">
+              <span class="hidden lg:block font-inter">Kabinetə keçid</span>
+            </a>
+            <div id="menu-toggle" class="block lg:hidden">
+              <button class="flex justify-center items-center px-4 py-3 rounded-full bg-white">
                 <img src="/images/hamburger.svg" alt="Menu" class="w-4 h-4" />
               </button>
             </div>
@@ -92,15 +88,47 @@
     
         <!-- Mobile Menu -->
        <nav id="mobile-menu" class="hidden">
-          <div class="absolute top-18 left-0 w-full h-screen bg-white shadow-md z-40 p-6">
-            <ul class="flex flex-col gap-4 text-[#606060] font-medium">
-              <!-- UNIVERSITET -->
-              <li class="border-b border-[#99999999]">
-                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="university-submenu">
-                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Universitet</span>
-                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+          <div class="absolute top-18 left-0 w-full h-screen bg-[#F1F3F5FC] shadow-md z-40 p-3">
+            <div class="flex items-center gap-2 pb-3">
+              <!-- Axtar bloku -->
+              <div class="flex items-center bg-white rounded-xl py-4 px-0 flex-1 h-12 shadow-sm relative">
+                <input
+                  type="text"
+                  placeholder="Axtar"
+                  class="w-full font-inter text-[#555555] text-base focus:outline-none placeholder:text-[#6A6A6A] h-full py-4 px-5"
+                />
+                <button type="button" class="py-2 absolute pointer-events-none right-5">
+                  <img src="/images/search-black.svg" alt="Axtar" class="w-5 h-5" />
                 </button>
-                <ul id="university-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+              </div>
+
+              <!-- Dil seçimi bloku -->
+              <div id="language-toggle-mob" class="relative flex items-center bg-white rounded-xl h-12 px-4 shadow-sm cursor-pointer pointer-events-auto z-50">
+                <img src="/images/globus-black.svg" alt="Dil" class="w-5 h-5" />
+                <span id="selected-language-mob" class="ml-2 font-medium text-gray-800">TR</span>
+
+                <!-- Dropdown menyu -->
+                <div id="language-dropdown-mob" class="absolute top-full right-0 mt-2 bg-white shadow-lg z-50 hidden rounded-md">
+                  <ul class="text-sm text-gray-700">
+                    <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="AZ">AZ</li>
+                    <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="EN">EN</li>
+                    <li class="py-2 px-3 hover:bg-gray-100 transition-colors rounded-md cursor-pointer" data-lang="TR">TR</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+           
+            <ul class="flex flex-col gap-4">
+              <!-- UNIVERSITET -->
+              <li class="border-b border-[#E81F26]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-4 px-2" data-target="university-submenu">
+                  <span class="font-inter font-medium uppercase text-[#222222]">Universitet</span>
+                  <div class="rounded-[7px] gradient-border-plus">
+                  <img class="w-7 h-7 p-1 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                  </div>
+                </button>
+                <ul id="university-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-2">
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Haqqımızda</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Elmi Şura</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Akademik heyət</a></li>
@@ -108,12 +136,14 @@
               </li>
 
               <!-- PROQRAMLAR -->
-              <li class="border-b border-[#99999999]">
-                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="programs-submenu">
-                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Proqramlar</span>
-                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+              <li class="border-b border-[#E81F26]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-4 px-2" data-target="programs-submenu">
+                  <span class="font-inter font-medium uppercase text-[#222222]">Proqramlar</span>
+                  <div class="rounded-[7px] gradient-border-plus">
+                     <img class="w-7 h-7 p-1 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                  </div>
                 </button>
-                <ul id="programs-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                <ul id="programs-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-2">
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Kompüter mühəndisliyi</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Sənaye mühəndisliyi</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Qida mühəndisliyi</a></li>
@@ -122,24 +152,28 @@
               </li>
 
               <!-- MEDIA -->
-              <li class="border-b border-[#99999999]">
-                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="media-submenu">
-                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Media</span>
-                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+              <li class="border-b border-[#E81F26]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-4 px-2" data-target="media-submenu">
+                  <span class="font-inter font-medium uppercase text-[#222222]">Media</span>
+                  <div class="rounded-[7px] gradient-border-plus">
+                    <img class="w-7 h-7 p-1 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                  </div>
                 </button>
-                <ul id="media-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                <ul id="media-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-2">
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Elanlar</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Xəbərlər</a></li>
                 </ul>
               </li>
 
               <!-- ÇƏTİR UNİVERSİTET -->
-              <li class="border-b border-[#99999999]">
-                <button class="mobile-menu-toggle flex justify-between items-center w-full py-3 px-5" data-target="umbrella-submenu">
-                  <span class="font-archivo font-medium uppercase text-[#5B5B5B]">Çətir Universitet</span>
-                  <img class="w-4 h-4 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+              <li class="border-b border-[#E81F26]">
+                <button class="mobile-menu-toggle flex justify-between items-center w-full py-4 px-2" data-target="umbrella-submenu">
+                  <span class="font-inter font-medium uppercase text-[#222222]">Çətir Universitet</span>
+                  <div class="rounded-[7px] gradient-border-plus">
+                    <img class="w-7 h-7 p-1 transition-transform duration-300 transform icon" src="/images/plus.svg" alt="">
+                  </div>
                 </button>
-                <ul id="umbrella-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-5">
+                <ul id="umbrella-submenu" class="submenu font-archivo max-h-0 overflow-hidden transition-all duration-500 flex-col px-2">
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">ODTÜ</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">Hacettepe</a></li>
                   <li class="py-3"><a class="block text-[#7F7F7F] hover:text-[#525252]" href="#">İTÜ</a></li>
@@ -149,7 +183,7 @@
 
               <!-- ƏLAQƏ -->
               <li>
-                <a class="block py-3 px-5 font-archivo font-medium uppercase text-[#5B5B5B]" href="#">Əlaqə</a>
+                <a class="block py-4 px-2 font-inter font-medium uppercase text-[#222222]" href="#">Əlaqə</a>
               </li>
             </ul>
           </div>
@@ -222,146 +256,398 @@
             </div>
           </div>
         </div>
-      </header>
+      </div>
       <!-- Header dropdown --> 
 
        <!-- Universitet haqqında-->
-        <div id="university-dropdown" class="dropdown-content pl-0 md:pl-16">
+      <div id="university-dropdown" class="dropdown-content hidden">
         <div class="container mx-auto z-50 relative">
-            <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(330px,1fr))] gap-5 p-5 w-full bg-white rounded-[6px] font-inter shadow-2xl">
-                
-                <!-- Main University Info Card -->
-                <a class="rounded-lg bg-white university-card p-4 border border-gray-100" href="#">
-                    <h1 class="text-[#222222] text-sm font-medium mb-2">Universitet</h1>
-                    <p class="text-[#333333] text-sm leading-relaxed">Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at</p>
-                </a>
-                
-                <!-- University Image -->
-                <a class="rounded-lg overflow-hidden university-card" href="#">
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Türkiyə-Azərbaycan Universiteti" class="w-full h-48 object-cover">
-                </a>
-                
-                <!-- Menu Items -->
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">HAQQIMIZDA</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">ELMİ ŞURA</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">AKADEMİK HEYƏT</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
-                <!-- Additional Menu Items -->
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">FAKÜLTƏLƏR</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">QƏBUL</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
-                <a href="#" class="header-gradient px-5 py-4 flex justify-between items-center gap-3 md:gap-1 w-full bg-white rounded-lg">
-                    <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">TƏLƏBƏ HƏYATı</h1>
-                    <svg class="w-4 h-4 text-[#5B5B5B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </a>
-                
+          <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
+            <div
+            class=" grid grid-cols-2 gap-5 w-full"
+          >
+            <a
+              href="#"
+              class="rounded-lg bg-white university-card px-10 py-[60px] border border-gray-100 col-span-1 self-stretch"
+            >
+              <h1 class="text-[#222222] text-base sm:text-xl md:text-[32px] font-medium font-inter pb-4">Universitet</h1>
+              <p class="text-[#333333] text-sm font-inter opacity-50">
+                Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at
+              </p>
+            </a>
+
+            <a
+              href="#"
+              class="rounded-lg overflow-hidden university-card col-span-1 self-stretch"
+            >
+              <img
+                src="/images/sub-menu-one.svg"
+                alt="Türkiyə-Azərbaycan Universiteti"
+                class="w-full h-full object-cover"
+              />
+            </a>
             </div>
-        </div>
-    </div>
-       <!-- <div id="university-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
-        <div class="container mx-auto z-50 relative">
-          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">HAQQIMIZDA</h1>
-            </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">ELMİ ŞURA</h1>
-            </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">AKADEMİK HEYƏT</h1>
-            </a>
+            <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+                <a
+                href="#"
+                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                  ELMİ ŞURA
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+
+                </div>
+              </a>
+              
+              <a
+                href="#"
+                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                  akademİk heyət
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+
+                </div>
+              </a>
+              <a
+                href="#"
+                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                  HAQQIMIZDA
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+
+                </div>
+              </a>
+            </div>
           </div>
         </div>
-       </div> -->
+      </div>
 
       <!-- Proqramlar -->
-       <div id="program-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+      <div id="program-dropdown" class="dropdown-content hidden">
         <div class="container mx-auto z-50 relative">
-          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Kompüter mühəndİslİyİ</h1>
+          <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
+            <div
+            class=" grid grid-cols-2  gap-5 w-full"
+          >
+            <a
+              href="#"
+              class="rounded-lg bg-white university-card px-10 py-[60px] border border-gray-100 col-span-1 self-stretch "
+            >
+              <h1 class="text-[#222222] text-base sm:text-xl md:text-[32px] font-medium font-inter pb-4">Proqramlar</h1>
+              <p class="text-[#333333] text-sm font-inter opacity-50">
+                Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at
+              </p>
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">SƏNAYE mühəndİslİyİ</h1>
+
+            <a
+              href="#"
+              class="rounded-lg overflow-hidden university-card col-span-1 self-stretch"
+            >
+              <img
+                src="/images/sub-menu-two.svg"
+                alt="Türkiyə-Azərbaycan Universiteti"
+                class="w-full h-full object-cover"
+              />
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">QİDA mühəndİslİyİ</h1>
+          </div>
+            
+          <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                Kompüter mühəndİslİyİ
+              </h1>
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">TƏMƏL HAZIRLIQ</h1>
+            
+
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                sənaye mühəndİslİyİ
+              </h1>
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
             </a>
+
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                qİda mühəndİslİyİ
+              </h1>
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
+            </a>
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                təməl hazırlıq
+              </h1>
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+              </div>
+            </a> 
+          </div>
+
+
           </div>
         </div>
        </div>
 
-      <!-- Media -->
-       <div id="media-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+        <!-- Media -->
+       <div id="media-dropdown" class="dropdown-content hidden">
         <div class="container mx-auto z-50 relative">
-          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">elanlar</h1>
-            </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">xəbərlər</h1>
-            </a>
+          <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
+            <div
+              class=" grid grid-cols-2 auto-rows-[204px] gap-5 w-full"
+            >
+              <a
+                href="#"
+                class="rounded-lg bg-white university-card px-10 py-[60px] border border-gray-100 col-span-1 self-stretch"
+              >
+                <h1 class="text-[#222222] text-base sm:text-xl md:text-[32px] font-medium font-inter pb-4">Media</h1>
+                <p class="text-[#333333] text-sm font-inter opacity-50">
+                  Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at
+                </p>
+              </a>
+
+              <a
+                href="#"
+                class="rounded-lg overflow-hidden university-card col-span-1 self-stretch"
+              >
+                <img
+                  src="/images/sub-menu-one.svg"
+                  alt="Türkiyə-Azərbaycan Universiteti"
+                  class="w-full h-full object-cover"
+                />
+              </a>
+            </div>
+            
+            <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+              <a
+                href="#"
+                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                  elanlar
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+                </div>
+              </a>
+              
+              <a
+                href="#"
+                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                  xəbərlər
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+
           </div>
         </div>
        </div>
 
-      <!-- Çetir uni -->
-      <div id="umbrella-dropdown" class="dropdown-content pl-0 md:pl-16 hidden">
+       <!-- Çetir uni -->
+      <div id="umbrella-dropdown" class="dropdown-content hidden">
         <div class="container mx-auto z-50 relative">
-          <div class="absolute left-0 right-0 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2 p-2 max-w-[1244px] w-full bg-white  rounded-[6px]">
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Orta Doğu Teknik Üniversitesi</h1>
+          <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
+            <div
+              class="grid grid-cols-2 gap-5 w-full"
+            >
+            <a
+              href="#"
+              class="rounded-lg bg-white university-card px-10 py-[60px] border border-gray-100 col-span-1 self-stretch "
+            >
+              <h1 class="text-[#222222] text-base sm:text-xl md:text-[32px] font-medium font-inter pb-4">Proqramlar</h1>
+              <p class="text-[#333333] text-sm font-inter opacity-50">
+                Hər bir ixtisasın imkanlarını öyrən və gələcək karyerana doğru ilk addımı at
+              </p>
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Hacettepe Üniversitesi</h1>
+
+            <a
+              href="#"
+              class="rounded-lg overflow-hidden university-card col-span-1 self-stretch"
+            >
+              <img
+                src="/images/sub-menu-two.svg"
+                alt="Türkiyə-Azərbaycan Universiteti"
+                class="w-full h-full object-cover"
+              />
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">İstanbul Teknik Üniversitesi</h1>
+          </div>
+
+          <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <img class="self-center my-auto" src="/images/sub-uni-one.svg" alt="">
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
             </a>
-            <a href="#" class="header-gradient px-5 py-4 flex justify-between gap-3 md:gap-1 w-full bg-white ">
-              <h1 class="font-archivo font-medium text-[#5B5B5B] uppercase">Azərbaycan Texniki Universiteti</h1>
+            
+
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <img class="self-center my-auto" src="/images/sub-uni-two.svg" alt="">
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
             </a>
+
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <img class="self-center my-auto" src="/images/sub-uni-three.svg" alt="">
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+
+              </div>
+            </a>
+            <a
+              href="#"
+              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+            >
+              <img class="self-center my-auto" src="/images/sub-uni-four.svg" alt="">
+              <div
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                      hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+              >
+                <svg
+                  class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+           
           </div>
         </div>
        </div> 
-      
-    </main>
+
+    </header>
     
-    <main class="bg-[#F7F9FD] md:bg-white">
+    <main id="content-wrapper" class="bg-[#F7F9FD] md:bg-white pt-16 md:pt-28">
       <!-- Hero Section -->
       <section class="relative pb-4 md:pb-[60px] h-[80vh] max-h-[400px] sm:max-h-[480px] md:max-h-[540px] lg:max-h-[560px] xl:max-h-[684px] ">
         <div class="h-[80vh] max-h-[400px] sm:max-h-[480px] md:max-h-[540px] lg:max-h-[560px]  xl:max-h-[684px]">
@@ -398,6 +684,9 @@
                       </a>
                       <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
                         <img src="/images/twitter.svg" alt="twitter" />
+                      </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/linkedin.svg" alt="linkedin" />
                       </a>
                     </div>
                     <div></div>
@@ -460,6 +749,9 @@
                       <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
                         <img src="/images/twitter.svg" alt="twitter" />
                       </a>
+                      <a href="#" class="flex justify-center items-center w-11 h-11 bg-white rounded-full border border-[#53535326]">
+                        <img src="/images/linkedin.svg" alt="linkedin" />
+                      </a>
                     </div>
                     <div></div>
                     <div class="bg-[#FFFFFF03] rounded mb-4 lg:mb-10 py-5" style="backdrop-filter: blur(80px)">
@@ -495,7 +787,7 @@
       </section>
 
       <!-- Xəbərlər və Elanlar Section -->
-      <section class="py-4 pb-5 md:py-[60px] text-textColor font-archivo px-[14px] md:px-[60px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+      <section class="py-[60px] md:py-[120px] text-textColor font-archivo px-[14px] md:px-[60px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
         <div class="container mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-3">
           
           <!-- Xəbərlər -->
@@ -549,9 +841,9 @@
 
       <!-- Specialties Section -->
       <section data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
-        <div class="py-5 md:py-[60px] flex flex-col xl:flex-row justify-between items-start px-[14px] md:px-[60px]">
+        <div class="flex flex-col xl:flex-row justify-between items-start px-[14px] md:px-[60px]">
           <div class="container mx-auto">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-6 pb-10">
+            <div class="flex flex-col xl:flex-row justify-between items-start gap-6 pb-10">
               <div class="text-textColor">
                 <h1 class="font-medium text-base sm:text-xl md:text-[32px] font-archivo pb-3 uppercase">
                   Sənİn üçün uyğun İxtİsası kəşf et
@@ -564,7 +856,7 @@
                 <button id="btn-programs" class="btn-left py-[5px] px-2 sm:pl-[9px] font-medium font-archivo text-base md:text-2xl uppercase active-tab transition-all">
                   PROQRAMLAR
                 </button>
-                <button id="btn-english" class="flex btn-right py-1.5 pr-2 sm:pr-4 font-medium font-archivo text-base md:text-2xl uppercase truncate transition-all">
+                <button id="btn-english" class="flex btn-right py-[5px] pr-2 sm:pr-4 font-medium font-archivo text-base md:text-2xl uppercase truncate transition-all">
                   TƏMƏL İNGİLİSCƏ
                 </button>
               </div> 
@@ -640,10 +932,10 @@
       </section>
 
       <!-- Application Section -->
-      <section class="container mx-auto text-textColor py-5 md:py-[60px] px-[14px] md:px-[60px]"  data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
-        <div class="">
+      <section class="text-textColor py-[60px] md:pt-[120px] md:pb-[60px] px-[14px] md:px-[60px]"  data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="container mx-auto">
           <div class="pb-10">
-            <div class="flex flex-col gap-4 pb-3 font-archivo">
+            <div class="flex flex-col gap-5 pb-3 font-archivo">
                 <h2 class="font-medium text-base sm:text-xl md:text-2xl lg:text-[32px]">XƏYALINIZI REALLAŞDIRMAĞA HAZIRSINIZ?</h2>
                 <h3 class="font-medium text-base sm:text-xl md:text-2xl lg:text-[32px]">BUNUN ÜÇÜN İLK ADDIMINIZI ATIN!</h3> 
             </div>
@@ -726,7 +1018,7 @@
       </section>
 
       <!-- Students' Opinions Section -->
-      <section class="py-5 md:py-20 px-[14px] md:px-[60px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+      <section class="pt-[50px] pb-20 md:py-20 px-[14px] md:px-[60px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
         <div class="container mx-auto">
           <h2 class="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-archivo text-textColor uppercase pb-10">
             Tələbələrin Fikirləri
@@ -835,31 +1127,31 @@
             <div class="swiper partnersSlider" >
               <div class="swiper-wrapper">
                 <!-- DATA LENGTH SHOULD BE CHECKD FOR LOOP SWIPER. IF DATA LENGTH MORE THAN 5 YOU SHOULD DUPLICATE THE EACH ARRAY ELEMENT. EXAMPLE: IF DATA [1,2,3,4,5] IT SHOULD BE LIKE THIS: [1,2,3,4,5,1,2,3,4,5] -->
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-60 h-14 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner.svg" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
+                </a>
               
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-one.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-two.png" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner-three.png" alt="partner" class="max-w-40 md:max-w-60 h-14 object-contain" />
-                </div>
-                <div class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
+                </a>
+                <a href="#" class="swiper-slide flex justify-center items-center w-40 md:w-80 h-20">
                   <img src="/images/partner.svg" alt="partner" class="max-w-40 md:max-w-60 h-20 object-contain" />
-                </div>
+                </a>
               
                 
               </div>
@@ -876,8 +1168,8 @@
     <footer class="">
       <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px] md:px-[60px]">
         <div class="container mx-auto">
-          <div class="grid place-content-between grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(6,_max-content)] gap-5 lg:gap-10 xl:gap-[87px] pb-[60px] border-b border-white">
-            <div class="col-span-2 lg:col-auto pb-10 md:pb-0">
+          <div class="grid place-content-between grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(6,_max-content)] xl-20 gap-5 lg:gap-10 2xl:gap-[101px] pb-[60px] border-b border-white">
+            <div class="col-span-2 lg:col-auto pb-10 md:pb-0 pr-5">
               <h1 class="text-4xl md:text-[48px] lg:text-[64px] font-bold font-expletus">TAU</h1>
             </div>
             <div class="z-10">
@@ -949,6 +1241,11 @@
                   <img src="/images/footer-four.svg" alt="twitter" />
                 </a>
               </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-five.svg" alt="linkedin" />
+                </a>
+              </li>
             </ul>
             <p>SAFAROFF Agency tərəfindən hazırlanıb</p>
           </div>
@@ -956,41 +1253,39 @@
       </div>
     </footer>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggle = document.getElementById('language-toggle');
-        const dropdown = document.getElementById('language-dropdown');
-        const selected = document.getElementById('selected-language');
-        const icon = document.getElementById('dropdown-icon');
-        const items = dropdown.querySelectorAll('li');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function setupLanguageDropdown(toggleId, dropdownId, selectedId) {
+      const toggle = document.getElementById(toggleId);
+      const dropdown = document.getElementById(dropdownId);
+      const selected = document.getElementById(selectedId);
 
-        toggle.addEventListener('click', function (e) {
-          e.stopPropagation();
-          const isHidden = dropdown.classList.contains('hidden');
-          dropdown.classList.toggle('hidden');
+      if (!toggle || !dropdown || !selected) return;
 
-          if (isHidden) {
-            icon.classList.add('rotate-180');
-          } else {
-            icon.classList.remove('rotate-180');
-          }
-        });
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+      });
 
-        items.forEach(item => {
-          item.addEventListener('click', () => {
-            const lang = item.getAttribute('data-lang');
-            selected.textContent = lang;
-            dropdown.classList.add('hidden');
-            icon.classList.remove('rotate-180');
-          });
-        });
-
-        document.addEventListener('click', function () {
+      dropdown.querySelectorAll('li').forEach(item => {
+        item.addEventListener('click', function () {
+          selected.textContent = item.getAttribute('data-lang');
           dropdown.classList.add('hidden');
-          icon.classList.remove('rotate-180');
         });
       });
-    </script>
+
+      dropdown.addEventListener('click', e => e.stopPropagation());
+    }
+
+    setupLanguageDropdown('language-toggle', 'language-dropdown', 'selected-language');
+    setupLanguageDropdown('language-toggle-mob', 'language-dropdown-mob', 'selected-language-mob');
+
+    document.addEventListener('click', function () {
+      document.getElementById('language-dropdown')?.classList.add('hidden');
+      document.getElementById('language-dropdown-mob')?.classList.add('hidden');
+    });
+  });
+</script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
