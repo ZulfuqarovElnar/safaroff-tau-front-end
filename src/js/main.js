@@ -625,24 +625,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerHeight = header.offsetHeight;
   content.style.paddingTop = `${headerHeight}px`;
 
-  let lastScrollY = window.scrollY;
+  let lastScrollY = window.pageYOffset;
+  let ticking = false;
+
+  function onScroll() {
+    const currentY = window.pageYOffset;
+    const delta = currentY - lastScrollY;
+
+    if (currentY <= 0) {
+      header.classList.remove("header-hide");
+      content.style.paddingTop = `${headerHeight}px`;
+      lastScrollY = currentY;
+      ticking = false;
+      return;
+    }
+    if (Math.abs(delta) > 5) {
+      if (delta > 0) {
+
+        header.classList.add("header-hide");
+        content.style.paddingTop = "0px";
+      } else {
+        header.offsetHeight; 
+        header.classList.remove("header-hide");
+        content.style.paddingTop = `${headerHeight}px`;
+      }
+      lastScrollY = currentY;
+    }
+    ticking = false;
+  }
 
   window.addEventListener("scroll", () => {
-    const currentY = window.scrollY;
-    const isScrollingDown = currentY > lastScrollY;
-    const isAtBottom =
-      window.innerHeight + currentY >= document.body.offsetHeight - 10;
-
-    if (isScrollingDown || isAtBottom) {
-      header.classList.add("header-hide");
-      content.style.paddingTop = "0px"; 
-    } else {
-      header.classList.remove("header-hide");
-      content.style.paddingTop = `${headerHeight}px`; 
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
     }
-
-    lastScrollY = currentY;
-  });
+  }, { passive: true });
 });
 
 
