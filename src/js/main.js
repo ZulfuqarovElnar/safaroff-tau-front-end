@@ -218,43 +218,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".partnersSlider .swiper-wrapper");
-  const slides = wrapper.querySelectorAll(".swiper-slide");
-  const totalSlides = slides.length;
-  const count = 10;
-  if (totalSlides > 0) {
-    new Swiper(".partnersSlider", {
-      loop: true,
-      speed: 1000,
-      autoplay: {
-        delay: 2000,
-        disableOnInteraction: false,
-      },
-      spaceBetween: 40,
-      slidesPerView: 4,
-      breakpoints: {
-        270: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+
+  if (wrapper) {
+    const slides = wrapper.querySelectorAll(".swiper-slide");
+    const totalSlides = slides.length;
+    const count = 10;
+
+    if (totalSlides > 0) {
+      new Swiper(".partnersSlider", {
+        loop: true,
+        speed: 1000,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
         },
-        320: {
-          slidesPerView: 1.4,
-          spaceBetween: 10,
+        spaceBetween: 40,
+        slidesPerView: 4,
+        breakpoints: {
+          270: { slidesPerView: 1, spaceBetween: 10 },
+          320: { slidesPerView: 1.4, spaceBetween: 10 },
+          640: { slidesPerView: 2.3, spaceBetween: 20 },
+          1024: { slidesPerView: 4, spaceBetween: 40 },
         },
-        640: {
-          slidesPerView: 2.3,
-          spaceBetween: 20,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-      },
-      centeredSlides: false,
-    });
-  } else {
-    document.querySelector(".partner-swiper").classList.add("normal-view");
+        centeredSlides: false,
+      });
+    } else {
+      document.querySelector(".partner-swiper")?.classList.add("normal-view");
+    }
   }
 });
+
 
 if (true) {
   document.addEventListener("DOMContentLoaded", () => {
@@ -618,6 +611,7 @@ function resizeContainerToImage(img) {
   const aspectRatio = img.naturalHeight / img.naturalWidth;
   container.style.height = `${container.offsetWidth * aspectRatio}px`;
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("site-header");
   const content = document.getElementById("content-wrapper");
@@ -631,7 +625,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function onScroll() {
     const currentY = window.pageYOffset;
     const delta = currentY - lastScrollY;
+    const atBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
 
+    // Yuxarı hissədə - header həmişə görünsün
     if (currentY <= 0) {
       header.classList.remove("header-hide");
       content.style.paddingTop = `${headerHeight}px`;
@@ -639,27 +636,34 @@ document.addEventListener("DOMContentLoaded", () => {
       ticking = false;
       return;
     }
+
     if (Math.abs(delta) > 5) {
       if (delta > 0) {
-
+        // Aşağı scroll → gizlət
         header.classList.add("header-hide");
         content.style.paddingTop = "0px";
       } else {
-        header.offsetHeight; 
-        header.classList.remove("header-hide");
-        content.style.paddingTop = `${headerHeight}px`;
+        // Yuxarı scroll amma səhifənin sonundayıqsa → göstərmə
+        if (!atBottom) {
+          header.classList.remove("header-hide");
+          content.style.paddingTop = `${headerHeight}px`;
+        }
       }
       lastScrollY = currentY;
     }
     ticking = false;
   }
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
 });
 
 

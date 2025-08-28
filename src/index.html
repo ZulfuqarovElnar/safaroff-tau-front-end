@@ -41,10 +41,10 @@
     <!-- Header -->
     <header id="site-header" class="fixed w-full top-0 z-50 transition-transform duration-300 ease-in-out">
       <div class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
-        <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
+        <div class="container mx-auto h-16 md:h-[78.8px] flex justify-between items-center relative">
           <div class="bg-secondary ">
             <a href="/">
-            <img src="/images/tau-logo.svg" alt="TAU Logo" class="h-9 md:h-16" />
+            <img src="/images/tau-logo.svg" alt="TAU Logo" class="h-9 md:h-[46.8px]" />
             </a>
           </div>
           <nav class="hidden lg:flex">
@@ -74,7 +74,7 @@
             <button id="search-icon" type="button" class="hidden md:flex justify-center items-center px-0 py-0 rounded-full bg-transparent">
               <img src="/images/search.svg" alt="" class="text-xl" />
             </button>
-            <a href="#" type="button" class="flex px-4 xl:px-8 py-2.5 lg:py-4 rounded-[50px] lg:rounded-xl bg-white hover:bg-gray-100 transition-colors border gradient-border-white text-[#333333] text-sm justify-center items-center gap-1.5">
+            <a href="#" type="button" class="flex px-4 xl:px-8 py-2.5 lg:py-3 rounded-[50px] lg:rounded-xl bg-white hover:bg-gray-100 transition-colors border gradient-border-white text-[#333333] text-sm justify-center items-center gap-2.5">
               <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
               <span class="hidden lg:block font-inter">Kabinetə keçid</span>
             </a>
@@ -264,7 +264,7 @@
         <div class="container mx-auto z-50 relative">
           <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
             <div
-            class=" grid grid-cols-2 gap-5 w-full"
+            class=" grid grid-cols-2 auto-rows-[160px] gap-5 w-full"
           >
             <a
               href="#"
@@ -287,16 +287,16 @@
               />
             </a>
             </div>
-            <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+            <div class="grid grid-cols-2 auto-rows-[84px] gap-5 w-full overflow-auto max-h-screen h-full">
                 <a
                 href="#"
-                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
               >
-                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                   ELMİ ŞURA
                 </h1>
                 <div
-                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                         hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
                 >
                   <svg
@@ -310,13 +310,13 @@
               
               <a
                 href="#"
-                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
               >
-                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                   akademİk heyət
                 </h1>
                 <div
-                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                         hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
                 >
                   <svg
@@ -329,13 +329,33 @@
               </a>
               <a
                 href="#"
-                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
               >
-                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                   HAQQIMIZDA
                 </h1>
                 <div
-                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
+                        hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
+                >
+                  <svg
+                    class="stroke-current text-[#333333] group-hover:text-white transition-colors duration-300"
+                    width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.45911 8.50009H13.4979L10.498 11.4999L11.2051 12.207L15.4121 8.00006L11.2051 3.7931L10.498 4.50019L13.498 7.50009L0.45911 7.50009V8.50009Z" fill="#333333"/>
+                  </svg>
+
+                </div>
+              </a>
+              <a
+                href="/assets/docs/akademik-teqvim.pdf"
+                target="_blank"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              >
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
+                  AkademİK TƏQVİM
+                </h1>
+                <div
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                         hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
                 >
                   <svg
@@ -356,7 +376,7 @@
         <div class="container mx-auto z-50 relative">
           <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
             <div
-            class=" grid grid-cols-2  gap-5 w-full"
+            class=" grid grid-cols-2 auto-rows-[212px] gap-5 w-full"
           >
             <a
               href="#"
@@ -380,16 +400,16 @@
             </a>
           </div>
             
-          <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+          <div class="grid grid-cols-2 auto-rows-[84px] gap-5 w-full overflow-auto max-h-screen h-full">
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
-              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+              <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                 Kompüter mühəndİslİyİ
               </h1>
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -404,13 +424,13 @@
 
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
-              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+              <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                 sənaye mühəndİslİyİ
               </h1>
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -424,13 +444,13 @@
 
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
-              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+              <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                 qİda mühəndİslİyİ
               </h1>
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -443,13 +463,13 @@
             </a>
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
-              <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+              <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                 təməl hazırlıq
               </h1>
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -471,7 +491,7 @@
         <div class="container mx-auto z-50 relative">
           <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
             <div
-              class=" grid grid-cols-2 auto-rows-[204px] gap-5 w-full"
+              class=" grid grid-cols-2 auto-rows-[160px] gap-5 w-full"
             >
               <a
                 href="#"
@@ -495,16 +515,16 @@
               </a>
             </div>
             
-            <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+            <div class="grid grid-cols-2 auto-rows-[84px] gap-5 w-full overflow-auto max-h-screen h-full">
               <a
                 href="#"
-                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
               >
-                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                   elanlar
                 </h1>
                 <div
-                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                         hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
                 >
                   <svg
@@ -517,13 +537,13 @@
               
               <a
                 href="#"
-                class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+                class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
               >
-                <h1 class="w-1/2 font-archivo font-medium text-xl text-[#222222] uppercase">
+                <h1 class=" font-archivo font-medium text-xl text-[#222222] uppercase">
                   xəbərlər
                 </h1>
                 <div
-                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                  class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                         hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
                 >
                   <svg
@@ -544,7 +564,7 @@
         <div class="container mx-auto z-50 relative">
           <div class="absolute left-0 right-0 hidden lg:grid grid-cols-2 gap-5 bg-[#F1F3F5E5] rounded-xl font-inter shadow-2xl p-5 ">
             <div
-              class="grid grid-cols-2 gap-5 w-full"
+              class="grid grid-cols-2 auto-rows-[220px] gap-5 w-full"
             >
             <a
               href="#"
@@ -568,14 +588,14 @@
             </a>
           </div>
 
-          <div class="grid grid-cols-2 auto-rows-[204px] gap-5 w-full overflow-auto max-h-screen h-full">
+          <div class="grid grid-cols-2 auto-rows-[100px] gap-5 w-full overflow-auto max-h-screen h-full">
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
               <img class="self-center my-auto" src="/images/sub-uni-one.svg" alt="">
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -590,11 +610,11 @@
 
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
               <img class="self-center my-auto" src="/images/sub-uni-two.svg" alt="">
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -608,11 +628,11 @@
 
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
               <img class="self-center my-auto" src="/images/sub-uni-three.svg" alt="">
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -625,11 +645,11 @@
             </a>
             <a
               href="#"
-              class="p-5 flex flex-col justify-between gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
+              class="p-5 flex justify-between items-center gap-3 md:gap-1 w-full bg-white hover:bg-gray-100 rounded-lg col-span-1 row-span-1 group transition-colors"
             >
               <img class="self-center my-auto" src="/images/sub-uni-four.svg" alt="">
               <div
-                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white self-end z-20
+                class="w-8 h-8 flex justify-center items-center rounded-[7px] bg-white gradient-border-white z-20
                       hover:bg-[#E81F26] group-hover:hover:bg-[#E81F26] group-hover:bg-[#E81F26] transition-colors"
               >
                 <svg
@@ -853,11 +873,11 @@
                 </p>
               </div>
               <div class="flex items-center overflow-hidden">
-                <button id="btn-programs" class="btn-left py-[5px] px-2 sm:pl-[9px] font-medium font-archivo text-base md:text-2xl uppercase active-tab transition-all">
-                  PROQRAMLAR
+                <button id="btn-programs" class="btn-left py-2 px-2 sm:pl-6 font-medium font-archivo text-base md:text-xl active-tab transition-all">
+                  Proqramlar
                 </button>
-                <button id="btn-english" class="flex btn-right py-[5px] pr-2 sm:pr-4 font-medium font-archivo text-base md:text-2xl uppercase truncate transition-all">
-                  TƏMƏL İNGİLİSCƏ
+                <button id="btn-english" class="flex btn-right py-2 pr-2 sm:pr-6 font-medium font-archivo text-base md:text-xl truncate transition-all">
+                  Təməl  İngiliscə
                 </button>
               </div> 
             </div>
@@ -998,9 +1018,9 @@
                     Türkiyə-Azərbaycan Universitetinin inkişafı, tədris prosesi və tələbə həyatı ilə bağlı təklif, təşəkkür və suallarınızı birbaşa universitet rəhbərliyinə çatdırmaq üçün "Rektora Yazın" bölməsindən istifadə edə bilərsiniz.
                   </p>
                   <div class="px-[14px] md:px-0">
-                    <button class="flex justify-center w-full md:w-fit bg-[#E81F26] hover:bg-[#ED3636] transition-colors gradient-border text-white border border-white rounded-xl px-6 md:px-8 py-2.5 md:py-3 uppercase font-inter font-medium mb-5">
-                      müraciət edin
-                      <img src="/images/arrow-right-white.svg" alt="" class="inline-block ml-[10px] h-auto" />
+                    <button class="flex justify-center w-full md:w-fit bg-[#E81F26] hover:bg-[#ED3636] transition-colors gradient-border text-white border border-white rounded-xl px-6 md:px-8 py-2.5 md:py-3 font-inter font-medium mb-5">
+                      Müraciət edin
+                      <img src="/images/chevron-right.svg" alt="" class="inline-block ml-1 h-auto" />
                     </button>
                   </div>
                   

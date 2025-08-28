@@ -15,7 +15,7 @@
   background-color: #F6F6F6;
   color: #A6A3A3;
   clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
-  padding-right: 23px;
+  padding-right: 32px;
 }
 
 .btn-right {
@@ -24,7 +24,7 @@
   color: #A6A3A3;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%);
   margin-left: -15px;
-  padding-left: 18px;
+  padding-left: 26px;
 }
 
 .active-tab {
