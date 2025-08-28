@@ -21,15 +21,823 @@
      <link rel="stylesheet" href="../output.css" />
   </head>
   <body>
-    <div id="header" class="sticky top-0 z-50"></div>
+    <!-- Header -->
+    <header class="sticky top-0 z-50">
+      <div class="bg-secondary text-[#fff] px-4 sm:px-[60px] font-inter">
+        <div class="container mx-auto h-16 md:h-28 flex justify-between items-center relative">
+          <div class="bg-secondary ">
+            <a href="/">
+            <img src="/images/logo.svg" alt="TAU Logo" class="h-6 md:h-10" />
+            </a>
+          </div>
+          <nav class="hidden lg:flex">
+            <ul class="flex gap-8 ">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li> -->
+            </ul>
+          </nav>
+          <div class="flex items-center gap-3 md:gap-6">
+            <div class="hidden lg:flex justify-center items-center gap-1.5">
+              <img src="/images/globus.svg" alt="" class="text-xl" />
+              <span class="text-sm">TR</span>
+            </div>
+            
+            <button id="search-icon" type="button" class="flex justify-center items-center px-3 py-2 lg:px-0 lg:py-0 rounded-full bg-white lg:bg-transparent lg:border-transparent border border-[#a2a2a2]">
+              <img src="/images/search.svg" alt="" class="text-xl hidden lg:block" />
+              <img src="/images/search-mobile.svg" alt="" class="text-base lg:hidden block" />
+            </button>
+            <!--<button type="button" class="flex px-4 py-2.5 rounded-xl bg-white border border-[#A2A2A2] text-[#585858] text-sm justify-center items-center gap-1.5">
+              <img src="/images/profile.svg" alt="" class="w-4 h-4" /> 
+              <span class="hidden md:block">Kabinetə keçid</span>
+            </button>-->
+            <div id="menu-toggle" class="block lg:hidden ">
+              <button class="flex justify-center items-center px-4 py-2.5 rounded-full bg-white border border-[#a2a2a2]">
+                <img src="/images/hamburger.svg" alt="Menu" class="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden">
+        <div class="absolute top-18 left-0 w-full bg-white shadow-md z-50 p-6">
+            <ul class="flex flex-col gap-4 pb-6 text-[#606060] font-medium">
+              <li><a href="/pages/about.html">Universitet haqqında</a></li>
+              <li><a href="#specialties">Tədris</a></li>
+              <!--<li><a href="#">Qəbul</a></li>
+              <li><a href="#">Tədqiqat</a></li>
+              <li><a href="#">Əlaqə</a></li>-->
+            </ul>
+            <div class="flex items-center py-6 gap-4">
+              <div class="flex md:hidden justify-center items-center gap-1.5">
+                <img src="/images/globus-mobile.svg" alt="" class="text-xl" />
+                <span class="text-[#5B5B5B] text-sm">TR</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+          <!-- Search Input Section -->
+        <div
+          id="search-box"
+          class="
+            absolute top-full left-0 w-full
+            bg-white z-50
+            transform origin-top scale-y-0 opacity-0
+            transition-[transform,opacity] duration-300 ease-out
+          "
+        >
+          <div class="flex items-center justify-between border-b border-[#C6C6C6]">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Axtarış..."
+              class="font-inter w-full text-[#555555] text-base md:text-2xl focus:outline-none placeholder:text-[#6A6A6A] px-6 py-6 md:py-[38px]"
+            />
+            <button id="search-close" class="ml-4 text-base md:text-2xl text-black px-6 py-6 md:py-[38px]">✕</button>
+          </div>
+
+          <!-- Skeleton loader -->
+          <div id="search-loading-results" class="p-6 space-y-10 hidden container mx-auto">
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+            <div class="flex space-x-4 bg-white rounded-lg animate-pulse">
+              <div class="w-[250px] h-[194px] bg-[#F0F0F0] rounded-xl"></div>
+              <div class="flex-1 space-y-9">
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded w-1/5"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-2/5"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="h-3 bg-[#F0F0F0] rounded"></div>
+                  <div class="h-3 bg-[#F0F0F0] rounded w-4/5"></div>
+                </div>
+                <div class="w-60 h-10 bg-[#F0F0F0] rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     
     <main class="bg-[#F7F9FD] md:bg-white px-0 md:px-[60px]">
-      <div id="breadcrumbs"></div>
-      <div id="himayechiler-shurasi"></div>
-      <div id="shura-slider"></div>
+      <!-- Breadcrumbs -->
+      <section class="pt-3 md:pt-10">
+        <div class="container mx-auto px-[15px] md:px-0">
+            <div class="flex items-center py-3 gap-4 border-b border-[#BBBBBB80]">
+                <a href="#" class="font-inter text-[#2C415C] opacity-50 text-sm md:text-base">Əsas səhifə</a>   
+                <img src="/images/arrow-right-two.svg" alt="" class="w-3 h-3 md:w-4 md:h-4" />
+                <span class="font-inter text-[#2C415C] text-sm md:text-base">Universitet haqqında</span>
+            </div>
+        </div>
+      </section>
+
+        <!-- Himayəçilər Şurası Section -->
+      <section class="container mx-auto px-[15px] md:px-0 pb-5">
+        <div class="pt-6 md:pt-10 pb-6 md:pb-12">
+            <h2 class="font-medium text-base md:text-xl text-[32px] font-archivo text-textColor uppercase pb-3">Unİversİtetİnİn Hİmayəçİlər Şurası</h2>
+            <p class="text-base md:text-lg text-[#989898] font-inter w-full md:w-2/3">AU Universitetinin Himayəçilər Şurası ali nəzarət və məsləhət orqanı olaraq, universitetin strateji inkişafına, idarəetmədə şəffaflıq və dayanıqlılığa töhfə verir.</p>
+        </div>
+        <div class="">
+            <div class="w-full h-[345px] md:h-[600px] relative">
+                <div class="swiper mySwiper  shadow-lg overflow-hidden">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/images/himayechiler-shurasi-one.svg" alt="" class="w-full min-h-[345px] md:h-[600px] object-cover" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/images/himayechiler-shurasi-two.svg" alt="" class="w-full min-h-[345px] md:h-[600px] object-cover" />
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container" id="progressContainer"></div>
+            </div>
+        </div>
+        </section>
+
+      <!-- Shura Üzvləri Section -->
+      <section class="container mx-auto px-0 pb-[73px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+        <div class="pt-6 md:pt-10 pb-6 px-[15px] md:px-0">
+            <h2 class="font-medium text-xl text-[32px] font-archivo text-textColor uppercase pb-3">Unİversİtetİnİn Hİmayəçİlər Şurası</h2>
+        </div>
+        <div class="grid gap-10 grid-cols-1 lg:grid-cols-[auto_1fr] xl:grid-cols-[564px_1fr] xl:gap-0 bg-[#fff] w-full px-[15px] xl:px-10 h-auto lg:max-h-[853px] md:h-full overflow-hidden">
+            <div class="w-auto md:w-[423px] lg:w-auto xl:w-[423px] pt-10 lg:pt-[126px]">
+                <div class="flex flex-col gap-6 w-min">
+                    <p class="text-base md:text-lg text-[#989898] font-inter w-full">Həm Azərbaycan həm Türkiyə tərəfi daxil olmaqla birlikdə cəmi</p>
+                    <div class="font-archivo font-semibold w-[260px] md:w-[360px] text-center text-[228px] md:text-[280px] leading-[305px] text-[#DCDCDC] border-y border-[#000]">
+                        <span id="slide-number">14</span>
+                    </div>
+                </div>
+                <p class="pt-6 text-end text-[96px] leading-[104px] text-secondary font-bold font-archivo">ÜZV</p>
+            </div>
+
+            <div class="grid grid-cols-[1fr_40px]  md:grid-cols-[1fr_111px]">
+                <div class="main-container h-[721px] md:h-[853px]">
+                    <div id="shura-slider" class="carousel-container h-[700px] md:h-[853px] py-80 md:py-[375px]">
+                        <!-- Slide 1 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/shura-slider-one.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Emin Əmrullayev.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/haldun-goktas.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Həsən Həsənli.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Kemal Şenocak.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 6 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/azer abidzade.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 7 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Naci_Gundogan.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 8 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Turxan Süleyman.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 9 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/ahmet_yozgatligil.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 10 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Ülkər Səttarova.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 11 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/hasan mandal.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 12 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Tural Əhmədov.jpg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 13 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/Cahit Güran.png" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+
+                        <!-- Slide 14 -->
+                        <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                            <div class="slide relative max-w-[200px] w-full h-[200px]">
+                                <img src="/images/shura-slider-two.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 1 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px]  border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/shura-slider-one.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-0 md:pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Erol Özvar</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Türkiyə Respublikası Ali Təhsil Şurasının (YÖK) sədri</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 2 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Emin Əmrullayev.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-0 md:pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Emin Əmrullayev</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Azərbaycan Respublikasının elm və təhsil naziri</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 3 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/haldun-goktas.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. H. Haldun Göktaş</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">YÖK-ün vitse-prezidenti</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 4 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Həsən Həsənli.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Həsən Həsənli</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Azərbaycan Respublikası elm və təhsil nazirinin müavini</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 5 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Kemal Şenocak.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Kamal Şenocak</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">YÖK İdarə Heyətinin üzvü</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 6 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/azer abidzade.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Azər Abizadə</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Azərbaycan Respublikası elm və təhsil nazirinin müşaviri</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide Content 7 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Naci_Gundogan.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Naci Gündoğan</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">YÖK İdarə Heyətinin üzvü</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide Content 8 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Turxan Süleyman.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Turxan Süleyman</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Elm və Təhsil Nazirliyinin Elm və ali təhsil siyasəti şöbəsinin müdiri</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide Content 9 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/ahmet_yozgatligil.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Ahmet Yozgatlıgil</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Orta Doğu Texniki Universitetinin (ODTÜ) rektoru</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide Content 10 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Ülkər Səttarova.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Ülkər Səttarova</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Elm və Təhsil Nazirliyinin Elm və Ali Təhsil üzrə Dövlət Agentliyinin direktoru</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 11 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/hasan mandal.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Hasan Mandal</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">İstanbul Texniki Universitetinin (İTÜ) rektoru</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 12 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Tural Əhmədov.jpg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Tural Əhmədov</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Təhsildə Keyfiyyət Təminatı Agentliyinin (TKTA) İdarə Heyətinin sədri</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 13 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/Cahit Güran.png" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. M. Cahit Güran</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Hacettepe Universitetinin rektoru</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Content 14 -->
+                    <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                        <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                            <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                            <img src="/images/shura-slider-two.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                        </div>
+                        <div class="w-full pl-6">
+                            <div class="border-b border-[#D8D8D8] pt-6">
+                                <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Vilayət Vəliyev</h2>
+                                <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Azərbaycan Texniki Universitetinin (AzTU) rektoru</p>
+                            </div>
+                            <div class="hidden pt-3 md:flex items-center gap-2">
+                                <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                                <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-[853px] flex flex-col justify-center items-center md:items-end gap-14">
+                    <button type="button" id="prev-btn">
+                        <img class="-rotate-90" src="/images/arrow-right.svg" />
+                    </button>
+                    <div class="indicators-container">
+                            <div id="indicators-wrapper" class="indicators-wrapper">
+                                <span class="indicator-span">01</span>
+                                <span class="indicator-span">02</span>
+                                <span class="indicator-span">03</span>
+                                <span class="indicator-span">04</span>
+                                <span class="indicator-span">05</span>
+                                <span class="indicator-span">06</span>
+                                <span class="indicator-span">07</span>
+                                <span class="indicator-span">08</span>
+                                <span class="indicator-span">09</span>
+                                <span class="indicator-span">10</span>
+                                <span class="indicator-span">11</span>
+                                <span class="indicator-span">12</span>
+                                <span class="indicator-span">13</span>
+                                <span class="indicator-span">14</span>
+                        </div>
+                    </div>
+                    <button type="button" id="next-btn">
+                        <img class="rotate-90" src="/images/arrow-right.svg" />
+                    </button>
+                </div>
+            </div>
+            
+
+
+        </div>
+      </section> 
+
+      <section class="container mx-auto px-0 pb-[73px]" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100" data-aos-duration="1000">
+    <div class="pt-6 md:pt-10 pb-6 px-[15px] md:px-0">
+        <h2 class="font-medium text-xl text-[32px] font-archivo text-textColor uppercase pb-3">ELMİ Şuranın üzvlərİ</h2>
+    </div>
+    <div class="grid gap-10 grid-cols-1 lg:grid-cols-[auto_1fr] xl:grid-cols-[564px_1fr] xl:gap-0 bg-[#fff] w-full px-[15px] xl:px-10 h-auto lg:max-h-[853px] md:h-full overflow-hidden">
+        <div class="w-auto md:w-[423px] lg:w-auto xl:w-[423px] pt-10 lg:pt-[126px]">
+            <div class="flex flex-col gap-6 w-min">
+                <p class="text-base md:text-lg text-[#989898] font-inter w-full">Həm Azərbaycan həm Türkiyə tərəfi daxil olmaqla birlikdə cəmi</p>
+                <div class="w-[260px] md:w-[360px] text-center font-archivo font-semibold text-[228px] md:text-[280px] leading-[305px] text-[#DCDCDC] border-y border-[#000]">
+                    <span id="slide-number-two">5</span>
+                </div>
+            </div>
+            <p class="pt-6 text-end text-[96px] leading-[104px] text-secondary font-bold font-archivo">ÜZV</p>
+        </div>
+
+        <div class="grid grid-cols-[1fr_40px]  md:grid-cols-[1fr_111px]">
+            <div class="main-container h-[721px] md:h-[853px]">
+                <div id="elmi-shura-slider" class="carousel-container h-[700px] md:h-[853px] py-80 md:py-[375px]">
+                    <!-- Slide 1 -->
+                    <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                        <div class="slide relative max-w-[200px] w-full h-[200px]">
+                            <img src="/images/shura-slider-one.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                        <div class="slide relative max-w-[200px] w-full h-[200px]">
+                            <img src="/images/shura-slider-two.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                        <div class="slide relative max-w-[200px] w-full h-[200px]">
+                            <img src="/images/academic-one.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                        <div class="slide relative max-w-[200px] w-full h-[200px]">
+                            <img src="/images/academic-two.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="slide-wrapper flex items-center justify-center md:justify-start">
+                        <div class="slide relative max-w-[200px] w-full h-[200px]">
+                            <img src="/images/academic-three.svg" alt="" class="absolute top-0 left-0 h-[200px] w-[200px] object-cover z-10" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Content 1 -->
+                <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px]  border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                    <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                        <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                        <img src="/images/shura-slider-one.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                    </div>
+                    <div class="w-full pl-0 md:pl-6">
+                        <div class="border-b border-[#D8D8D8] pt-6">
+                            <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Erol Özvar</h2>
+                            <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Türkiyə Respublikası Ali Təhsil Şurasının (YÖK) sədri</p>
+                        </div>
+                        <div class="hidden pt-3 md:flex items-center gap-2">
+                            <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                            <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Content 2 -->
+                <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                    <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                        <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                        <img src="/images/shura-slider-two.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                    </div>
+                    <div class="w-full pl-0 md:pl-6">
+                        <div class="border-b border-[#D8D8D8] pt-6">
+                            <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Vİlayət vəlİyev</h2>
+                            <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Azərbaycan Texniki Universitetinin (AzTU) rektoru</p>
+                        </div>
+                        <div class="hidden pt-3 md:flex items-center gap-2">
+                            <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                            <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Content 3 -->
+                <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                    <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                        <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                        <img src="/images/academic-one.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                    </div>
+                    <div class="w-full pl-6">
+                        <div class="border-b border-[#D8D8D8] pt-6">
+                            <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Michael Brown</h2>
+                            <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Türkiyə Respublikası Ali Təhsil Şurasının (YÖK) sədri</p>
+                        </div>
+                        <div class="hidden pt-3 md:flex items-center gap-2">
+                            <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                            <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Content 4 -->
+                <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                    <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                        <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                        <img src="/images/academic-two.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                    </div>
+                    <div class="w-full pl-6">
+                        <div class="border-b border-[#D8D8D8] pt-6">
+                            <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Lisa Davis</h2>
+                            <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Senior Research Coordinator</p>
+                        </div>
+                        <div class="hidden pt-3 md:flex items-center gap-2">
+                            <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                            <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Content 5 -->
+                <div class="slide-content flex flex-col md:flex-row items-start md:items-center h-auto md:h-[262px] border-t pt-5 md:pt-0 border-[#D8D8D8] md:border-transparent bg-[#fff] md:bg-[#F7F7F7]">
+                    <div class="relative max-w-[262px] w-full h-[262px] ml-[14px] md:ml-0">
+                        <div class="absolute bottom-0 right-0 max-w-[250px] bg-red-600 w-4/5 h-4/5 z-0"></div>
+                        <img src="/images/academic-three.svg" alt="" class="absolute top-0 left-0 pr-3 h-[250px] w-[262px] object-cover z-10" />
+                    </div>
+                    <div class="w-full pl-6">
+                        <div class="border-b border-[#D8D8D8] pt-6">
+                            <h2 class="font-medium text-base md:text-2xl font-archivo text-gray-800 uppercase pb-3">Prof. Dr. Robert Wilson</h2>
+                            <p class="pb-5 text-base text-[#989898] font-inter w-full md:w-2/3">Lead Data Scientist</p>
+                        </div>
+                        <div class="hidden pt-3 md:flex items-center gap-2">
+                            <img src="/images/mail.svg" alt="" class="w-5 h-4" />
+                            <a href="#" class="text-[#727272] text-base font-inter underline pointer-events-auto">vilayet.valiyev@tau.edu.az</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[853px] flex flex-col justify-center items-center md:items-end gap-14">
+                <button type="button" id="prev-btn-two">
+                    <img class="-rotate-90" src="/images/arrow-right.svg" />
+                </button>
+                <div class="indicators-container">
+                        <div id="indicators-wrapper-two" class="indicators-wrapper">
+                            <span class="indicator-span">01</span>
+                            <span class="indicator-span">02</span>
+                            <span class="indicator-span">03</span>
+                            <span class="indicator-span">04</span>
+                            <span class="indicator-span">05</span>
+                    </div>
+                </div>
+                <button type="button" id="next-btn-two">
+                    <img class="rotate-90" src="/images/arrow-right.svg" />
+                </button>
+            </div>
+        </div>
+        
+
+
+    </div>
+</section> 
     </main>
 
-    <div id="footer"></div>
+    <!-- Footer Section -->
+    <footer class="">
+      <div class="bg-secondary text-white pt-6 md:pt-20 pb-10 md:pb-[60px] px-[14px]">
+        <div class="container mx-auto">
+          <div class="grid place-content-between grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3 md:gap-10 lg:gap-[54px] pb-[74px] border-b border-white">
+            <div class="col-span-2 md:col-auto pb-10 md:pb-0">
+              <h1 class="text-4xl md:text-[48px] lg:text-[64px] font-bold font-expletus">TAU</h1>
+            </div>
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                
+                <li><a href="/pages/about.html">Universitetin tarixi</a></li>
+                <li><a href="/pages/shura-uzvleri.html">Himayəçilər şurası</a></li>
+                <!--<li><a href="#">Haqqımızda</a></li>
+                <li><a href="#">Elmi şura</a></li>
+                <li><a href="#">Akademik heyyət</a></li>
+                <li><a href="#">Əlaqə</a></li>-->
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">STRUKTUR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Rektor</a></li>
+                <li><a href="#">Prorektor</a></li>
+              </ul>
+            </div>-->
+            <div class="z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">PROQRAMLAR</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="/pages/kompüter-mühəndisliyi">Kompüter mühəndisliyi</a></li>
+                <li><a href="/pages/sənaye-mühəndisliyi">Sənayə mühəndisliyi</a></li>
+                <li><a href="/pages/qida-mühəndisliyi">Qida mühəndisliyi</a></li>
+                <!--<li><a href="#">Hazırlıq</a></li>-->
+              </ul>
+            </div>
+            <div class=" z-10">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">ÇƏTİR UNİVERSİTET</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="https://www.metu.edu.tr/tr">ODTU</a></li>
+                <li><a href="http://itu.edu.tr/">İTÜ</a></li>
+                <li><a href="https://hacettepe.edu.tr/">Hacettepe</a></li>
+                <li><a href="https://aztu.edu.az/az">AzTU</a></li>
+              </ul>
+            </div>
+            <!--<div class="pl-5 md:pl-0">
+              <h2 class="font-archivo font-medium text-xl md:text-2xl pb-4">MEDİA</h2>
+              <ul class="font-inter flex flex-col gap-2 text-sm md:text-base">
+                <li><a href="#">Xəbərlər</a></li>
+                <li><a href="#">Elanlar</a></li>
+                <li><a href="#">Qalereya</a></li>
+              </ul>
+            </div>-->
+          </div>
+
+          <div class="flex flex-col md:flex-row justify-center md:justify-between items-center pt-10 gap-4 text-sm md:text-base">
+            <p>© 2025 | Türkiyə Azərbaycan Universiteti</p>
+            <ul class="font-inter flex gap-2">
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-one.svg" alt="instagram" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-two.svg" alt="youtube" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-three.svg" alt="facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#" class="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center border border-[#FFFFFF26]">
+                  <img src="/images/footer-four.svg" alt="twitter" />
+                </a>
+              </li>
+            </ul>
+            <p>SAFAROFF Agency tərəfindən hazırlanıb</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.0/swiper-bundle.min.js"></script>
