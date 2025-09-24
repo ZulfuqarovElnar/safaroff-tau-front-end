@@ -702,43 +702,85 @@
                   </div>
                   <div class="py-20 flex flex-col gap-10">
                       <h1 class="font-medium text-xl md:text-2xl font-archivo text-textColor uppercase pt-0 md:pt-6 w-fit border-b-2 border-secondary pb-2.5">BİZİMLƏ ƏLAQƏ</h1>
-                      <form id="myForm" class="flex flex-col gap-5" novalidate>
-                          <input
-                              type="text"
-                              name="name"
-                              placeholder="Ad"
-                              class="w-full pt-5 pb-3 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder:text-[#A5A5A5] transition-colors duration-300"
-                          />
+<form id="myForm" class="flex flex-col gap-8" novalidate>
+  <!-- Name -->
+  <div class="relative">
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder=" "
+      class="peer w-full pt-6 pb-2 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder-transparent transition-colors duration-300"
+    />
+    <label
+      for="name"
+      class="absolute left-0 top-2 text-[#A5A5A5] text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-[#A5A5A5] peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#6A6A6A]"
+    >
+      Ad
+    </label>
+  </div>
 
-                          <input
-                              type="number"
-                              name="studentId"
-                              placeholder="Tələbə İD-si"
-                              class="w-full pt-5 pb-3 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder:text-[#A5A5A5] transition-colors duration-300"
-                          />
+  <!-- Student ID -->
+  <div class="relative">
+    <input
+      type="number"
+      name="studentId"
+      id="studentId"
+      placeholder=" "
+      class="peer w-full pt-6 pb-2 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder-transparent transition-colors duration-300"
+    />
+    <label
+      for="studentId"
+      class="absolute left-0 top-2 text-[#A5A5A5] text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-[#A5A5A5] peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#6A6A6A]"
+    >
+      Tələbə İD-si
+    </label>
+  </div>
 
-                          <input
-                              type="email"
-                              name="email"
-                              placeholder="Mail"
-                              class="w-full pt-5 pb-3 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder:text-[#A5A5A5] transition-colors duration-300"
-                          />
+  <!-- Email -->
+  <div class="relative">
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder=" "
+      class="peer w-full pt-6 pb-2 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder-transparent transition-colors duration-300"
+    />
+    <label
+      for="email"
+      class="absolute left-0 top-2 text-[#A5A5A5] text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-[#A5A5A5] peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#6A6A6A]"
+    >
+      Mail
+    </label>
+  </div>
 
-                          <textarea
-                              name="message"
-                              placeholder="Müraciətinizi daxil edin"
-                              class="w-full pt-5 pb-3 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder:text-[#A5A5A5] transition-colors duration-300 h-[100px]"
-                          ></textarea>
+  <!-- Message -->
+  <div class="relative">
+    <textarea
+      name="message"
+      id="message"
+      placeholder=" "
+      class="peer w-full pt-6 pb-2 font-archivo text-[#6A6A6A] border-b border-[#DBDBDB] focus:outline-none focus:border-[#ADADAD] placeholder-transparent transition-colors duration-300 h-[100px]"
+    ></textarea>
+    <label
+      for="message"
+      class="absolute left-0 top-2 text-[#A5A5A5] text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-[#A5A5A5] peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#6A6A6A]"
+    >
+      Müraciətinizi daxil edin
+    </label>
+  </div>
 
-                          <button
-                              id="submitBtn"
-                              type="submit"
-                              class="flex items-center justify-center bg-[#E81F26] hover:bg-[#ED3636] transition-colors gradient-border font-medium font-inter text-[#fff] px-8 py-4 md:py-3 w-full mt-10"
-                          >
-                              Göndər
-                              <img src="/images/chevron-right.svg" alt="" class="inline-block ml-1 h-auto" />
-                          </button>
-                      </form>
+  <!-- Submit Button -->
+  <button
+    id="submitBtn"
+    type="submit"
+    class="flex items-center justify-center bg-[#E81F26] hover:bg-[#ED3636] transition-colors gradient-border font-medium font-inter text-[#fff] px-8 py-4 md:py-3 w-full mt-10"
+  >
+    Göndər
+    <img src="/images/chevron-right.svg" alt="" class="inline-block ml-1 h-auto" />
+  </button>
+</form>
+
                   </div>
               </div>
           </div>

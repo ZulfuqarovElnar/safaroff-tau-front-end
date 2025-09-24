@@ -50,7 +50,7 @@
 .footer-grid-cols {
   grid-template-columns: 1fr repeat(5, max-content);
 }
-.progress-container, .news-container {
+.progress-container{
   position: relative;
   z-index: 1;
   display: flex;
@@ -74,25 +74,31 @@
   width: 0%;
 }
 .news-container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    gap: 8px;
-    margin-top: -24px;
-  }
-  .news-item {
-    width: 60px;
-    height: 4px;
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background-color .3s;
-  }
-  .news-item.active {
-    background-color: #fff;
-  }
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -24px;
+  overflow: hidden;
+}
+
+.news-item {
+  width: 60px;
+  height: 4px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color .3s, opacity .3s;
+  opacity: 0.4;
+}
+
+.news-item.active {
+  background-color: #fff;
+  opacity: 1; /* aktiv tam görünür */
+}
+
 
 .text-outline {
   -webkit-text-stroke: 1px black;
