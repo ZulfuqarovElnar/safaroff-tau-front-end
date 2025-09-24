@@ -1,34 +1,28 @@
 // Header menu toggle
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.querySelector("#menu-toggle");
+    const toggleButton = document.querySelector("#menu-toggle");
   const mobileMenu = document.querySelector("#mobile-menu");
+  const hamburgerIcon = toggleButton.querySelector(".hamburger-icon");
+  const closeIcon = toggleButton.querySelector(".close-icon");
 
   if (toggleButton && mobileMenu) {
     toggleButton.addEventListener("click", (e) => {
       e.stopPropagation();
       mobileMenu.classList.toggle("hidden");
-    });
 
-    mobileMenu.addEventListener("click", (e) => {
-      e.stopPropagation();
+      hamburgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
     });
 
     document.addEventListener("click", () => {
       if (!mobileMenu.classList.contains("hidden")) {
         mobileMenu.classList.add("hidden");
-      }
-    });
 
-    window.addEventListener("resize", () => {
-      if (
-        window.innerWidth >= 1024 &&
-        !mobileMenu.classList.contains("hidden")
-      ) {
-        mobileMenu.classList.add("hidden");
+        hamburgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
       }
     });
   }
-
  const searchIcon = document.querySelector("#search-icon");
   const searchBox = document.querySelector("#search-box");
   const searchClose = document.querySelector("#search-close");
@@ -55,7 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         searchBox.classList.add("scale-y-100", "opacity-100");
         searchBox.classList.remove("scale-y-0", "opacity-0");
-        if (searchInput) searchInput.value = "";
+        if (searchInput) {
+          searchInput.value = "";
+          searchInput.focus(); 
+        }
         if (searchLoading) searchLoading.classList.add("hidden");
       }
     }
@@ -80,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchInput.addEventListener("input", () => {
       const query = searchInput.value.trim();
+      searchInput.focus();1
 
       if (query.length > 0) {
         searchLoading.classList.remove("hidden");
@@ -236,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slidesPerView: 4,
         breakpoints: {
           270: { slidesPerView: 1, spaceBetween: 10 },
-          320: { slidesPerView: 1.4, spaceBetween: 10 },
+          320: { slidesPerView: 1.6, spaceBetween: 10 },
           640: { slidesPerView: 2.3, spaceBetween: 20 },
           1024: { slidesPerView: 4, spaceBetween: 40 },
         },
@@ -762,3 +760,68 @@ window.addEventListener('load', () => {
 // Kurikulum
 
 // loadComponent('footer', '/templates/partials/footer.html');
+document.addEventListener("DOMContentLoaded", function () {
+  const swiper = new Swiper('.mySwiper', {
+    loop: false,
+    navigation: {
+      nextEl: ".swipper-news-next",
+      prevEl: ".swipper-news-prev",
+    },
+    on: {
+      init: function () {
+        renderBullets(this);
+      },
+      slideChange: function () {
+        renderBullets(this);
+      },
+      resize: function () {
+        renderBullets(this);
+      }
+    }
+  });
+function renderBullets(swiper) {
+  const container = document.getElementById('newsContainer');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const maxVisible = window.innerWidth <= 768 ? 3 : 5;
+  const totalSlides = swiper.slides.length;
+  const visible = Math.min(maxVisible, totalSlides);
+
+  const active = swiper.realIndex;
+  const half = Math.floor(visible / 2);
+
+  let start = active - half;
+  if (start < 0) start = 0;
+  const maxStart = Math.max(0, totalSlides - visible);
+  if (start > maxStart) start = maxStart;
+
+  for (let i = 0; i < visible; i++) {
+    const slideIndex = start + i;
+    const bullet = document.createElement('div');
+    bullet.classList.add('news-item');
+    if (slideIndex === active) bullet.classList.add('active');
+    bullet.dataset.index = slideIndex;
+    bullet.addEventListener('click', () => {
+      swiper.slideTo(slideIndex);
+    });
+    container.appendChild(bullet);
+  }
+
+  // aktiv bullet-i container mərkəzinə gətirmək
+  const activeBullet = container.querySelector('.news-item.active');
+  if (activeBullet) {
+    const containerWidth = container.offsetWidth;
+    const bulletWidth = activeBullet.offsetWidth;
+    const scrollPos = activeBullet.offsetLeft - containerWidth / 2 + bulletWidth / 2;
+    container.scrollTo({
+      left: scrollPos,
+      behavior: 'smooth'
+    });
+  }
+}
+
+});
+  
+
+
